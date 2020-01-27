@@ -74,7 +74,7 @@ To-do list:
 
 ## Status
 
-Project is: _In Progress_
+*Project is: _In Progress_
 
 
 
@@ -93,14 +93,14 @@ Project is: _In Progress_
 
 
 ## Inspiration
-Project inspired by Shaun Coyne "Mick"
+*Project inspired by Shaun Coyne "Mick"
 
 
 
 
 
 ## Contact
-Baker, Andrew (asb104) -- asb104@txstate.edu
-Coyne, Shaun (spc51) -- spc51@txstate.edu
-Hernandez, Victor (v_h74) -- v_h74@txstate.edu
-Nicole “Lo” Runas (ner34) -- ner34@txstate.edu
+*Baker, Andrew (asb104) -- asb104@txstate.edu
+*Coyne, Shaun (spc51) -- spc51@txstate.edu
+*Hernandez, Victor (v_h74) -- v_h74@txstate.edu
+*Nicole “Lo” Runas (ner34) -- ner34@txstate.edu
