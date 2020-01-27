@@ -8,8 +8,9 @@
 ## Description
 > Team Members: 1. Baker, Andrew 2. Coyne, Shaun 3. Victor Hernandez 4. Runas, Nicole 
   
-
-and 
+  
+  
+  
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -20,19 +21,31 @@ and
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
-## General Info
 
+
+
+## General Info
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
 
+
+
+### Prerequisites
 + You will need an IDE, [Eclipse](https://www.eclipse.org/downloads/packages/release/neon/2/eclipse-ide-java-developers) is preferred.
+
+
+
 
 ## Screenshots
 
 
+
+
 ## Technologies
 * [Java] -- Java 8+
+
+
+
 
 ## Deployment
 
@@ -57,8 +70,13 @@ To-do list:
 * Add unit testing
 
 
+
+
 ## Status
+
 Project is: _In Progress_
+
+
 
 ## Achievements
 * Andrew Baker: 
@@ -66,12 +84,20 @@ Project is: _In Progress_
 * Victor Hernandez: 
 * Nicloe Runas: 
 
+
+
 ## Documentations
+
+
 
 
 
 ## Inspiration
 Project inspired by Shaun Coyne "Mick"
+
+
+
+
 
 ## Contact
 Baker, Andrew (asb104) -- asb104@txstate.edu
