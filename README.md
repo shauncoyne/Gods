@@ -77,4 +77,4 @@ Project inspired by Shaun Coyne "Mick"
 Baker, Andrew (asb104) -- asb104@txstate.edu
 Coyne, Shaun (spc51) -- spc51@txstate.edu
 Hernandez, Victor (v_h74) -- v_h74@txstate.edu
-Nicole “Lo” Runas ()
+Nicole “Lo” Runas (ner34) -- ner34@txstate.edu
