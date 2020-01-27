@@ -100,7 +100,7 @@ To-do list:
 
 
 ## Contact
-* Baker, Andrew (asb104) -- asb104@txstate.edu
-* Coyne, Shaun (spc51) -- spc51@txstate.edu
-* Hernandez, Victor (v_h74) -- v_h74@txstate.edu
-* Nicole “Lo” Runas (ner34) -- ner34@txstate.edu
+1. Baker, Andrew (asb104) -- asb104@txstate.edu
+2. Coyne, Shaun (spc51) -- spc51@txstate.edu
+3. Hernandez, Victor (v_h74) -- v_h74@txstate.edu
+4.  Nicole “Lo” Runas (ner34) -- ner34@txstate.edu
