@@ -12,6 +12,7 @@ public class GodsTest {
 
 	@Before
 	public void setup() {
+		@SuppressWarnings("unused")  //Comment out after usage occurs
 		Gods gods = new Gods();  //Local variable to be used for testing Class Gods
 	}
 	
