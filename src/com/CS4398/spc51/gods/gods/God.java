@@ -13,10 +13,21 @@ import java.util.ArrayList;
  * where server owners could configure all the aspects of a god. This isn't as fun.
  */
 
+/**
+ * The Class God.
+ */
 public abstract class God {
+	
+	/** The name. */
 	private String name;
+	
+	/** The religion. */
 	private String religion;
+	
+	/** The believers. */
 	private ArrayList believers;
+	
+	/** The enemies. */
 	private ArrayList enemies;
 	
 
