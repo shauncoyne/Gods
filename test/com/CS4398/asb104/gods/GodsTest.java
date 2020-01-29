@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import com.CS4398.spc51.gods.Gods;
 
@@ -12,12 +13,14 @@ public class GodsTest {
 
 	@Before
 	public void setup() {
-		Gods gods = new Gods();  //Local variable to be used for testing Class Gods
+		
 	}
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void VariableCreation() {
+		Gods testGod = new Gods();
+		Gods gods = new Gods();
+		assertEquals(testGod, gods);
 	}
 
 }
