@@ -22,7 +22,10 @@ public class Gods extends JavaPlugin{
     public void onEnable() {
         getLogger().info("onEnable is called!");
         configurator = new Configurator(this);
+        //register the AlterManager
         getServer().getPluginManager().registerEvents(new AlterManager(), this);
+        // Register Commands
+     	getCommand("gods").setExecutor(new CommandManager(this));
     }
     
     /**

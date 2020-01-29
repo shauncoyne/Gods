@@ -9,7 +9,7 @@ import com.CS4398.spc51.gods.gods.God;
  */
 public class Configurator {
 	
-	/** The gods. */
+	/** The plugin instance. */
 	private Gods gods;
 	
 	/** The config. */
@@ -18,7 +18,7 @@ public class Configurator {
 	/**
 	 * Instantiates a new configurator.
 	 *
-	 * @param gods the gods
+	 * @param gods the plugin instance
 	 */
 	public Configurator(Gods gods) {
 		this.gods = gods;
