@@ -1,6 +1,5 @@
 package com.CS4398.spc51.gods;
 
-import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.CS4398.spc51.gods.alter.AlterManager;
@@ -24,6 +23,8 @@ public class Gods extends JavaPlugin{
         configurator = new Configurator(this);
         //register the AlterManager
         getServer().getPluginManager().registerEvents(new AlterManager(), this);
+        //register the Chat Listener
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
         // Register Commands
      	getCommand("gods").setExecutor(new CommandManager(this));
     }
@@ -34,6 +35,6 @@ public class Gods extends JavaPlugin{
     @Override
     public void onDisable() {
         getLogger().info("onDisable is called!");
-        //Need to unregister the listener
+        //Need to unregister the listeners
     }
 }

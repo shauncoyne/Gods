@@ -12,8 +12,11 @@ import com.CS4398.spc51.gods.gods.God;
  */
 public class Believer {
 	
-	/** The belief power. */
+	/** The belief power. This is how much the player has
+	 * please their god */
 	private float beliefPower;
+	/** This is how well the player has behaved in general. */
+	private float behavior;
 	
 	/** The player UUID. */
 	private UUID playerUUID;
@@ -34,9 +37,21 @@ public class Believer {
 	 * @param player the player
 	 * @param beliefPower the belief power
 	 */
-	public Believer(Player player, int beliefPower) {
+	public Believer(Player player, float beliefPower) {
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
+	}
+	/**
+	 * Instantiates a new believer.
+	 *
+	 * @param player the player
+	 * @param beliefPower the belief power
+	 * @param behavior the behavior score of the player
+	 */
+	public Believer(Player player, float beliefPower, float behavior) {
+		this.beliefPower = beliefPower;
+		this.playerUUID = player.getUniqueId();
+		this.behavior = behavior;
 	}
 	
 	/**
@@ -55,6 +70,24 @@ public class Believer {
 	 */
 	public void setBeliefPower(float beliefPower) {
 		this.beliefPower = beliefPower;
+	}
+	
+	/**
+	 * Gets the behavior score.
+	 *
+	 * @return the behavior score of the player
+	 */
+	public float getBehavior() {
+		return beliefPower;
+	}
+
+	/**
+	 * Sets the behavior score of the player.
+	 *
+	 * @param behavior the new behavior score
+	 */
+	public void setBehavior(float behavior) {
+		this.behavior = behavior;
 	}
 	
 	/**
