@@ -1,10 +1,14 @@
 package com.CS4398.spc51.gods.gods;
 
+import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.reward.GiveItem;
+import com.CS4398.spc51.gods.reward.Reward;
 
 /**
  * The Class Zeus. Put his info here
@@ -61,7 +65,14 @@ public class Zeus extends God{
 		//only take action if damage resulted in death
 		if (e.getEntity().isDead()) {
 			believer.decreaseBeliefPower(believer.getGod(), 1); // 1 is the smallest int. The bigger the int, the bigger the decrease
-			believer.getPlayer().sendMessage("You have killed a sheep, I don't like this");
+			believer.getPlayer().sendMessage("You have killed a sheep, I don't like this"); //Actually, we make a punishment object here.
+			
+			////OR////
+			
+			believer.increaseBeliefPower(believer.getGod(), 1);
+			ItemStack item = new ItemStack(Material.BAKED_POTATO);
+			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
+			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
 		}
 		
 	}

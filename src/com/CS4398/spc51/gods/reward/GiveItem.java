@@ -10,7 +10,7 @@ import com.CS4398.spc51.gods.Gods;
 /**
  * The Class giveItem.
  */
-public class giveItem extends Reward{
+public class GiveItem extends Reward{
 	
 	/** The item. */
 	ItemStack item;
@@ -21,7 +21,7 @@ public class giveItem extends Reward{
 	 * @param player the player
 	 * @param message the message
 	 */
-	public giveItem(Player player, String message) {
+	public GiveItem(Player player, String message) {
 		super(player, message);
 		this.item = new ItemStack(Material.BREAD);
 	}
@@ -33,7 +33,7 @@ public class giveItem extends Reward{
 	 * @param message the message
 	 * @param item the item
 	 */
-	public giveItem(Player player, String message, ItemStack item) {
+	public GiveItem(Player player, String message, ItemStack item) {
 		super(player, message);
 		this.item = item;
 	}
