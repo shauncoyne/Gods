@@ -2,6 +2,11 @@ package com.CS4398.spc51.gods.gods;
 
 import java.util.ArrayList;
 
+import org.bukkit.event.Event;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+
+import com.CS4398.spc51.gods.Believer;
+
 /*
  * Gods will be created via code, not config. This is because we want gods to be unique.
  * Their punishments and powers should be unique to some extent. 
@@ -29,6 +34,25 @@ public abstract class God {
 	
 	/** The enemies. */
 	private ArrayList enemies;
+
+	/**
+	 * Instantiates a new god.
+	 *
+	 * @param name the name
+	 * @param religion the religion
+	 */
+	public God(String name, String religion) {
+		this.name = name;
+		this.religion = religion;
+	}
+	
+	/**
+	 * Observe.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	public abstract void observe(Believer believer, Event e);
 	
 
 }

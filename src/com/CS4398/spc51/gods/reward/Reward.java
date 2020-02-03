@@ -7,12 +7,20 @@ import org.bukkit.entity.Player;
  */
 public class Reward {
 	
+	/** The player that will recieve the reward. */
+	Player player; 
+	
+	/** The message that will be sent to the player when the reward is exicuted*/
+	String message; 
+	
 	/**
 	 * Instantiates a new reward.
 	 *
 	 * @param player the player
 	 */
-	public Reward(Player player) {
+	public Reward(Player player, String message) {
+		this.player = player;
+		this.message = message;
 	}
 	
 	/**
@@ -23,5 +31,13 @@ public class Reward {
 	public boolean execute() {
 		return false;
 	}
+	
+	/**
+	 * Send the reward message to the player
+	 */
+	public void sendMessage() {
+		player.sendMessage(message);
+	}
+
 
 }

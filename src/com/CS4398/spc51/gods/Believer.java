@@ -2,6 +2,7 @@ package com.CS4398.spc51.gods;
 
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.CS4398.spc51.gods.gods.God;
@@ -20,6 +21,9 @@ public class Believer {
 	
 	/** The player UUID. */
 	private UUID playerUUID;
+	
+	/**  The god the player worships. */
+	private God god;
 	
 	/**
 	 * Instantiates a new believer.
@@ -54,6 +58,7 @@ public class Believer {
 		this.behavior = behavior;
 	}
 	
+
 	/**
 	 * Gets the belief power.
 	 *
@@ -113,6 +118,37 @@ public class Believer {
 	public void decreaseBeliefPower(God god, int level) {
 		float multiplyer = Gods.configurator.getMultiplyer(god);
 		beliefPower = beliefPower - level * multiplyer;		
+	}
+
+	/**
+	 * Gets the believer.
+	 *
+	 * @param uniqueId the unique id
+	 * @return the believer
+	 */
+	public static Believer getBeliever(UUID uniqueId) {
+		//Returns a believer
+		return null;
+	}
+
+	/**
+	 * Gets the god.
+	 *
+	 * @return the god
+	 */
+	public God getGod() {
+		//Returns the God this player worships
+		return god;
+	}
+
+	/**
+	 * Gets the player.
+	 *
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return Bukkit.getPlayer(playerUUID);
+		
 	}
 
 }
