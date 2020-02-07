@@ -7,21 +7,36 @@ import org.bukkit.entity.Player;
  */
 public abstract class Punishment {
 	
+	/** The player that will receive the punishment. */
+	Player player;
+	
+	/** The message that will be sent to the player when the punishment is executed */
+	String message;
+	
 	/**
 	 * Instantiates a new punishment.
 	 *
-	 * @param p the p
+	 * @param player the player
 	 */
-	public Punishment(Player p) {
+	public Punishment(Player player, String message) {
+		this.player = player;
+		this.message = message;
 	}
 	
 	/**
-	 * Execute teh punishment.
+	 * Execute the punishment.
 	 *
 	 * @return true, if successful
 	 */
 	public boolean execute() {
 		return false;
+	}
+	
+	/** 
+	 * Send the punishment message to the player.
+	 */
+	public void sendMessage() {
+		player.sendMessage(message);
 	}
 
 }
