@@ -28,9 +28,11 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the event
 	 */
-	public void observe(Believer believer, Event e) {
+	public void observe(Believer believer, Event e) 
+	{
 		//switch based on the type of event
-		switch (e.getEventName()) {
+		switch (e.getEventName()) 
+		{
         case "EntityDamageByEntityEvent":  
         		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
                  break;
@@ -44,13 +46,19 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void playerDamagedEntity(Believer believer, EntityDamageByEntityEvent e) {
-		//I can't think of a good way to make a switch statement here.
-		//you could investigate this if you like
-		if (e.getEntityType() == EntityType.SHEEP) {
-			sheepDamaged(believer, e);
+	private void playerDamagedEntity(Believer believer, EntityDamageByEntityEvent e) 
+	{
+		switch(e.getEntityType())
+		{
+		case SHEEP : sheepDamaged(believer, e);
+		     break;
+		case COW : cowDamaged(believer, e);
+	         break;
+		case HORSE : horseDamaged(believer, e);
+	         break;
+		default:
+			break;
 		}
-		
 	}
 
 	/**
@@ -59,23 +67,67 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void sheepDamaged(Believer believer, EntityDamageByEntityEvent e) {
+	private void sheepDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	{
 		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
 		
 		//only take action if damage resulted in death
-		if (e.getEntity().isDead()) {
-			believer.decreaseBeliefPower(believer.getGod(), 1); // 1 is the smallest int. The bigger the int, the bigger the decrease
-			believer.getPlayer().sendMessage("You have killed a sheep, I don't like this"); //Actually, we make a punishment object here.
-			
-			////OR////
-			
+		if (e.getEntity().isDead()) 
+		{
 			believer.increaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.BAKED_POTATO);
 			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
 			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
 		}
 		
+		
 	}
+	
+	/**
+	 * Cow damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void cowDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	{
+		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
+		
+		//only take action if damage resulted in death
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 1);
+			ItemStack item = new ItemStack(Material.EGG);
+			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
+			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
+		}
+		
+		
+	}
+	
+	/**
+	 * Horse damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void horseDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	{
+		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
+		
+		//only take action if damage resulted in death
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 1);
+			ItemStack item = new ItemStack(Material.DIRT);
+			//Punishment punishment = new GiveItem(believer.getPlayer(), "You killed a horse. I have been angered by your actions.", item);
+			//punishment.execute();
+			
+		}
+		
+		
+	}
+	
 
 
 }
