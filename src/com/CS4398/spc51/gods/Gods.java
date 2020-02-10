@@ -25,6 +25,8 @@ public class Gods extends JavaPlugin{
         getServer().getPluginManager().registerEvents(new AlterManager(), this);
         //register the Chat Listener
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        //register Action Listener
+        getServer().getPluginManager().registerEvents(new ActionListener(), this);
         // Register Commands
      	getCommand("gods").setExecutor(new CommandManager(this));
     }
