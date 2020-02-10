@@ -11,15 +11,15 @@ import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Reward;
 
 /**
- * The Class Zeus. Put his info here
+ * The Class Poseidon. Put his info here
  */
-public class Zeus extends God{
+public class Poseidon extends God{
 
 	/**
 	 * Instantiates a new zeus.
 	 */
-	public Zeus() {
-		super("Zeus", "Greek");
+	public Poseidon() {
+		super("Poseidon", "Greek");
 	}
 	
 	/**
@@ -34,6 +34,10 @@ public class Zeus extends God{
         case "EntityDamageByEntityEvent":  
         		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
                  break;
+        //case "VehicleCreateEvent" :
+        default:
+        	break;
+        	
 		}
 		
 	}

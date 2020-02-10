@@ -56,6 +56,7 @@ public class Zeus extends God{
 	         break;
 		case HORSE : horseDamaged(believer, e);
 	         break;
+		case CREEPER : creeperDamaged(believer,e);
 		default:
 			break;
 		}
@@ -120,11 +121,29 @@ public class Zeus extends God{
 		{
 			believer.decreaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.DIRT);
-			//Punishment punishment = new GiveItem(believer.getPlayer(), "You killed a horse. I have been angered by your actions.", item);
-			//punishment.execute();
+			Punishment punishment = new GiveItem(believer.getPlayer(), "You killed a horse. I have been angered by your actions.", item);
+			punishment.execute();
 			
 		}
 		
+		
+	}
+	
+	/**
+	 * Creeper damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void creeperDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 1);
+			ItemStack item = new ItemStack(Material.CAKE);
+			Reward reward = new GiveItem(believer.getPlayer(), "You have taken down another enemy. This has pleased me.", item);
+			reward.execute();
+		}
 		
 	}
 	
