@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 
 /**
@@ -20,7 +23,7 @@ import org.bukkit.block.Block;
  */
 public class AlterTemplate {
 	
-	private Block origin;
+	private AlterBlock origin;
 	private ArrayList<ArrayList<Block>> template = new ArrayList();
 	
 	public AlterTemplate(String templateName) {
@@ -33,7 +36,11 @@ public class AlterTemplate {
 				while ((row = csvReader.readLine()) != null) {
 				    String[] data = row.split(",");
 				    //this one row should contain all the data
-				    this.origin = data[0];//TODO need to convert to block first
+				    if (data[0].compareTo("null") == 0) {
+				    	//TODO log error here!
+				    }
+				    else {
+				    this.origin = convertToBlock(data[0]);
 				    for(int i = 3; i < data.length; i = i + 2) {
 			    		ArrayList temp = new ArrayList();
 				    	for(int j = 0; j < Math.pow(i, i); j++) {
@@ -41,18 +48,31 @@ public class AlterTemplate {
 				    			//do nothing we want to skip this block
 				    		}
 				    		else {
-				    			temp.add(data[j]); //TODO need to convert to block first
+				    			if(data[j].compareTo("null") == 0) {
+				    				temp.add("null");
+				    			}
+				    			else {
+					    			temp.add(convertToBlock(data[j])); 
+				    			}
 				    		}
 				    	}
 				    	this.template.add(temp);
 				    	
 				    }
 				}
+				}
 				csvReader.close();
 		}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
+	}
+
+	private AlterBlock convertToBlock(String string) {
+	    String[] data = string.split(":");
+		Location location = new Location(Bukkit.getWorld(data[0]), Float.parseFloat(data[1]), Float.parseFloat(data[2]), Float.parseFloat(data[3]));//World x y z
+		Material material = Material.getMaterial(data[4]); //block ID
+		return new AlterBlock(location, material);
 	}
 
 }
