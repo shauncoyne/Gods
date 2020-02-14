@@ -39,6 +39,11 @@ public class Zeus extends God{
 		}
 		
 	}
+	
+	public void reward(float previousBP, float currentBP)
+	{
+		
+	}
 
 	/**
 	 * Player damaged entity.

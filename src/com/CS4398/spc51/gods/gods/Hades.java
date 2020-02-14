@@ -31,11 +31,17 @@ public class Hades extends God{
 	public void observe(Believer believer, Event e) 
 	{
 		//switch based on the type of event
-		switch (e.getEventName()) {
+		switch (e.getEventName()) 
+		{
         case "EntityDamageByEntityEvent":  
         		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
                  break;
 		}
+		
+	}
+	
+	public void reward(float previousBP, float currentBP)
+	{
 		
 	}
 

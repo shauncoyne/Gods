@@ -28,9 +28,10 @@ public class Poseidon extends God{
 	 * @param believer the believer
 	 * @param e the event
 	 */
-	public void observe(Believer believer, Event e) {
-		//switch based on the type of event
-		switch (e.getEventName()) {
+	public void observe(Believer believer, Event e) 
+	{
+		switch (e.getEventName()) 
+		{
         case "EntityDamageByEntityEvent":  
         		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
                  break;
@@ -39,6 +40,11 @@ public class Poseidon extends God{
         	break;
         	
 		}
+		
+	}
+	
+	public void reward(float previousBP, float currentBP)
+	{
 		
 	}
 
