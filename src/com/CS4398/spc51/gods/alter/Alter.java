@@ -1,5 +1,6 @@
 package com.CS4398.spc51.gods.alter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -21,7 +22,9 @@ public class Alter {
 	private HashMap phrases; 
 	
 	/** The responses specific responses the god says on certain interactions. */
-	private HashMap responses; 
+	private HashMap responses;
+
+	private ArrayList<ArrayList<AlterBlock>> alterBlocks; 
 	
 	/**
 	 * Instantiates a new alter.
@@ -29,10 +32,13 @@ public class Alter {
 	 * @param createrUUID the creater UUID
 	 * @param god the god
 	 */
-	public Alter(UUID createrUUID, God god) {
+	public Alter(UUID createrUUID, God god, ArrayList alterBlocks) {
 		this.god = god;
 		this.createrUUID = createrUUID;
+		this.alterBlocks = alterBlocks;
 		
 	}
+
+
 
 }

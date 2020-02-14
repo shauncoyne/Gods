@@ -9,7 +9,13 @@ import com.CS4398.spc51.gods.gods.God;
 
 
 /**
- * The Class Believer.
+ * The Class Believer. 
+ * 					TODO this should have a rank, a powerup list,  and a beliefPower.
+ * 					TODO on rank increase check to the god to see if we need to update powerup list
+ * 					TODO on beliefPower increase check to seee if we need to increase rank
+ * 					TODO on beliefPower increase, check god to see if we need to reward the player
+ * 					TODO similar logic applies to decreases
+ * 					TODO need to add save and load logic to player objects to save and load  them from a yaml
  */
 public class Believer {
 	
@@ -82,7 +88,7 @@ public class Believer {
 	 *
 	 * @return the behavior score of the player
 	 */
-	public float getBehavior() {
+	public float getRank() {
 		return beliefPower;
 	}
 

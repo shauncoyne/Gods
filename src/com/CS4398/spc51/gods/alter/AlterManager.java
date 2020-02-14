@@ -190,12 +190,15 @@ public class AlterManager implements Listener{
 	/**
 	 * Check for alter creation by looking at nearby blocks against templates. 
 	 */
-	public void checkForAlterCreation() {
+	public void checkForAlterCreation(Block block) {
 		for (Alter alter : alterList) {
 			AlterTemplate template = alter.getTemplate();
+			AlterBlock alterblock = new AlterBlock(block);
+			if
 		}
 	}
 	
+
 	/**
 	 * Gets the alter based on the block.
 	 *

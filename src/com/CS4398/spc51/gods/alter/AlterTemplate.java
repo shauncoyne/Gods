@@ -20,10 +20,14 @@ import org.bukkit.block.Block;
  * Get the block the player just placed. 
  * Determine if this block is the origin block
  * Procedurally check surrounding blocks if they match the template
+ * 
+ * 
+ * An alter will contain ArrayList<ArrayList<>> which will contain list of layers which is a list of either alterblocks or the string null
+ * An alter template will contain an ArrayList<ArrayList<>> which will contain a list of layer which will contain a list of materials
  */
 public class AlterTemplate {
 	
-	private AlterBlock origin;
+	private Material origin;
 	private ArrayList<ArrayList<Block>> template = new ArrayList();
 	
 	public AlterTemplate(String templateName) {
@@ -40,7 +44,7 @@ public class AlterTemplate {
 				    	//TODO log error here!
 				    }
 				    else {
-				    this.origin = convertToBlock(data[0]);
+				    this.origin = convertToMaterial(data[0]);
 				    for(int i = 3; i < data.length; i = i + 2) {
 			    		ArrayList temp = new ArrayList();
 				    	for(int j = 0; j < Math.pow(i, i); j++) {
@@ -52,7 +56,7 @@ public class AlterTemplate {
 				    				temp.add("null");
 				    			}
 				    			else {
-					    			temp.add(convertToBlock(data[j])); 
+					    			temp.add(convertToMaterial(data[j])); 
 				    			}
 				    		}
 				    	}
@@ -66,6 +70,11 @@ public class AlterTemplate {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
+	}
+
+	private Material convertToMaterial(String string) {
+		Material material = Material.getMaterial(string); //block ID
+		return material;
 	}
 
 	private AlterBlock convertToBlock(String string) {
