@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
@@ -36,6 +37,9 @@ public class Zeus extends God{
         case "EntityDamageByEntityEvent":  
         		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
                  break;
+        case "PlayerDeathEvent":
+        	playerDied(believer, (PlayerDeathEvent)e);
+        	break;
 		}
 		
 	}
@@ -66,6 +70,8 @@ public class Zeus extends God{
 			break;
 		}
 	}
+	
+	private void playerDied(Believer beliver, PlayerDeathEvent e)
 
 	/**
 	 * Sheep damaged.
@@ -82,8 +88,8 @@ public class Zeus extends God{
 		{
 			believer.increaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.BAKED_POTATO);
-			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
-			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
+			Reward reward = new GiveItem(believer.getPlayer(), "Thank you for providing me with more sheep in my little sheep heaven!", item);
+			reward.execute();
 		}
 		
 		
@@ -104,7 +110,7 @@ public class Zeus extends God{
 		{
 			believer.increaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.EGG);
-			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
+			Reward reward = new GiveItem(believer.getPlayer(), "I really do love it when you kill cows.", item);
 			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
 		}
 		
@@ -126,11 +132,10 @@ public class Zeus extends God{
 		{
 			believer.decreaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.DIRT);
-			Punishment punishment = new GiveItem(believer.getPlayer(), "You killed a horse. I have been angered by your actions.", item);
+			Punishment punishment = new GiveItem(believer.getPlayer(), "I have been angered by your actions. How dare you kill my little pet! My friend. My brother.", item);
 			punishment.execute();
 			
 		}
-		
 		
 	}
 	
@@ -146,7 +151,7 @@ public class Zeus extends God{
 		{
 			believer.increaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.CAKE);
-			Reward reward = new GiveItem(believer.getPlayer(), "You have taken down another enemy. This has pleased me.", item);
+			Reward reward = new GiveItem(believer.getPlayer(), "You have taken down another enemy. This has pleased me. I hope you didn't die.", item);
 			reward.execute();
 		}
 		
