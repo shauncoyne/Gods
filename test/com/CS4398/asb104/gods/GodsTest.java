@@ -24,6 +24,21 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+/*
+ * Notes for future tests:
+ * 
+ * Need to check various testing abilities.
+ * 
+ * Simulate a player join
+ * simulate a player death
+ * simulate a player kills mob
+ * simulate a player breaks block ////this might be hard
+ * simulate a player places a block ///this might be hard
+ * simulate a player chat event
+ * simulate a player command event
+ * 
+ */
+
 @PowerMockIgnore("org.mockito.*")
 //@RunWith(PowerMockRunner.class)
 @PrepareForTest(PlayerJoinEvent.class)
