@@ -13,7 +13,6 @@ public class EnchantedArmor extends GiveItem {
 	
 	/** The helmet item. */
 	Enchantment enchantment;
-	aslfjds;bkbdsfjsbf
 	
 	/**
 	 * Instantiates a new enchanted armor, in this case just a helmet.
