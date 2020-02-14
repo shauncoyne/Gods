@@ -38,7 +38,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * simulate a player command event
  * 
  */
-
+//test comment
 @PowerMockIgnore("org.mockito.*")
 //@RunWith(PowerMockRunner.class)
 @PrepareForTest(PlayerJoinEvent.class)
