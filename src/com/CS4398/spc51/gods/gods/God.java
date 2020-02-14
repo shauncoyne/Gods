@@ -54,5 +54,7 @@ public abstract class God {
 	 */
 	public abstract void observe(Believer believer, Event e);
 	
+	public abstract void reward(float previousBP, float currentBP);
+	
 
 }
