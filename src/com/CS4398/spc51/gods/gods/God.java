@@ -25,6 +25,7 @@ public abstract class God {
 	
 	/** The name. */
 	private String name;
+	//hello test
 	
 	/** The religion. */
 	private String religion;
