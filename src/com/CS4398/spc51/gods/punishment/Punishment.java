@@ -1,0 +1,47 @@
+package com.CS4398.spc51.gods.punishment;
+
+import org.bukkit.entity.Player;
+
+/**
+ * The Class Punishment.
+ */
+public abstract class Punishment {
+	
+	/** The player that will receive the punishment. */
+	Player player;
+	
+	/** The message that will be sent to the player when the punishment is executed */
+	String message;
+	
+	/**
+	 * Instantiates a new punishment.
+	 *
+	 * @param player the player
+	 */
+	public Punishment(Player player, String message) {
+		this.player = player;
+		this.message = message;
+	}
+	
+	/**
+	 * Execute the punishment.
+	 *
+	 * @return true, if successful
+	 * 
+	 * 		IDEAS:
+	 * 			* set people on fire
+	 * 			* drown people
+	 * 			* teleport people (this can also be a reward)	
+	 */
+	public boolean execute() {
+		return false;
+	}
+	
+	/** 
+	 * Send the punishment message to the player.
+	 */
+	public void sendMessage() {
+		player.sendMessage(message);
+	}
+
+}
