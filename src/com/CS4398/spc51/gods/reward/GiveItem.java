@@ -5,10 +5,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.CommandManager;
-import com.CS4398.spc51.gods.Gods;
 
 /**
- * The Class giveItem.
+ * The Class GiveItem.
  */
 public class GiveItem extends Reward{
 	
@@ -42,12 +41,21 @@ public class GiveItem extends Reward{
 	 * Execute.
 	 *
 	 * @return true, if successful
+	 * 
+	 *          spawning reward for animals and mobs (enemies?) [Spawn.java]
+	 *          enchanted armor [GodArmor.java] 
+	 *          	* either a slightly leveled up armor that can continue to level up
+	 *          	* or a very powerful armor with a time limit
+	 *          teleport reward (can also be a punishment)
+	 *          
+	 *          IN THE FUTURE:
+	 *          	* spawn water around user (this is hard, wait for it later)
 	 */
 	@Override
 	public boolean execute() {
 
 		try {
-	    player.getInventory().addItem(item);
+	    
 	    return true;
 	    
 		} 
