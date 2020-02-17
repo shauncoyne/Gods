@@ -197,31 +197,40 @@ public class AlterManager implements Listener{
 		for (AlterTemplate alterTemplate : alterTemplateList) {
 			Boolean matching = true;
 			for (ArrayList<Material> layer : alterTemplate.getTemplate()) {
+				int incrementTracker = 0; //this controls which direction we increment in
 				int currentX = 0;
 				int currentY = 0;
 				int currentZ = 0;
 				for (Material material : layer) {
 					if (block.getLocation().add(currentX, currentY, currentZ) == null ) {
-						//increment everything
+						currentX++;
+						currentY++; //TODO fix this, see line 200
+						currentZ++;
 					}
-					else if (block.getLocation().add(currentX, currentY, currentZ) ) {
-						//compare material then increment.
-					}
+					else if (block.getLocation().add(currentX, currentY, currentZ).getBlock().getType() == material ) {
+						currentX++;
+						currentY++;
+						currentZ++;					}
 					else{
 						matching = false;
+						currentX++;
+						currentY++;
+						currentZ++;
 					}
 				}
 			}
 			if (matching) {
-				//TODO ceate Alter Here
+				//TODO create Alter Here
 			}
 		}
 	}
 	
 	public static Location getOrigin(Block block) throws NoOriginException{
 		//first check if 0 is emerald!
-		if (block.getType().name() == originBlockType)
-		for (int i = 1; i <= maxAlterSize; i++) { 
+		if (block.getType().name() == originBlockType) {
+			return block.getLocation();
+		}
+		for (int i = -1 * maxAlterSize; i <= maxAlterSize; i++) { 
 			if (block.getLocation().add(0, 0, i).getBlock().getType().name() == originBlockType) {
 				return block.getLocation().add(0, 0, i);
 			}
