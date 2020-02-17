@@ -2,6 +2,8 @@ package com.CS4398.spc51.gods.alter;
 
 import java.util.ArrayList;
 
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,6 +30,9 @@ public class AlterManager implements Listener{
 	/** The alter list contains all alters. Needs to be populated from
 	 * a save file when the plugin is loaded */
 	static ArrayList<Alter> alterList = new ArrayList<Alter>();
+	static ArrayList<AlterTemplate> alterTemplateList = new ArrayList<AlterTemplate>();
+	private static int maxAlterSize = 20; //the number of layers we look at to find an alter.
+	private static String originBlockType = "Emerald";
 	
 	/**
 	 * Instantiates a new alter manager. Loads the save file to populate the 
@@ -182,11 +187,84 @@ public class AlterManager implements Listener{
 	 * For efficency, we should check if the player is in alter building mode. 
 	 */
 	public static void checkForAlterCreation(Block block) {
-		for (Alter alter : alterList) {
-			AlterTemplate template = alter.getTemplate();
-			AlterBlock alterblock = new AlterBlock(block);
-			if
+		
+		try {
+			Location origin = getOrigin(block);
+		} catch (NoOriginException e) {
+			return;
 		}
+		
+		for (AlterTemplate alterTemplate : alterTemplateList) {
+			Boolean matching = true;
+			for (ArrayList<Material> layer : alterTemplate.getTemplate()) {
+				int currentX = 0;
+				int currentY = 0;
+				int currentZ = 0;
+				for (Material material : layer) {
+					if (block.getLocation().add(currentX, currentY, currentZ) == null ) {
+						//increment everything
+					}
+					else if (block.getLocation().add(currentX, currentY, currentZ) ) {
+						//compare material then increment.
+					}
+					else{
+						matching = false;
+					}
+				}
+			}
+			if (matching) {
+				//TODO ceate Alter Here
+			}
+		}
+	}
+	
+	public static Location getOrigin(Block block) throws NoOriginException{
+		//first check if 0 is emerald!
+		if (block.getType().name() == originBlockType)
+		for (int i = 1; i <= maxAlterSize; i++) { 
+			if (block.getLocation().add(0, 0, i).getBlock().getType().name() == originBlockType) {
+				return block.getLocation().add(0, 0, i);
+			}
+			if (block.getLocation().add(0, i, 0).getBlock().getType().name() == originBlockType) {
+				return block.getLocation().add(0, i, 0);
+			}
+			if (block.getLocation().add(i, 0, 0).getBlock().getType().name() == originBlockType) {
+				return block.getLocation().add(i, 0, 0);
+			}
+			for (int j = 0; j <= i; j++) {
+
+				if (block.getLocation().add(0, j, i).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(0, j, i);
+				}
+				if (block.getLocation().add(j, 0, i).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, 0, i);
+				}
+				if (block.getLocation().add(j, j, i).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, j, i);
+				}
+				if (block.getLocation().add(0, i, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(0, i, j);
+				}
+				if (block.getLocation().add(j, i, 0).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, i, 0);
+				}
+				if (block.getLocation().add(j, i, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, i, j);
+				}
+				if (block.getLocation().add(i, j, 0).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(i, j, 0);
+				}
+				if (block.getLocation().add(i, 0, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(i, 0, j);
+				}
+				if (block.getLocation().add(i, j, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(i, j, j);
+				}
+			}
+			
+				
+		}
+		throw new NoOriginException("Couldn't find origion, max searching distance reached!");
 	}
 	
 

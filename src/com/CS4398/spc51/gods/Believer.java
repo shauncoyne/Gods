@@ -9,6 +9,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
+import com.CS4398.spc51.gods.alter.AlterManager;
 import com.CS4398.spc51.gods.gods.God;
 
 
@@ -153,14 +154,18 @@ public class Believer implements Listener{
 	
 	public void startListeningForAlter() {
 		
-		BlockListener tempListener = new BlockListener();
+		BlockListener tempListener = new BlockListener(this);
 		tempListener.run();
 		
 	}
 
 	 private class BlockListener implements Runnable, Listener {
+		 	Believer believer;
 
-		    public void run(){
+		    public BlockListener(Believer believer) {
+		    	this.believer = believer;
+		}
+			public void run(){
 		       CommandManager.gods.getServer().getPluginManager().registerEvents(this, CommandManager.gods);
 		       long startTime = System.nanoTime();
 		       while ( System.nanoTime() - startTime < Believer.alterBuildingTimeout) {
@@ -176,7 +181,9 @@ public class Believer implements Listener{
 			 */
 			@EventHandler
 		    public void onBlockPlaced(BlockPlaceEvent event){
-
+				if (event.getPlayer() == believer.getPlayer()){ //make sure the player we are listening to is the one who placed the block
+					AlterManager.checkForAlterCreation(event.getBlock());
+				}
 		    }
 		  }
 
