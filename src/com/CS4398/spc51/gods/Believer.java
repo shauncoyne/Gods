@@ -4,6 +4,10 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 
 import com.CS4398.spc51.gods.gods.God;
 
@@ -17,13 +21,17 @@ import com.CS4398.spc51.gods.gods.God;
  * 					TODO similar logic applies to decreases
  * 					TODO need to add save and load logic to player objects to save and load  them from a yaml
  */
-public class Believer {
+public class Believer implements Listener{
+	
+	public static int alterBuildingTimeout = 20; //number of seconds alter detection will be on for this player
 	
 	/** The belief power. This is how much the player has
 	 * please their god */
 	private float beliefPower;
-	/** This is how well the player has behaved in general. */
-	private float behavior;
+	/** This is the rank of the player */
+	private int rank;
+	
+	/** this is true when the player requests to be in alter building mode. */
 	
 	/** The player UUID. */
 	private UUID playerUUID;
@@ -58,10 +66,10 @@ public class Believer {
 	 * @param beliefPower the belief power
 	 * @param behavior the behavior score of the player
 	 */
-	public Believer(Player player, float beliefPower, float behavior) {
+	public Believer(Player player, float beliefPower, int rank) {
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
-		this.behavior = behavior;
+		this.rank = rank;
 	}
 	
 
@@ -83,23 +91,9 @@ public class Believer {
 		this.beliefPower = beliefPower;
 	}
 	
-	/**
-	 * Gets the behavior score.
-	 *
-	 * @return the behavior score of the player
-	 */
-	public float getRank() {
-		return beliefPower;
-	}
 
-	/**
-	 * Sets the behavior score of the player.
-	 *
-	 * @param behavior the new behavior score
-	 */
-	public void setBehavior(float behavior) {
-		this.behavior = behavior;
-	}
+
+
 	
 	/**
 	 * Increase belief power by loading the multiplier
@@ -156,5 +150,34 @@ public class Believer {
 		return Bukkit.getPlayer(playerUUID);
 		
 	}
+	
+	public void startListeningForAlter() {
+		
+		BlockListener tempListener = new BlockListener();
+		tempListener.run();
+		
+	}
+
+	 private class BlockListener implements Runnable, Listener {
+
+		    public void run(){
+		       CommandManager.gods.getServer().getPluginManager().registerEvents(this, CommandManager.gods);
+		       long startTime = System.nanoTime();
+		       while ( System.nanoTime() - startTime < Believer.alterBuildingTimeout) {
+		    	   //do nothing
+		       }
+		       HandlerList.unregisterAll(this);
+		    }
+			/**
+			 * On block placed. This is the general catch-all for detecting the creation of
+			 * altars
+			 *
+			 * @param event the event
+			 */
+			@EventHandler
+		    public void onBlockPlaced(BlockPlaceEvent event){
+
+		    }
+		  }
 
 }

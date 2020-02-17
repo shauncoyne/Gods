@@ -21,13 +21,13 @@ import org.bukkit.event.block.SignChangeEvent;
 
 
 /**
- * The Class AlterManager.
+ * The Class AlterManager. Listens for actions on blocks to see if the Alters have been created or destroyed. If this method is inefficent, we could periodically check the alters to see if they are intact.
  */
 public class AlterManager implements Listener{
 	
 	/** The alter list contains all alters. Needs to be populated from
 	 * a save file when the plugin is loaded */
-	ArrayList<Alter> alterList = new ArrayList<Alter>();
+	static ArrayList<Alter> alterList = new ArrayList<Alter>();
 	
 	/**
 	 * Instantiates a new alter manager. Loads the save file to populate the 
@@ -37,16 +37,6 @@ public class AlterManager implements Listener{
 		
 	}
 	
-	/**
-	 * On block placed. This is the general catch-all for detecting the creation of
-	 * altars
-	 *
-	 * @param event the event
-	 */
-	@EventHandler
-    public void onBlockPlaced(BlockPlaceEvent event){
-
-    }
 	
 	/**
 	 * On block break. This is the general catch-all for detecting the destruction of
@@ -189,8 +179,9 @@ public class AlterManager implements Listener{
 	
 	/**
 	 * Check for alter creation by looking at nearby blocks against templates. 
+	 * For efficency, we should check if the player is in alter building mode. 
 	 */
-	public void checkForAlterCreation(Block block) {
+	public static void checkForAlterCreation(Block block) {
 		for (Alter alter : alterList) {
 			AlterTemplate template = alter.getTemplate();
 			AlterBlock alterblock = new AlterBlock(block);
