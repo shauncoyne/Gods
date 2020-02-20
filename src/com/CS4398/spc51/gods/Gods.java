@@ -37,6 +37,8 @@ public class Gods extends JavaPlugin{
     @Override
     public void onDisable() {
         getLogger().info("onDisable is called!");
-        //Need to unregister the listeners
+        //TODO Need to unregister the listeners
+        
+        Believer.saveAll();
     }
 }

@@ -1,5 +1,6 @@
 package com.CS4398.spc51.gods;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -25,6 +26,8 @@ import com.CS4398.spc51.gods.gods.God;
 public class Believer implements Listener{
 	
 	public static int alterBuildingTimeout = 20; //number of seconds alter detection will be on for this player
+	
+	private static ArrayList<Believer> believerList = new ArrayList<Believer>();
 	
 	/** The belief power. This is how much the player has
 	 * please their god */
@@ -73,6 +76,24 @@ public class Believer implements Listener{
 		this.rank = rank;
 	}
 	
+	public static void loadBeliever(Player player) {
+		if (!loadFromJSON(player)) {
+			Believer newBeliever = new Believer(player);
+			believerList.add(newBeliever);
+			//TODO LOG: A player has joined that is not a believer. They must be new! Adding them now.
+		}
+	}
+	
+
+	private static boolean loadFromJSON(Player player) {
+		//TODO make this a thing
+		return false;
+	}
+	
+	private static boolean saveToJson(Believer believer) {
+		return false;
+		
+	}
 
 	/**
 	 * Gets the belief power.
@@ -186,5 +207,13 @@ public class Believer implements Listener{
 				}
 		    }
 		  }
+
+	public static void saveAll() {
+		for(Believer believer : believerList) {
+			if(!saveToJson(believer)) {
+				//TODO log a failure to save!!!
+			}
+		}
+	}
 
 }

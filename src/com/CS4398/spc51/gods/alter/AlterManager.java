@@ -29,7 +29,7 @@ public class AlterManager implements Listener{
 	
 	/** The alter list contains all alters. Needs to be populated from
 	 * a save file when the plugin is loaded */
-	static ArrayList<Alter> alterList = new ArrayList<Alter>();
+	public static ArrayList<Alter> alterList = new ArrayList<Alter>();
 	static ArrayList<AlterTemplate> alterTemplateList = new ArrayList<AlterTemplate>();
 	private static int maxAlterSize = 20; //the number of layers we look at to find an alter.
 	private static String originBlockType = "Emerald";
