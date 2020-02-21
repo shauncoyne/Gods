@@ -7,7 +7,7 @@ import com.CS4398.spc51.gods.CommandManager;
 /**
  * The Class Explode.
  */
-public class Explode extends Punishment {
+public class Explode extends Death {
 	
 	/** The power of the explosion */
 	float explosionPower;
