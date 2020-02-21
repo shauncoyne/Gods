@@ -7,10 +7,10 @@ import org.bukkit.entity.Player;
  */
 public class Reward {
 	
-	/** The player that will recieve the reward. */
+	/** The player that will receive the reward. */
 	Player player; 
 	
-	/** The message that will be sent to the player when the reward is exicuted*/
+	/** The message that will be sent to the player when the reward is executed*/
 	String message; 
 	
 	/**

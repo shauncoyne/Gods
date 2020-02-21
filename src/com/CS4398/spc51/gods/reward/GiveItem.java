@@ -55,16 +55,11 @@ public class GiveItem extends Reward{
 	public boolean execute() {
 
 		try {
-	    
-	    return true;
-	    
-		} 
-		catch (Exception e) {
+			player.getInventory().addItem(item);
+			return true;
+		} catch (Exception e) {
 			CommandManager.gods.getLogger().info(e.getMessage()); 
 			return false;
 		}
-		
-		
 	}
-
 }
