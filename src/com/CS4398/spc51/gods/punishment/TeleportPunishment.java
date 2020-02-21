@@ -26,6 +26,7 @@ public class TeleportPunishment extends Punishment {
 	 */
 	public TeleportPunishment(Player player, String message) {
 		super(player, message);
+		world = player.getWorld();
 		location = new Location(world, 0, 0, 0);
 	}
 	
@@ -39,6 +40,7 @@ public class TeleportPunishment extends Punishment {
 	 */
 	public TeleportPunishment(Player player, String message, Location location) {
 		super(player, message);
+		world = player.getWorld();
 		this.location = location;
 	}
 	
