@@ -21,18 +21,6 @@ public class Flyer extends Reward {
 	}
 	
 	/**
-	 * Enables or Disables the player's ability to fly
-	 */
-	public void tryToFly() {
-		if(player.getAllowFlight() == true) {
-			player.setAllowFlight(false);	// Flying Disabled
-		} 
-		else {
-			player.setAllowFlight(true);	// Flying Enabled
-		}
-	}
-	
-	/**
 	 * Execute the flying reward.
 	 *
 	 * @return true, if successful
@@ -42,7 +30,7 @@ public class Flyer extends Reward {
 	public boolean execute() {
 
 		try {
-		    tryToFly();
+		    player.setAllowFlight(!player.getAllowFlight());
 		    return true;
 		} 
 		catch (Exception e) {
