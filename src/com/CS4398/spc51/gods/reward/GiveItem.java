@@ -43,7 +43,6 @@ public class GiveItem extends Reward{
 	 * @return true, if successful
 	 * 
 	 *          spawning reward for animals and mobs (enemies?) [Spawn.java]
-	 *          teleport reward (can also be a punishment)
 	 *          
 	 *          IN THE FUTURE:
 	 *          	* spawn water around user (this is hard, wait for it later)

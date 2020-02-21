@@ -28,9 +28,6 @@ public abstract class Punishment {
 	 *
 	 * @return true, if successful
 	 * 
-	 * 		IDEAS:
-	 * 			
-	 * 			* drown people
 	 */
 	public boolean execute() {
 		return false;
