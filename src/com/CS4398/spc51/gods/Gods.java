@@ -11,6 +11,7 @@ public class Gods extends JavaPlugin{
 	
 	/** The configurator. */
 	static Configurator configurator;
+	public static Gods gods;
 	
 	/**
 	 * On enable it notifies the log/console that it has been called
@@ -19,6 +20,7 @@ public class Gods extends JavaPlugin{
 	 */
 	@Override
     public void onEnable() {
+		gods = this;
         getLogger().info("onEnable is called!");
         configurator = new Configurator(this);
         //register the AlterManager
@@ -28,7 +30,7 @@ public class Gods extends JavaPlugin{
         //register Action Listener
         getServer().getPluginManager().registerEvents(new ActionListener(), this);
         // Register Commands
-     	getCommand("gods").setExecutor(new CommandManager(this));
+     	getCommand("gods").setExecutor(new CommandManager());
     }
     
     /**

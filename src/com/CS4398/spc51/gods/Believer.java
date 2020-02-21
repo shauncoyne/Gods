@@ -1,5 +1,8 @@
 package com.CS4398.spc51.gods;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -12,6 +15,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 import com.CS4398.spc51.gods.alter.AlterManager;
 import com.CS4398.spc51.gods.gods.God;
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 
 /**
@@ -34,6 +39,8 @@ public class Believer implements Listener{
 	private float beliefPower;
 	/** This is the rank of the player */
 	private int rank;
+	
+	private static Gson gson = new Gson();
 	
 	/** this is true when the player requests to be in alter building mode. */
 	
@@ -86,12 +93,25 @@ public class Believer implements Listener{
 	
 
 	private static boolean loadFromJSON(Player player) {
-		//TODO make this a thing
-		return false;
+		try {
+			Believer believer = gson.fromJson(player.getUniqueId() + ".data", Believer.class);
+		}
+		catch(Exception e) {
+			//TODO log error
+			return false;
+		}
+		return true;
 	}
 	
 	private static boolean saveToJson(Believer believer) {
-		return false;
+		
+	    try {
+	        gson.toJson(believer, new FileWriter(Gods.gods.getDataFolder() + File.separator + "believers" + File.separator + believer.getPlayer().getUniqueId() +".data"));
+	    } catch (JsonIOException | IOException e) {
+	        //TODO log error
+	    	return false;
+	    }
+		return true;
 		
 	}
 
@@ -187,7 +207,7 @@ public class Believer implements Listener{
 		    	this.believer = believer;
 		}
 			public void run(){
-		       CommandManager.gods.getServer().getPluginManager().registerEvents(this, CommandManager.gods);
+		       Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
 		       long startTime = System.nanoTime();
 		       while ( System.nanoTime() - startTime < Believer.alterBuildingTimeout) {
 		    	   //do nothing

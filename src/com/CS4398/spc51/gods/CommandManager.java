@@ -10,16 +10,14 @@ import org.bukkit.command.CommandSender;
  */
 public class CommandManager implements CommandExecutor{
 	
-	/** The plugin instance. */
-	public static Gods gods;
+
 	
 	/**
 	 * Instantiates a new command manager.
-	 *
-	 * @param gods the plugin instance
+
 	 */
-	public CommandManager(Gods gods) {
-		this.gods = gods;
+	public CommandManager() {
+
 	}
 
 	/**
