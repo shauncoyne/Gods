@@ -29,7 +29,8 @@ public class InfiniteFire extends Punishment {
 	public boolean execute() {
 
 		try {
-		    player.setFireTicks(0); // having a parameter of 0 should set the player on fire forever?
+		    player.setFireTicks(0); // having a parameter of 0 ticks should set the player on fire forever?
+		    						// there are ~20 ticks per second
 		    return true;
 		} 
 		catch (Exception e) {
