@@ -31,7 +31,6 @@ public abstract class Punishment {
 	 * 		IDEAS:
 	 * 			
 	 * 			* drown people
-	 * 			* teleport people (this can also be a reward)	
 	 */
 	public boolean execute() {
 		return false;
