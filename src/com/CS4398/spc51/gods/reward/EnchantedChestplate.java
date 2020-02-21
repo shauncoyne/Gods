@@ -1,5 +1,6 @@
 package com.CS4398.spc51.gods.reward;
 
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +16,7 @@ public class EnchantedChestplate extends GiveItem {
 	Enchantment enchantment;
 	
 	/**
-	 * Instantiates new enchanted chestplate.
+	 * Instantiates new enchanted diamond chestplate.
 	 * The default enchantment is fire protection.
 	 *
 	 * @param player the player
@@ -24,13 +25,14 @@ public class EnchantedChestplate extends GiveItem {
 	 */
 	public EnchantedChestplate(Player player, String message, ItemStack item) {
 		super(player, message, item);
+		item = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
 		item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
 	}
 	
 	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
 	
 	/**
-	 * Instantiates a new enchanted chestplate
+	 * Instantiates a new enchanted diamond chestplate
 	 * 
 	 * @param player the player
 	 * @param message the message
@@ -39,7 +41,10 @@ public class EnchantedChestplate extends GiveItem {
 	 */
 	public EnchantedChestplate(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
+		item = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
+		
 		this.enchantment = enchantment;
+		item.addEnchantment(this.enchantment, 2);
 	}
 	
 	/**
@@ -52,7 +57,8 @@ public class EnchantedChestplate extends GiveItem {
 	public boolean execute() {
 
 		try {
-		    player.getInventory().setChestplate(item);
+		    //player.getInventory().setChestplate(item);
+			player.getEquipment().setChestplate(item);
 		    return true;
 		} 
 		catch (Exception e) {
