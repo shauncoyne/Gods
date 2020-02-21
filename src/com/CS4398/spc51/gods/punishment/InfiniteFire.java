@@ -20,7 +20,7 @@ public class InfiniteFire extends Punishment {
 	}
 	
 	/**
-	 * Execute the punishment.
+	 * Execute the fire punishment.
 	 *
 	 * @return true, if successful
 	 * 
@@ -29,7 +29,7 @@ public class InfiniteFire extends Punishment {
 	public boolean execute() {
 
 		try {
-		    player.setFireTicks(0);
+		    player.setFireTicks(0); // having a parameter of 0 should set the player on fire forever?
 		    return true;
 		} 
 		catch (Exception e) {
