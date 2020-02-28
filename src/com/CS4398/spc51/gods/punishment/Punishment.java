@@ -28,10 +28,6 @@ public abstract class Punishment {
 	 *
 	 * @return true, if successful
 	 * 
-	 * 		IDEAS:
-	 * 			* set people on fire
-	 * 			* drown people
-	 * 			* teleport people (this can also be a reward)	
 	 */
 	public boolean execute() {
 		return false;

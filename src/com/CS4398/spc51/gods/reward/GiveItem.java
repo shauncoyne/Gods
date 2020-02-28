@@ -43,10 +43,6 @@ public class GiveItem extends Reward{
 	 * @return true, if successful
 	 * 
 	 *          spawning reward for animals and mobs (enemies?) [Spawn.java]
-	 *          enchanted armor [GodArmor.java] 
-	 *          	* either a slightly leveled up armor that can continue to level up
-	 *          	* or a very powerful armor with a time limit
-	 *          teleport reward (can also be a punishment)
 	 *          
 	 *          IN THE FUTURE:
 	 *          	* spawn water around user (this is hard, wait for it later)
@@ -55,16 +51,11 @@ public class GiveItem extends Reward{
 	public boolean execute() {
 
 		try {
-	    
-	    return true;
-	    
-		} 
-		catch (Exception e) {
+			player.getInventory().addItem(item);
+			return true;
+		} catch (Exception e) {
 			CommandManager.gods.getLogger().info(e.getMessage()); 
 			return false;
 		}
-		
-		
 	}
-
 }
