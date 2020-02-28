@@ -2,6 +2,8 @@ package com.CS4398.spc51.gods.alter;
 
 import java.util.ArrayList;
 
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,13 +23,16 @@ import org.bukkit.event.block.SignChangeEvent;
 
 
 /**
- * The Class AlterManager.
+ * The Class AlterManager. Listens for actions on blocks to see if the Alters have been created or destroyed. If this method is inefficent, we could periodically check the alters to see if they are intact.
  */
 public class AlterManager implements Listener{
 	
 	/** The alter list contains all alters. Needs to be populated from
 	 * a save file when the plugin is loaded */
-	ArrayList<Alter> alterList = new ArrayList<Alter>();
+	public static ArrayList<Alter> alterList = new ArrayList<Alter>();
+	static ArrayList<AlterTemplate> alterTemplateList = new ArrayList<AlterTemplate>();
+	private static int maxAlterSize = 20; //the number of layers we look at to find an alter.
+	private static String originBlockType = "Emerald";
 	
 	/**
 	 * Instantiates a new alter manager. Loads the save file to populate the 
@@ -37,16 +42,6 @@ public class AlterManager implements Listener{
 		
 	}
 	
-	/**
-	 * On block placed. This is the general catch-all for detecting the creation of
-	 * altars
-	 *
-	 * @param event the event
-	 */
-	@EventHandler
-    public void onBlockPlaced(BlockPlaceEvent event){
-
-    }
 	
 	/**
 	 * On block break. This is the general catch-all for detecting the destruction of
@@ -189,13 +184,96 @@ public class AlterManager implements Listener{
 	
 	/**
 	 * Check for alter creation by looking at nearby blocks against templates. 
+	 * For efficency, we should check if the player is in alter building mode. 
 	 */
-	public void checkForAlterCreation(Block block) {
-		for (Alter alter : alterList) {
-			AlterTemplate template = alter.getTemplate();
-			AlterBlock alterblock = new AlterBlock(block);
-			if
+	public static void checkForAlterCreation(Block block) {
+		
+		try {
+			Location origin = getOrigin(block);
+		} catch (NoOriginException e) {
+			return;
 		}
+		
+		for (AlterTemplate alterTemplate : alterTemplateList) {
+			Boolean matching = true;
+			for (ArrayList<Material> layer : alterTemplate.getTemplate()) {
+				int incrementTracker = 0; //this controls which direction we increment in
+				int currentX = 0;
+				int currentY = 0;
+				int currentZ = 0;
+				for (Material material : layer) {
+					if (block.getLocation().add(currentX, currentY, currentZ) == null ) {
+						currentX++;
+						currentY++; //TODO fix this, see line 200
+						currentZ++;
+					}
+					else if (block.getLocation().add(currentX, currentY, currentZ).getBlock().getType() == material ) {
+						currentX++;
+						currentY++;
+						currentZ++;					}
+					else{
+						matching = false;
+						currentX++;
+						currentY++;
+						currentZ++;
+					}
+				}
+			}
+			if (matching) {
+				//TODO create Alter Here
+			}
+		}
+	}
+	
+	public static Location getOrigin(Block block) throws NoOriginException{
+		//first check if 0 is emerald!
+		if (block.getType().name() == originBlockType) {
+			return block.getLocation();
+		}
+		for (int i = -1 * maxAlterSize; i <= maxAlterSize; i++) { 
+			if (block.getLocation().add(0, 0, i).getBlock().getType().name() == originBlockType) {
+				return block.getLocation().add(0, 0, i);
+			}
+			if (block.getLocation().add(0, i, 0).getBlock().getType().name() == originBlockType) {
+				return block.getLocation().add(0, i, 0);
+			}
+			if (block.getLocation().add(i, 0, 0).getBlock().getType().name() == originBlockType) {
+				return block.getLocation().add(i, 0, 0);
+			}
+			for (int j = 0; j <= i; j++) {
+
+				if (block.getLocation().add(0, j, i).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(0, j, i);
+				}
+				if (block.getLocation().add(j, 0, i).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, 0, i);
+				}
+				if (block.getLocation().add(j, j, i).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, j, i);
+				}
+				if (block.getLocation().add(0, i, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(0, i, j);
+				}
+				if (block.getLocation().add(j, i, 0).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, i, 0);
+				}
+				if (block.getLocation().add(j, i, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(j, i, j);
+				}
+				if (block.getLocation().add(i, j, 0).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(i, j, 0);
+				}
+				if (block.getLocation().add(i, 0, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(i, 0, j);
+				}
+				if (block.getLocation().add(i, j, j).getBlock().getType().name() == originBlockType) {
+					return block.getLocation().add(i, j, j);
+				}
+			}
+			
+				
+		}
+		throw new NoOriginException("Couldn't find origion, max searching distance reached!");
 	}
 	
 
