@@ -30,10 +30,10 @@ public abstract class God {
 	/** The religion. */
 	private String religion;
 	
-	/** The believers. */
+	/** The player believers. */
 	private ArrayList believers;
 	
-	/** The enemies. */
+	/** The player enemies. */
 	private ArrayList enemies;
 
 	/**
