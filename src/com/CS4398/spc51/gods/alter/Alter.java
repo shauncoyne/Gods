@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import org.bukkit.Location;
+
 import com.CS4398.spc51.gods.gods.God;
 
 
@@ -37,6 +39,16 @@ public class Alter {
 		this.createrUUID = createrUUID;
 		this.alterBlocks = alterBlocks;
 		
+	}
+
+	public boolean near(Location location) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public God getGod() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

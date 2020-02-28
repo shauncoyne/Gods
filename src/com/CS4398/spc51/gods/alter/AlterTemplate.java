@@ -28,8 +28,16 @@ import org.bukkit.block.Block;
 public class AlterTemplate {
 	
 	private Material origin;
-	private ArrayList<ArrayList<Block>> template = new ArrayList();
+	private ArrayList<ArrayList<Material>> template = new ArrayList<ArrayList<Material>>();
 	
+	public ArrayList<ArrayList<Material>> getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(ArrayList<ArrayList<Material>> template) {
+		this.template = template;
+	}
+
 	public AlterTemplate(String templateName) {
 		try {
 		File csvFile = new File(templateName + ".csv");
