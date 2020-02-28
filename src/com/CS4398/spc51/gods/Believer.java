@@ -15,6 +15,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 import com.CS4398.spc51.gods.alter.AlterManager;
 import com.CS4398.spc51.gods.gods.God;
+import com.CS4398.spc51.gods.powerup.Powerup;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
@@ -32,7 +33,9 @@ public class Believer implements Listener{
 	
 	public static int alterBuildingTimeout = 20; //number of seconds alter detection will be on for this player
 	
-	private static ArrayList<Believer> believerList = new ArrayList<Believer>();
+	public static ArrayList<Believer> believerList = new ArrayList<Believer>();
+	
+	private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
 	
 	/** The belief power. This is how much the player has
 	 * please their god */
@@ -234,6 +237,21 @@ public class Believer implements Listener{
 				//TODO log a failure to save!!!
 			}
 		}
+	}
+
+	public void changeGod(String godName) {
+		beliefPower = 0;
+		rank = 0;
+		powerupList.clear();
+
+		for (God g : Gods.godsArray)
+		{
+			if (g.getName().equalsIgnoreCase(godName)) {
+				god = g;
+			}
+		}
+		
+		
 	}
 
 }

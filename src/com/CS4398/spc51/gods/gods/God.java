@@ -43,7 +43,7 @@ public abstract class God {
 	 * @param religion the religion
 	 */
 	public God(String name, String religion) {
-		this.name = name;
+		this.setName(name);
 		this.religion = religion;
 	}
 	
@@ -56,6 +56,14 @@ public abstract class God {
 	public abstract void observe(Believer believer, Event e);
 	
 	public abstract void reward(float previousBP, float currentBP);
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 
 }

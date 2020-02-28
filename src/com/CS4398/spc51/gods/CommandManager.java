@@ -3,6 +3,7 @@ package com.CS4398.spc51.gods;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 /**
  * The Class CommandManager will listen for all commands and handle Gods
@@ -32,6 +33,14 @@ public class CommandManager implements CommandExecutor{
 	 */
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if (sender instanceof Player) {
+			if (args.length == 2) {
+				if (args[0].equalsIgnoreCase("worship")){
+					Believer.getBeliever(((Player) sender).getUniqueId()).changeGod(args[1]);
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 

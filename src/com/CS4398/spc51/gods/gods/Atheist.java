@@ -6,8 +6,8 @@ import com.CS4398.spc51.gods.Believer;
 
 public class Atheist extends God{
 
-	public Atheist(String name, String religion) {
-		super(name, religion);
+	public Atheist() {
+		super("atheist", "none");
 		// TODO Auto-generated constructor stub
 	}
 
