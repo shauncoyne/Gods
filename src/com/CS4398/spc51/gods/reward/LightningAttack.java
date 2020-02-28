@@ -29,6 +29,7 @@ public class LightningAttack extends Reward {
 	public boolean execute() {
 		try {
 			player.getWorld().strikeLightning(player.getLocation());
+			player.setHealth(0.0D);
 			return true;
 		}
 		catch (Exception e) {
