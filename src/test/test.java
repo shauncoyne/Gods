@@ -35,7 +35,7 @@ public class test {
 	}
 	
 	@Test
-    public void testOnPlayerJoin() {
+    public void testOnPlayerJoin() throws Exception {
         
    }
 
