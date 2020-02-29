@@ -132,9 +132,9 @@ public class Zeus extends God{
 		if (e.getEntity().isDead()) 
 		{
 			believer.decreaseBeliefPower(believer.getGod(), 1);
-			ItemStack item = new ItemStack(Material.DIRT);
-			Punishment punishment = new GiveItem(believer.getPlayer(), "I have been angered by your actions. How dare you kill my little pet! My friend. My brother.", item);
-			punishment.execute();
+			//ItemStack item = new ItemStack(Material.DIRT);
+			//Punishment punishment = new GiveItem(believer.getPlayer(), "I have been angered by your actions. How dare you kill my little pet! My friend. My brother.", item);
+			//punishment.execute();
 			
 		}
 		
