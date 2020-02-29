@@ -37,9 +37,10 @@ public class Zeus extends God{
         case "EntityDamageByEntityEvent":  
         		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
                  break;
-        case "PlayerDeathEvent":
-        	playerDied(believer, (PlayerDeathEvent)e);
-        	break;
+       // case "PlayerDeathEvent":
+        	//playerDied(believer, (PlayerDeathEvent)e);
+        	//break;
+                 
 		}
 		
 	}
@@ -71,7 +72,7 @@ public class Zeus extends God{
 		}
 	}
 	
-	private void playerDied(Believer beliver, PlayerDeathEvent e)
+	//private void playerDied(Believer beliver, PlayerDeathEvent e)
 
 	/**
 	 * Sheep damaged.
