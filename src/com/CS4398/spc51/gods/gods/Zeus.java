@@ -135,6 +135,7 @@ public class Zeus extends God{
 			//ItemStack item = new ItemStack(Material.DIRT);
 			//Punishment punishment = new GiveItem(believer.getPlayer(), "I have been angered by your actions. How dare you kill my little pet! My friend. My brother.", item);
 			//punishment.execute();
+			//removed for errors
 			
 		}
 		
