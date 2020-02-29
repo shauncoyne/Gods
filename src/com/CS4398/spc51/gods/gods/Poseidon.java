@@ -74,8 +74,8 @@ public class Poseidon extends God{
 		
 		//only take action if damage resulted in death
 		if (e.getEntity().isDead()) {
-			believer.decreaseBeliefPower(believer.getGod(), 1); // 1 is the smallest int. The bigger the int, the bigger the decrease
-			believer.getPlayer().sendMessage("You have killed a sheep, I don't like this"); //Actually, we make a punishment object here.
+			//believer.decreaseBeliefPower(believer.getGod(), 1); // 1 is the smallest int. The bigger the int, the bigger the decrease
+			//believer.getPlayer().sendMessage("You have killed a sheep, I don't like this"); //Actually, we make a punishment object here.
 			
 			////OR////
 			
