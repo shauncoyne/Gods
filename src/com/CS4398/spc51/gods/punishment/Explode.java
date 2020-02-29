@@ -2,7 +2,7 @@ package com.CS4398.spc51.gods.punishment;
 
 import org.bukkit.entity.Player;
 
-import com.CS4398.spc51.gods.CommandManager;
+import com.CS4398.spc51.gods.Gods;
 
 /**
  * The Class Explode.
@@ -37,7 +37,7 @@ public class Explode extends Death {
 			return true;
 		}
 		catch (Exception e) {
-			CommandManager.gods.getLogger().info(e.getMessage()); 
+			Gods.gods.getLogger().info(e.getMessage()); 
 			return false;
 		}
 	}
