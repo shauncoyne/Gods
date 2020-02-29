@@ -40,6 +40,17 @@ public class CommandManager implements CommandExecutor{
 					return true;
 				}
 			}
+			if (args.length == 1) {
+				if (args[0].equalsIgnoreCase("info")) {
+					Believer b = Believer.getBeliever(((Player) sender).getUniqueId());
+					String god_name = b.getGod().getName();
+					float belief_power = b.getBeliefPower();
+					int rank = b.getRank();
+					sender.sendMessage("You currently worship: " + god_name);
+					sender.sendMessage("Your current belief power is: " + belief_power);
+					sender.sendMessage("Your current rank is: " + rank);
+				}
+			}
 		}
 		return false;
 	}

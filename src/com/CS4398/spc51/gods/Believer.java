@@ -83,7 +83,7 @@ public class Believer implements Listener{
 	public Believer(Player player, float beliefPower, int rank) {
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
-		this.rank = rank;
+		this.setRank(rank);
 	}
 	
 	public static void loadBeliever(Player player) {
@@ -241,7 +241,7 @@ public class Believer implements Listener{
 
 	public void changeGod(String godName) {
 		beliefPower = 0;
-		rank = 0;
+		setRank(0);
 		powerupList.clear();
 
 		for (God g : Gods.godsArray)
@@ -252,6 +252,14 @@ public class Believer implements Listener{
 		}
 		
 		
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
 }
