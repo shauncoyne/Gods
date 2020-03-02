@@ -33,7 +33,7 @@ public class Gods extends JavaPlugin{
 		godsArray[2] = new Poseidon();
 		godsArray[3] = new Zeus();
         getLogger().info("onEnable is called!");
-        configurator = new Configurator(this);
+        configurator = new Configurator();
         //register the AlterManager
         getServer().getPluginManager().registerEvents(new AlterManager(), this);
         //register the Chat Listener
@@ -41,7 +41,7 @@ public class Gods extends JavaPlugin{
         //register Action Listener
         getServer().getPluginManager().registerEvents(new ActionListener(), this);
         // Register Commands
-     	getCommand("gods").setExecutor(new CommandManager());
+     	this.getCommand("gods").setExecutor(new CommandManager());
     }
     
     /**

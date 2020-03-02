@@ -9,34 +9,34 @@ import com.CS4398.spc51.gods.gods.God;
  */
 public class Configurator {
 	
-	/** The plugin instance. */
-	private Gods gods;
 	
 	/** The config. */
-	private FileConfiguration config = gods.getConfig();
+	private FileConfiguration config = null;
 	
 	/**
 	 * Instantiates a new configurator.
 	 *
 	 * @param gods the plugin instance
 	 */
-	public Configurator(Gods gods) {
-		this.gods = gods;
+	public Configurator() {
+		config = Gods.gods.getConfig();
+		config.addDefault("Zeus", 1);
 	}
 	
 	/**
 	 * Save config.
 	 */
 	public void saveConfig() {
-		gods.saveDefaultConfig();
+		config.options().copyDefaults(true);
+		Gods.gods.saveDefaultConfig();
 	}
 	
 	/**
 	 * Reload.
 	 */
 	public void reload() {
-		gods.getConfig();
-		gods.getLogger().info("Config reloaded!");
+		Gods.gods.getConfig();
+		Gods.gods.getLogger().info("Config reloaded!");
 	}
 
 	/**
@@ -46,7 +46,9 @@ public class Configurator {
 	 * @return the multiplyer
 	 */
 	public float getMultiplyer(God god) {
-		// TODO Auto-generated method stub
+		if (god.getName().equalsIgnoreCase("Zeus")){
+			return config.getInt("Zeus");
+		}
 		return 0f;
 	}
 

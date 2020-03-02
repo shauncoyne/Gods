@@ -1,3 +1,9 @@
 name: Gods
 version: 0.0.1
 main: com.CS4398.spc51.gods.Gods
+api-version: 1.15
+load: POSTWORLD
+commands:
+    gods:
+        description: This is the root command for functions
+        usage: "Usage: /gods <subcommands>"
