@@ -4,45 +4,25 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.bukkit.plugin.java.JavaPlugin;
 
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.event.player.PlayerJoinEvent;
+
+import com.CS4398.spc51.gods.CommandManager;
 import com.CS4398.spc51.gods.Gods;
 
+import java.util.ArrayList;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.never;
-
-import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.junit.Test;
+import junit.framework.TestCase;
+import org.bukkit.Server;
 import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-/*
- * Notes for future tests:
- * 
- * Need to check various testing abilities.
- * 
- * Simulate a player join
- * simulate a player death
- * simulate a player kills mob
- * simulate a player breaks block ////this might be hard
- * simulate a player places a block ///this might be hard
- * simulate a player chat event
- * simulate a player command event
- * 
- */
+import org.mockito.*;
 
-@PowerMockIgnore("org.mockito.*")
-//@RunWith(PowerMockRunner.class)
-@PrepareForTest(PlayerJoinEvent.class)
-public class GodsTest {
+public class GodsTest extends TestCase {
 
 	@Before
 	public void setup() {
@@ -50,7 +30,17 @@ public class GodsTest {
 	}
 	
 	@Test
-    public void testOnPlayerJoin() {
+    public void testMockitoandServer() throws Exception {
+		System.out.println("* CommandManagerTest: testCommand()");
+
+        Plugin plugin = Mockito.mock(Plugin.class);
+        PluginManager pManager = Mockito.mock(PluginManager.class);
+
+        Server server = Mockito.mock(Server.class);
+        Mockito.when(server.getPluginManager()).thenReturn(pManager);
+
+        Mockito.when(plugin.getServer()).thenReturn(server);
+
         
    }
 
