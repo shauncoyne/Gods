@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods;
 
 import org.bukkit.command.Command;
@@ -5,7 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class CommandManager will listen for all commands and handle Gods
  * plugin commands. 
  */

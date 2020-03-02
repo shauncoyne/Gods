@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods;
 
 import java.io.BufferedReader;
@@ -27,7 +30,9 @@ import com.google.gson.JsonIOException;
 import scala.reflect.io.Directory;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class Believer. 
  * 					TODO this should have a rank, a powerup list,  and a beliefPower.
  * 					TODO on rank increase check to the god to see if we need to update powerup list
@@ -38,16 +43,20 @@ import scala.reflect.io.Directory;
  */
 public class Believer implements Listener{
 	
+	/** The alter building timeout. */
 	public static int alterBuildingTimeout = 20; //number of seconds alter detection will be on for this player
 	
+	/** The believer list. */
 	public static ArrayList<Believer> believerList = new ArrayList<Believer>();
 	
+	/** The powerup list. */
 	private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
 	
 	/** The belief power. This is how much the player has
 	 * please their god */
 	private float beliefPower;
-	/** This is the rank of the player */
+	
+	/**  This is the rank of the player. */
 	private int rank;
 	
 	
@@ -82,12 +91,13 @@ public class Believer implements Listener{
 		god = Gods.godsArray[0].getName();
 
 	}
+	
 	/**
 	 * Instantiates a new believer.
 	 *
 	 * @param player the player
 	 * @param beliefPower the belief power
-	 * @param behavior the behavior score of the player
+	 * @param rank the rank
 	 */
 	public Believer(Player player, float beliefPower, int rank) {
 		this.beliefPower = beliefPower;
@@ -97,12 +107,22 @@ public class Believer implements Listener{
 
 	}
 	
+	/**
+	 * Instantiates a new believer.
+	 *
+	 * @param uniqueId the unique id
+	 */
 	public Believer(UUID uniqueId) {
 		beliefPower = 0f;
 		this.playerUUID = uniqueId;
 		god = Gods.godsArray[0].getName();
 	}
 
+	/**
+	 * Load believer.
+	 *
+	 * @param player the player
+	 */
 	public static void loadBeliever(Player player) {
 		if (!loadFromJSON(player.getUniqueId())) {
 			System.out.println("Could not load user, are they new?");
@@ -111,6 +131,12 @@ public class Believer implements Listener{
 			//TODO LOG: A player has joined that is not a believer. They must be new! Adding them now.
 		}
 	}
+	
+	/**
+	 * Load believer.
+	 *
+	 * @param uuid the uuid
+	 */
 	public static void loadBeliever(UUID uuid) {
 		if (!loadFromJSON(uuid)) {
 			System.out.println("Could not load user, are they new?");
@@ -121,6 +147,12 @@ public class Believer implements Listener{
 	}
 	
 
+	/**
+	 * Load from JSON.
+	 *
+	 * @param uuid the uuid
+	 * @return true, if successful
+	 */
 	private static boolean loadFromJSON(UUID uuid) {
 		try {
 
@@ -139,6 +171,12 @@ public class Believer implements Listener{
 		}
 	}
 	
+	/**
+	 * Save to json.
+	 *
+	 * @param believer the believer
+	 * @return true, if successful
+	 */
 	private static boolean saveToJson(Believer believer) {
 		
 	    try {
@@ -255,6 +293,9 @@ public class Believer implements Listener{
 		
 	}
 	
+	/**
+	 * Start listening for alter.
+	 */
 	public void startListeningForAlter() {
 		
 		BlockListener tempListener = new BlockListener(this);
@@ -262,12 +303,34 @@ public class Believer implements Listener{
 		
 	}
 
-	 private class BlockListener implements Runnable, Listener {
-		 	Believer believer;
+	 /**
+ 	 * The listener interface for receiving block events.
+ 	 * The class that is interested in processing a block
+ 	 * event implements this interface, and the object created
+ 	 * with that class is registered with a component using the
+ 	 * component's <code>addBlockListener<code> method. When
+ 	 * the block event occurs, that object's appropriate
+ 	 * method is invoked.
+ 	 *
+ 	 * @see BlockEvent
+ 	 */
+ 	private class BlockListener implements Runnable, Listener {
+		 	
+	 		/** The believer. */
+	 		Believer believer;
 
-		    public BlockListener(Believer believer) {
+		    /**
+    		 * Instantiates a new block listener.
+    		 *
+    		 * @param believer the believer
+    		 */
+    		public BlockListener(Believer believer) {
 		    	this.believer = believer;
 		}
+			
+			/**
+			 * Run.
+			 */
 			public void run(){
 		       Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
 		       long startTime = System.nanoTime();
@@ -290,6 +353,9 @@ public class Believer implements Listener{
 		    }
 		  }
 
+	/**
+	 * Save all.
+	 */
 	public static void saveAll() {
 		for(Believer believer : believerList) {
 			if(!saveToJson(believer)) {
@@ -298,6 +364,11 @@ public class Believer implements Listener{
 		}
 	}
 
+	/**
+	 * Change god.
+	 *
+	 * @param godName the god name
+	 */
 	public void changeGod(String godName) {
 		beliefPower = 0;
 		setRank(0);
@@ -313,10 +384,20 @@ public class Believer implements Listener{
 		
 	}
 
+	/**
+	 * Gets the rank.
+	 *
+	 * @return the rank
+	 */
 	public int getRank() {
 		return rank;
 	}
 
+	/**
+	 * Sets the rank.
+	 *
+	 * @param rank the new rank
+	 */
 	public void setRank(int rank) {
 		this.rank = rank;
 	}

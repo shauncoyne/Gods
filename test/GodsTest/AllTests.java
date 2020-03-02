@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package GodsTest;
 
 import static org.junit.Assert.*;
@@ -25,14 +28,24 @@ import org.junit.runner.RunWith;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AllTests.
+ */
 public class AllTests  {
 
 	
+	/**
+	 * Setup.
+	 */
 	@Before
 	public void setup() {
 		
 	}
 	
+	/**
+	 * Test on player join.
+	 */
 	@Test
     public void testOnPlayerJoin() {
         

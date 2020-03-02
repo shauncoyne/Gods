@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.asb104.gods;
 
 import static org.junit.Assert.*;
@@ -22,13 +25,25 @@ import org.junit.runner.RunWith;
 
 import org.mockito.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GodsTest.
+ */
 public class GodsTest extends TestCase {
 
+	/**
+	 * Setup.
+	 */
 	@Before
 	public void setup() {
 		
 	}
 	
+	/**
+	 * Test mockitoand server.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
     public void testMockitoandServer() throws Exception {
 		System.out.println("* CommandManagerTest: testCommand()");

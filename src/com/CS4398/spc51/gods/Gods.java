@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,14 +12,20 @@ import com.CS4398.spc51.gods.gods.Hades;
 import com.CS4398.spc51.gods.gods.Poseidon;
 import com.CS4398.spc51.gods.gods.Zeus;
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class Gods.
  */
 public class Gods extends JavaPlugin{
 	
 	/** The configurator. */
 	static Configurator configurator;
+	
+	/** The gods. */
 	public static Gods gods;
+	
+	/** The Constant godsArray. */
 	public static final God[] godsArray = new God[4];
 	//public static ArrayList<God> godsList = new ArrayList<God>(Arrays.asList(Atheist atheist = new Atheist(), Obj B, Obj C, ....so on))
 	

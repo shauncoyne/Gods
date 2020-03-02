@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.gods;
 
 import org.bukkit.Material;
@@ -10,6 +13,7 @@ import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Reward;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Poseidon. Put his info here
  */
@@ -43,6 +47,12 @@ public class Poseidon extends God{
 		
 	}
 	
+	/**
+	 * Reward.
+	 *
+	 * @param previousBP the previous BP
+	 * @param currentBP the current BP
+	 */
 	public void reward(float previousBP, float currentBP)
 	{
 		

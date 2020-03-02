@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.gods;
 
 import java.util.ArrayList;
@@ -7,6 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import com.CS4398.spc51.gods.Believer;
 
+// TODO: Auto-generated Javadoc
 /*
  * Gods will be created via code, not config. This is because we want gods to be unique.
  * Their punishments and powers should be unique to some extent. 
@@ -19,6 +23,7 @@ import com.CS4398.spc51.gods.Believer;
  */
 
 /**
+ * @author Shaun Coyne (spc51)
  * The Class God.
  */
 public abstract class God {
@@ -55,12 +60,28 @@ public abstract class God {
 	 */
 	public abstract void observe(Believer believer, Event e);
 	
+	/**
+	 * Reward.
+	 *
+	 * @param previousBP the previous BP
+	 * @param currentBP the current BP
+	 */
 	public abstract void reward(float previousBP, float currentBP);
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

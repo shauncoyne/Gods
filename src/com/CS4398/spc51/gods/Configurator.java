@@ -1,10 +1,15 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
 import com.CS4398.spc51.gods.gods.God;
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class Configurator.
  */
 public class Configurator {
@@ -15,8 +20,6 @@ public class Configurator {
 	
 	/**
 	 * Instantiates a new configurator.
-	 *
-	 * @param gods the plugin instance
 	 */
 	public Configurator() {
 		config = Gods.gods.getConfig();

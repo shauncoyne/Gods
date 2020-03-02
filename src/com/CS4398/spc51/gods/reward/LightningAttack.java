@@ -1,9 +1,13 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.entity.Player;
 
 import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
 /** 
  * The Class LightningAttack. 
  */

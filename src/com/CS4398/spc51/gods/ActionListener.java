@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods;
 
 import org.bukkit.entity.LivingEntity;
@@ -15,7 +18,10 @@ import com.CS4398.spc51.gods.gods.Atheist;
 import com.CS4398.spc51.gods.gods.God;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
+ *
  * The listener interface for receiving action events.
  * The class that is interested in processing an action
  * event relevant to Gods. It will identify the god it
@@ -62,7 +68,12 @@ public class ActionListener implements Listener{
 		}
 			
 		
-	     @EventHandler
+	     /**
+     	 * On player join.
+     	 *
+     	 * @param e the e
+     	 */
+     	@EventHandler
 	     public void onPlayerJoin(PlayerJoinEvent e){
 	    	 Believer.loadBeliever(e.getPlayer());
 	     }

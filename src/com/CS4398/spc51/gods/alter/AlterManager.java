@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.alter;
 
 import java.util.ArrayList;
@@ -22,7 +25,9 @@ import org.bukkit.event.block.NotePlayEvent;
 import org.bukkit.event.block.SignChangeEvent;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class AlterManager. Listens for actions on blocks to see if the Alters have been created or destroyed. If this method is inefficent, we could periodically check the alters to see if they are intact.
  */
 public class AlterManager implements Listener{
@@ -30,8 +35,14 @@ public class AlterManager implements Listener{
 	/** The alter list contains all alters. Needs to be populated from
 	 * a save file when the plugin is loaded */
 	public static ArrayList<Alter> alterList = new ArrayList<Alter>();
+	
+	/** The alter template list. */
 	static ArrayList<AlterTemplate> alterTemplateList = new ArrayList<AlterTemplate>();
+	
+	/** The max alter size. */
 	private static int maxAlterSize = 20; //the number of layers we look at to find an alter.
+	
+	/** The origin block type. */
 	private static String originBlockType = "Emerald";
 	
 	/**
@@ -186,7 +197,9 @@ public class AlterManager implements Listener{
 	
 	/**
 	 * Check for alter creation by looking at nearby blocks against templates. 
-	 * For efficency, we should check if the player is in alter building mode. 
+	 * For efficency, we should check if the player is in alter building mode.
+	 *
+	 * @param block the block
 	 */
 	public static void checkForAlterCreation(Block block) {
 		
@@ -227,6 +240,13 @@ public class AlterManager implements Listener{
 		}
 	}
 	
+	/**
+	 * Gets the origin.
+	 *
+	 * @param block the block
+	 * @return the origin
+	 * @throws NoOriginException the no origin exception
+	 */
 	public static Location getOrigin(Block block) throws NoOriginException{
 		//first check if 0 is emerald!
 		if (block.getType().name() == originBlockType) {

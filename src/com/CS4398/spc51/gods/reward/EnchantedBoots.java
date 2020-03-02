@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.Material;
@@ -7,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class EnchantedBoots.
  */
@@ -32,8 +36,8 @@ public class EnchantedBoots extends GiveItem {
 	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
 	
 	/**
-	 * Instantiates new enchanted diamond boots
-	 * 
+	 * Instantiates new enchanted diamond boots.
+	 *
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
