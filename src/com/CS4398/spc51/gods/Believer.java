@@ -1,8 +1,12 @@
 package com.CS4398.spc51.gods;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -17,7 +21,10 @@ import com.CS4398.spc51.gods.alter.AlterManager;
 import com.CS4398.spc51.gods.gods.God;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
+
+import scala.reflect.io.Directory;
 
 
 /**
@@ -43,7 +50,6 @@ public class Believer implements Listener{
 	/** This is the rank of the player */
 	private int rank;
 	
-	private static Gson gson = new Gson();
 	
 	/** this is true when the player requests to be in alter building mode. */
 	
@@ -51,7 +57,7 @@ public class Believer implements Listener{
 	private UUID playerUUID;
 	
 	/**  The god the player worships. */
-	private God god;
+	private String god;
 	
 	/**
 	 * Instantiates a new believer.
@@ -61,6 +67,7 @@ public class Believer implements Listener{
 	public Believer(Player player) {
 		beliefPower = 0f;
 		this.playerUUID = player.getUniqueId();
+		god = Gods.godsArray[0].getName();
 	}
 	
 	/**
@@ -72,6 +79,8 @@ public class Believer implements Listener{
 	public Believer(Player player, float beliefPower) {
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
+		god = Gods.godsArray[0].getName();
+
 	}
 	/**
 	 * Instantiates a new believer.
@@ -84,38 +93,74 @@ public class Believer implements Listener{
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
 		this.setRank(rank);
+		god = Gods.godsArray[0].getName();
+
 	}
 	
+	public Believer(UUID uniqueId) {
+		beliefPower = 0f;
+		this.playerUUID = uniqueId;
+		god = Gods.godsArray[0].getName();
+	}
+
 	public static void loadBeliever(Player player) {
-		if (!loadFromJSON(player)) {
+		if (!loadFromJSON(player.getUniqueId())) {
+			System.out.println("Could not load user, are they new?");
 			Believer newBeliever = new Believer(player);
+			believerList.add(newBeliever);
+			//TODO LOG: A player has joined that is not a believer. They must be new! Adding them now.
+		}
+	}
+	public static void loadBeliever(UUID uuid) {
+		if (!loadFromJSON(uuid)) {
+			System.out.println("Could not load user, are they new?");
+			Believer newBeliever = new Believer(uuid);
 			believerList.add(newBeliever);
 			//TODO LOG: A player has joined that is not a believer. They must be new! Adding them now.
 		}
 	}
 	
 
-	private static boolean loadFromJSON(Player player) {
+	private static boolean loadFromJSON(UUID uuid) {
 		try {
-			Believer believer = gson.fromJson(player.getUniqueId() + ".data", Believer.class);
+
+			Gson gson = new Gson();
+			Believer believer = gson.fromJson(new FileReader(Gods.gods.getDataFolder() + File.separator + "believers" + File.separator + uuid.toString() +".data"), Believer.class);
+			if ( believer == null) {
+				System.out.println("ERROR: LOADED NULL FROM JSON");
+			}
+			believerList.add(believer);
+			return true;
 		}
 		catch(Exception e) {
 			//TODO log error
+			System.out.println(e.getMessage());
 			return false;
 		}
-		return true;
 	}
 	
 	private static boolean saveToJson(Believer believer) {
 		
 	    try {
-	        gson.toJson(believer, new FileWriter(Gods.gods.getDataFolder() + File.separator + "believers" + File.separator + believer.getPlayer().getUniqueId() +".data"));
+	    	if(!Gods.gods.getDataFolder().exists()) {
+	    		Gods.gods.getDataFolder().mkdir();
+	    	}
+	    	File d = new File(Gods.gods.getDataFolder() + File.separator + "believers");
+	    	if(!d.exists())
+	    	{
+	    		d.mkdir();
+	    	}
+	    	FileWriter fw = new FileWriter(Gods.gods.getDataFolder() + File.separator + "believers" + File.separator + believer.getPlayer().getUniqueId() +".data");
+	    	Gson gson = new Gson();
+
+	        gson.toJson(believer, fw);
+	    	fw.close();
+			return true;
 	    } catch (JsonIOException | IOException e) {
 	        //TODO log error
+	    	System.out.println(e.getMessage());
 	    	return false;
-	    }
-		return true;
-		
+	    }		
 	}
 
 	/**
@@ -173,6 +218,13 @@ public class Believer implements Listener{
 	 */
 	public static Believer getBeliever(UUID uniqueId) {
 		//Returns a believer
+		//TODO use a map or something, there is probably a faster way to do this.
+		for(Believer b : believerList) {
+			if (b.playerUUID.compareTo(uniqueId) == 0) {
+				return b;
+			}
+		}
+		
 		return null;
 	}
 
@@ -183,7 +235,14 @@ public class Believer implements Listener{
 	 */
 	public God getGod() {
 		//Returns the God this player worships
-		return god;
+
+		for (God g: Gods.godsArray) {
+			if (g.getName().equalsIgnoreCase(god)) {
+				return g;
+			}
+		
+		}
+		return null;
 	}
 
 	/**
@@ -247,7 +306,7 @@ public class Believer implements Listener{
 		for (God g : Gods.godsArray)
 		{
 			if (g.getName().equalsIgnoreCase(godName)) {
-				god = g;
+				god = g.getName();
 			}
 		}
 		

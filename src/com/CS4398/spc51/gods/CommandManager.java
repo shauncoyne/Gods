@@ -34,18 +34,24 @@ public class CommandManager implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (sender instanceof Player) {
+			Believer believer = Believer.getBeliever(((Player) sender).getUniqueId());
+			if (believer == null) {
+				System.out.println("Believer was not loaded! Trying again...");
+				Believer.loadBeliever(((Player) sender).getUniqueId());
+				believer = Believer.getBeliever(((Player) sender).getUniqueId());
+			}
 			if (args.length == 2) {
 				if (args[0].equalsIgnoreCase("worship")){
-					Believer.getBeliever(((Player) sender).getUniqueId()).changeGod(args[1]);
+					believer.changeGod(args[1]);
 					return true;
 				}
 			}
 			if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("info")) {
-					Believer b = Believer.getBeliever(((Player) sender).getUniqueId());
-					String god_name = b.getGod().getName();
-					float belief_power = b.getBeliefPower();
-					int rank = b.getRank();
+
+					String god_name = believer.getGod().getName();
+					float belief_power = believer.getBeliefPower();
+					int rank = believer.getRank();
 					sender.sendMessage("You currently worship: " + god_name);
 					sender.sendMessage("Your current belief power is: " + belief_power);
 					sender.sendMessage("Your current rank is: " + rank);

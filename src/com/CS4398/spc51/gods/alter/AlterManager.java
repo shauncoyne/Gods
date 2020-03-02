@@ -130,13 +130,15 @@ public class AlterManager implements Listener{
 	 * Thus, a clever way to deface an alter without repercussions. 
 	 * 
 	 * This is also heavily related to gods of machinery and invention.
+	 *TODO need to use BlockPistonRetractEvent and BlockPistonExtendEvent instead of BlockPistonEvent 
 	 *
 	 * @param event the event
 	 */
-	@EventHandler
-	public void onBlockPiston(BlockPistonEvent event) {
-		
-	}
+	/*
+	 * @EventHandler public void onBlockPiston(BlockPistonEvent event) {
+	 * 
+	 * }
+	 */
 	
 	/**
 	 * On block redstone. Heavily related to gods of machinery and invention.
