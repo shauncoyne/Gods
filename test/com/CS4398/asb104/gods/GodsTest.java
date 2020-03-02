@@ -41,7 +41,6 @@ public class GodsTest extends TestCase {
 
         Mockito.when(plugin.getServer()).thenReturn(server);
         
-        farts
         
    }
 
