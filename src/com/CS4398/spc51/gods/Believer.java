@@ -65,6 +65,14 @@ public class Believer implements Listener{
 	/** The player UUID. */
 	private UUID playerUUID;
 	
+	public UUID getPlayerUUID() {
+		return playerUUID;
+	}
+
+	public void setPlayerUUID(UUID playerUUID) {
+		this.playerUUID = playerUUID;
+	}
+
 	/**  The god the player worships. */
 	private String god;
 	
@@ -188,7 +196,7 @@ public class Believer implements Listener{
 	    	{
 	    		d.mkdir();
 	    	}
-	    	FileWriter fw = new FileWriter(Gods.gods.getDataFolder() + File.separator + "believers" + File.separator + believer.getPlayer().getUniqueId() +".data");
+	    	FileWriter fw = new FileWriter(Gods.gods.getDataFolder() + File.separator + "believers" + File.separator + believer.getPlayerUUID() +".data");
 	    	Gson gson = new Gson();
 
 	        gson.toJson(believer, fw);
