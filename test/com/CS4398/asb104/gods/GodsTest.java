@@ -43,7 +43,9 @@ public class GodsTest {
         flag = true;
 		}
 		
-		 finally {assertEquals(true, flag);}
+		 finally {
+				System.out.println("* PASS *");
+				assertEquals(true, flag);}
 		
         
    }
@@ -51,7 +53,7 @@ public class GodsTest {
 	@Test
     public void JoinServerEventTest() throws Exception {
 		
-		System.out.println("* JoinServerEventTest: test()");
+		System.out.println("* JoinServerEventTest: test() *");
 		 Plugin plugin = Mockito.mock(Plugin.class);
 	        PluginManager pManager = Mockito.mock(PluginManager.class);
 
@@ -63,14 +65,16 @@ public class GodsTest {
 	        Player player = Mockito.mock(Player.class); // Create a Player stub
 	        Mockito.when(player.getName()).thenReturn("asb104");
 	       
-	        PlayerJoinEvent playerJoinEvent = Mockito.mock(PlayerJoinEvent.class);
-	       
-	        System.out.println("These are player currently on server " + playerJoinEvent.getPlayer());
-	        System.out.println(player.getName() + " will attempt to join the server");
-	        playerJoinEvent.setJoinMessage("A new Player has Joined");
-	        System.out.println(playerJoinEvent.getJoinMessage());
-	        System.out.println("These are player currently on server " + playerJoinEvent.getPlayer());
-
 	        
+	       
+	        System.out.println("These are player currently on server " + server.getOnlinePlayers());
+	        System.out.println(player.getName() + " will attempt to join the server");
+	        PlayerJoinEvent playerJoinEvent = new PlayerJoinEvent(player, null);
+	        playerJoinEvent.setJoinMessage("***A player has joined the server***");
+	        System.out.println(playerJoinEvent.getJoinMessage());
+	        System.out.println("These are player currently on server [" + playerJoinEvent.getPlayer() +"]");
+
+			System.out.println("* PASS *");
+
 	}
 }
