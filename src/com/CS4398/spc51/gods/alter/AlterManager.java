@@ -211,26 +211,51 @@ public class AlterManager implements Listener{
 		
 		for (AlterTemplate alterTemplate : alterTemplateList) {
 			Boolean matching = true;
+			int layerNumber = 3;
 			for (ArrayList<Material> layer : alterTemplate.getTemplate()) {
 				int incrementTracker = 0; //this controls which direction we increment in
-				int currentX = 0;
-				int currentY = 0;
-				int currentZ = 0;
+				int i = 0;
+				int currentX = -(layerNumber - 1)/2;
+				int currentY = (layerNumber - 1)/2;
+				int currentZ = (layerNumber - 1)/2;
 				for (Material material : layer) {
 					if (block.getLocation().add(currentX, currentY, currentZ) == null ) {
-						currentX++;
-						currentY++; //TODO fix this, see line 200
-						currentZ++;
+						i++; 
+						if (i > layerNumber) {
+							currentX = -(layerNumber - 1)/2;
+							incrementTracker++;
+							if(incrementTracker == 1) {
+								currentZ--;
+							}
+							if(incrementTracker == 2) {
+								currentY--;
+
+							}
+							else {
+								incrementTracker = 0;
+							}
+						}
 					}
 					else if (block.getLocation().add(currentX, currentY, currentZ).getBlock().getType() == material ) {
-						currentX++;
-						currentY++;
-						currentZ++;					}
+						i++; 
+						if (i > layerNumber) {
+							currentX = -(layerNumber - 1)/2;
+							incrementTracker++;
+							if(incrementTracker == 1) {
+								currentZ--;
+							}
+							if(incrementTracker == 2) {
+								currentY--;
+
+							}
+							else {
+								incrementTracker = 0;
+							}
+						}				}
 					else{
 						matching = false;
-						currentX++;
-						currentY++;
-						currentZ++;
+						break;
+
 					}
 				}
 			}
@@ -295,7 +320,7 @@ public class AlterManager implements Listener{
 			
 				
 		}
-		throw new NoOriginException("Couldn't find origion, max searching distance reached!");
+		throw new NoOriginException("Couldn't find origin, max searching distance reached!");
 	}
 	
 
