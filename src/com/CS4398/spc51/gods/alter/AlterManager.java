@@ -251,7 +251,25 @@ public class AlterManager implements Listener{
 							else {
 								incrementTracker = 0;
 							}
-						}				}
+						}				
+						}
+					else if(isExemptedMaterial(block.getLocation().add(currentX, currentY, currentZ).getBlock().getType())){
+						i++; 
+						if (i > layerNumber) {
+							currentX = -(layerNumber - 1)/2;
+							incrementTracker++;
+							if(incrementTracker == 1) {
+								currentZ--;
+							}
+							if(incrementTracker == 2) {
+								currentY--;
+
+							}
+							else {
+								incrementTracker = 0;
+							}
+						}
+					}
 					else{
 						matching = false;
 						break;
@@ -265,6 +283,16 @@ public class AlterManager implements Listener{
 		}
 	}
 	
+	private static boolean isExemptedMaterial(Material type) {
+		if (type == Material.AIR) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+
 	/**
 	 * Gets the origin.
 	 *
