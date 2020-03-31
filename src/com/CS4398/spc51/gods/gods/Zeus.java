@@ -1,6 +1,7 @@
 package com.CS4398.spc51.gods.gods;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -8,7 +9,9 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
+import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.Reward;
 
 /**
@@ -45,9 +48,32 @@ public class Zeus extends God{
 		
 	}
 	
-	public void reward(float previousBP, float currentBP)
+	public void reward(int previousBP, int currentBP, Believer believer)
 	{
-		
+		switch(currentBP)
+		{
+		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
+					give.execute();
+					break;
+		case 15: break;
+		case 20: break;
+		case 30: break;
+		case 40: break;
+		case 50: break;
+		case 60: break;
+		case 69: 	Reward lightning = new LightningAttack(believer.getPlayer(), "You now behold my power. Smite them all!");
+					lightning.execute();
+					break;
+		case 70: break;
+		case 80: break;
+		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
+					//sword.execute();
+					break;
+		case 100:	Reward flyer = new Flyer(believer.getPlayer(), "Fly, my son. See the world as your creator intended.");
+					flyer.execute();
+					break;
+			default: break;
+		}
 	}
 
 	/**
