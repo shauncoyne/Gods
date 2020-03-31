@@ -44,7 +44,7 @@ public class GodsTest {
 		}
 		
 		 finally {
-				System.out.println("* PASS *");
+				System.out.println("Last run status(regression): * PASS *");
 				assertEquals(true, flag);}
 		
         
@@ -74,7 +74,7 @@ public class GodsTest {
 	        System.out.println(playerJoinEvent.getJoinMessage());
 	        System.out.println("These are player currently on server [" + playerJoinEvent.getPlayer() +"]");
 
-			System.out.println("* PASS *");
+			System.out.println("Last run status(regression): * PASS *");
 
 	}
 }
