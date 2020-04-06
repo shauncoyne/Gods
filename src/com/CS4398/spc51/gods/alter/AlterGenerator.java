@@ -4,6 +4,7 @@ package com.CS4398.spc51.gods.alter;
  * 10 by 10 structure in the air and have the structure printed to a csv. 
  */
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,23 +13,36 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
+import com.CS4398.spc51.gods.Gods;
+
 public class AlterGenerator {
 
 public static void generateAlter(Block block) {
 		
-		try {
-			Location origin = AlterManager.getOrigin(block);
-		} catch (NoOriginException e) {
-			return;
-		}
+		//try {
+			//Location origin = AlterManager.getOrigin(block);
+			
+		//} catch (NoOriginException e) {
+		//	return;
+		//}
+	if(!Gods.gods.getDataFolder().exists()) {
+		Gods.gods.getDataFolder().mkdir();
+	}
+	File d = new File(Gods.gods.getDataFolder() + File.separator + "alters");
+	if(!d.exists())
+	{
+		d.mkdir();
+	}
+
+	
 		FileWriter csvWriter =null;
 		try {
-			csvWriter = new FileWriter("new.csv");
+			csvWriter = new FileWriter(Gods.gods.getDataFolder() + File.separator + "alters" + File.separator + "new.csv");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		if (block.getType().equals(Material.LAPIS_BLOCK)) {
 
 		Boolean matching = true;
 		int layerNumber = 3;
@@ -72,7 +86,8 @@ public static void generateAlter(Block block) {
 			e.printStackTrace();
 		}
 		if (matching) {
-			//TODO create Alter Here
+			
+		}
 		}
 		
 	}

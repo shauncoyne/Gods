@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
+import com.CS4398.spc51.gods.alter.AlterGenerator;
 import com.CS4398.spc51.gods.alter.AlterManager;
 import com.CS4398.spc51.gods.gods.God;
 import com.CS4398.spc51.gods.powerup.Powerup;
@@ -75,6 +77,7 @@ public class Believer implements Listener{
 
 	/**  The god the player worships. */
 	private String god;
+
 	
 	/**
 	 * Instantiates a new believer.
@@ -306,60 +309,91 @@ public class Believer implements Listener{
 	 */
 	public void startListeningForAlter() {
 		
-		BlockListener tempListener = new BlockListener(this);
-		tempListener.run();
+
+		Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
+		
 		
 	}
+	public static void stopListeningForAlter(Believer believer) {
+	       HandlerList.unregisterAll(believer);
 
-	 /**
- 	 * The listener interface for receiving block events.
- 	 * The class that is interested in processing a block
- 	 * event implements this interface, and the object created
- 	 * with that class is registered with a component using the
- 	 * component's <code>addBlockListener<code> method. When
- 	 * the block event occurs, that object's appropriate
- 	 * method is invoked.
- 	 *
- 	 * @see BlockEvent
- 	 */
- 	private class BlockListener implements Runnable, Listener {
+	}
+	/**
+	 * On block placed. This is the general catch-all for detecting the creation of
+	 * altars
+	 *
+	 * @param event the event
+	 */
+	@EventHandler
+    public void onBlockPlaced(BlockPlaceEvent event){
+		if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
+			//AlterManager.checkForAlterCreation(event.getBlock());
+			event.getPlayer().sendMessage("Block placed!");
+			AlterThread alterThread = new AlterThread(this, event.getBlock());
+			TimerThread timerThread = new TimerThread(this, System.nanoTime());
+			timerThread.run();
+			alterThread.run();
+		}
+    }
+
+
+ 	private class AlterThread implements Runnable{
 		 	
 	 		/** The believer. */
 	 		Believer believer;
+	 		
+	 		Block block;
+
 
 		    /**
     		 * Instantiates a new block listener.
     		 *
     		 * @param believer the believer
     		 */
-    		public BlockListener(Believer believer) {
+    		public AlterThread(Believer believer, Block block) {
 		    	this.believer = believer;
+		    	this.block = block;
 		}
 			
 			/**
 			 * Run.
 			 */
 			public void run(){
-		       Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
-		       long startTime = System.nanoTime();
-		       while ( System.nanoTime() - startTime < Believer.alterBuildingTimeout) {
-		    	   //do nothing
-		       }
-		       HandlerList.unregisterAll(this);
+				//AlterManager.checkForAlterCreation(event.getBlock());
+				AlterGenerator.generateAlter(block);
 		    }
-			/**
-			 * On block placed. This is the general catch-all for detecting the creation of
-			 * altars
-			 *
-			 * @param event the event
-			 */
-			@EventHandler
-		    public void onBlockPlaced(BlockPlaceEvent event){
-				if (event.getPlayer() == believer.getPlayer()){ //make sure the player we are listening to is the one who placed the block
-					AlterManager.checkForAlterCreation(event.getBlock());
-				}
-		    }
+			
 		  }
+ 	private class TimerThread implements Runnable{
+	 	
+ 		/** The believer. */
+ 		Believer believer;
+ 		
+ 		Long startTime;
+ 		Long maxTime;
+
+
+	    /**
+		 * Instantiates a new block listener.
+		 *
+		 * @param believer the believer
+		 */
+		public TimerThread(Believer believer, Long startTime) {
+	    	this.believer = believer;
+	    	this.startTime = startTime;
+	}
+		
+		/**
+		 * Run.
+		 */
+		public void run(){
+			while(System.nanoTime() - startTime < Believer.alterBuildingTimeout) {
+				//do nothing
+			}
+			Believer.stopListeningForAlter(believer);
+	    }
+		
+	  }
 
 	/**
 	 * Save all.
