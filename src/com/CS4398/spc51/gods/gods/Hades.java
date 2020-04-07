@@ -7,7 +7,10 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
+import com.CS4398.spc51.gods.reward.Invisibility;
+import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.Reward;
 
 /**
@@ -40,9 +43,48 @@ public class Hades extends God{
 		
 	}
 	
-	public void reward(float previousBP, float currentBP)
+	public void reward(int previousBP, int currentBP, Believer believer)
 	{
-		
+		switch(currentBP)
+		{
+		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
+					give.execute();
+					break;
+		case 15: Reward giveNext = new GiveItem(believer.getPlayer(), "Please take this small gift of appreciation");
+				giveNext.execute();
+				break;
+		case 20: Reward giveAgain = new GiveItem(believer.getPlayer(), "Please enjoy this");
+				giveAgain.execute();
+				break;
+		case 30: Reward giveAnother = new GiveItem(believer.getPlayer(), "I appreciate you, young one");
+				giveAnother.execute();
+				break;
+		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
+				//leggings.execute();
+				break;
+		case 50: Reward invisible = new Invisibility(believer.getPlayer(), "You have been good to me and my purpose");
+				invisible.execute();
+				break;
+		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
+				//helmet.execute();
+				break;
+		case 69: 	Reward lightning = new LightningAttack(believer.getPlayer(), "You now behold my power. Smite them all!");
+					lightning.execute();
+					break;
+		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
+				//boots.execute();
+				break;
+		case 80: //Reward chestplate - new EnchantedChestplate(believer.getPlayer(), "Be safe, young one.", chestPlate, LOOT_BONUS_MOBS);
+				//chestplate.execute();
+				break;
+		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
+					//sword.execute();
+					break;
+		case 100:	Reward flyer = new Flyer(believer.getPlayer(), "Fly, my son. See the world as your creator intended.");
+					flyer.execute();
+					break;
+			default: break;
+		}
 	}
 
 	/**
