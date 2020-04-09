@@ -52,10 +52,10 @@ public class Hades extends God{
 	}
 	
 
-	public void reward(int previousBP, int currentBP, Believer believer)
+	public void reward(float previousBP, float currentBP, Believer believer)
 
 	{
-		switch(currentBP)
+		switch((int)currentBP)
 		{
 		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
 					give.execute();
@@ -158,6 +158,7 @@ public class Hades extends God{
 		// TODO Auto-generated method stub
 		//return null;
 	}
+
 
 
 }
