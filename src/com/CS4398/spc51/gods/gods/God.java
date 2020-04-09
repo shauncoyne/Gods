@@ -68,7 +68,7 @@ public abstract class God {
 	 * @param previousBP the previous BP
 	 * @param currentBP the current BP
 	 */
-	public abstract void reward(float previousBP, float currentBP);
+	public abstract void reward(float previousBP, float currentBP, Believer believer);
 
 	/**
 	 * Gets the name.

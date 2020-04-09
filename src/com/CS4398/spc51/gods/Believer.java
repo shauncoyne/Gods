@@ -246,7 +246,7 @@ public class Believer implements Listener{
 		float multiplyer = Gods.configurator.getMultiplyer(god);
 		float previousBP = beliefPower;
 		beliefPower = beliefPower + level * multiplyer;		
-		god.reward(previousBP, beliefPower);
+		god.reward(previousBP, beliefPower, this);
 	}
 	
 	/**
@@ -460,6 +460,24 @@ public class Believer implements Listener{
 	public void decreaseRank() {
 		powerupList.removeAll(getGod().getPowerUps(rank));
 		rank--;
+	}
+
+	public boolean hasPower(String name) {
+		for (Powerup power : powerupList) {
+			if (power.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Powerup getPower(String powerName) {
+		for (Powerup power : powerupList) {
+			if (power.getName().equalsIgnoreCase(powerName)) {
+				return power;
+			}
+		}
+		return null;
 	}
 
 }

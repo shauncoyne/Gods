@@ -45,7 +45,7 @@ public class Atheist extends God{
 	 * @param currentBP the current BP
 	 */
 	@Override
-	public void reward(float previousBP, float currentBP) {
+	public void reward(float previousBP, float currentBP, Believer believer) {
 		// TODO Auto-generated method stub
 		
 	}
