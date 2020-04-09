@@ -52,8 +52,9 @@ public class Atheist extends God{
 
 	@Override
 	public Collection<? extends Powerup> getPowerUps(int rank) {
-		ArrayList<PowerUp>()thing = new;
-		ArrayList<PowerUp>();
+		ArrayList<Powerup>thing = new ArrayList<Powerup>();
+		
+		
 		return thing;
 		// TODO Auto-generated method stub
 		//return null;
