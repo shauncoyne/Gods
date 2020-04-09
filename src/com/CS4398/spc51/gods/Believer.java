@@ -244,7 +244,9 @@ public class Believer implements Listener{
 	 */
 	public void increaseBeliefPower(God god, int level) {
 		float multiplyer = Gods.configurator.getMultiplyer(god);
+		float previousBP = beliefPower;
 		beliefPower = beliefPower + level * multiplyer;		
+		god.reward(previousBP, beliefPower);
 	}
 	
 	/**
@@ -436,12 +438,28 @@ public class Believer implements Listener{
 	}
 
 	/**
-	 * Sets the rank.
+	 * Sets the rank by looping through the correct increase or decrease rank method. These methonds handle the removal of perks
 	 *
 	 * @param rank the new rank
 	 */
 	public void setRank(int rank) {
-		this.rank = rank;
+		while (this.rank < rank) {
+			decreaseRank();
+		}
+		while (this.rank > rank) {
+			increaseRank();
+		}
+
+	}
+	
+	public void increaseRank() {
+		rank++;
+		powerupList.addAll(getGod().getPowerUps(rank));
+		
+	}
+	public void decreaseRank() {
+		powerupList.removeAll(getGod().getPowerUps(rank));
+		rank--;
 	}
 
 }

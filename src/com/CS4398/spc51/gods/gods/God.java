@@ -4,11 +4,13 @@
 package com.CS4398.spc51.gods.gods;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Powerup;
 
 // TODO: Auto-generated Javadoc
 /*
@@ -85,6 +87,8 @@ public abstract class God {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public abstract Collection<? extends Powerup> getPowerUps(int rank);
 	
 
 }

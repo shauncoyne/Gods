@@ -23,7 +23,9 @@ public class Configurator {
 	 */
 	public Configurator() {
 		config = Gods.gods.getConfig();
-		config.addDefault("Zeus", 1);
+		config.addDefault("Zeus", .75);
+		config.addDefault("Poseidon", 1);
+		config.addDefault("Hades", 1.25);
 	}
 	
 	/**
@@ -51,6 +53,12 @@ public class Configurator {
 	public float getMultiplyer(God god) {
 		if (god.getName().equalsIgnoreCase("Zeus")){
 			return config.getInt("Zeus");
+		}
+		else if (god.getName().equalsIgnoreCase("Poseidon")){
+			return config.getInt("Poseidon");
+		}
+		else if (god.getName().equalsIgnoreCase("Hades")){
+			return config.getInt("Hades");
 		}
 		return 0f;
 	}
