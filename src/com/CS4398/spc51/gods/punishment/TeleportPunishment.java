@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.punishment;
 
 import org.bukkit.Location;
@@ -6,15 +9,16 @@ import org.bukkit.entity.Player;
 
 import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class TeleportPunishment.
  */
 public class TeleportPunishment extends Punishment {
 	
-	/** The location that the player will teleport to */
+	/**  The location that the player will teleport to. */
 	Location location;
 	
-	/** The world that the player is in */
+	/**  The world that the player is in. */
 	World world;
 
 	/** 

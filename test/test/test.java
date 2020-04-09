@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package test;
 
 import static org.junit.Assert.*;
@@ -20,13 +23,25 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.junit.runner.RunWith;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class test.
+ */
 public class test {
 
+	/**
+	 * Setup.
+	 */
 	@Before
 	public void setup() {
 		
 	}
 	
+	/**
+	 * Test on player join.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
     public void testOnPlayerJoin() throws Exception {
         

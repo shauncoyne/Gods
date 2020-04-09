@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.alter;
 
 import java.util.ArrayList;
@@ -22,7 +25,9 @@ import org.bukkit.event.block.NotePlayEvent;
 import org.bukkit.event.block.SignChangeEvent;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class AlterManager. Listens for actions on blocks to see if the Alters have been created or destroyed. If this method is inefficent, we could periodically check the alters to see if they are intact.
  */
 public class AlterManager implements Listener{
@@ -30,8 +35,14 @@ public class AlterManager implements Listener{
 	/** The alter list contains all alters. Needs to be populated from
 	 * a save file when the plugin is loaded */
 	public static ArrayList<Alter> alterList = new ArrayList<Alter>();
+	
+	/** The alter template list. */
 	static ArrayList<AlterTemplate> alterTemplateList = new ArrayList<AlterTemplate>();
+	
+	/** The max alter size. */
 	private static int maxAlterSize = 20; //the number of layers we look at to find an alter.
+	
+	/** The origin block type. */
 	private static String originBlockType = "Emerald";
 	
 	/**
@@ -130,13 +141,15 @@ public class AlterManager implements Listener{
 	 * Thus, a clever way to deface an alter without repercussions. 
 	 * 
 	 * This is also heavily related to gods of machinery and invention.
+	 *TODO need to use BlockPistonRetractEvent and BlockPistonExtendEvent instead of BlockPistonEvent 
 	 *
 	 * @param event the event
 	 */
-	@EventHandler
-	public void onBlockPiston(BlockPistonEvent event) {
-		
-	}
+	/*
+	 * @EventHandler public void onBlockPiston(BlockPistonEvent event) {
+	 * 
+	 * }
+	 */
 	
 	/**
 	 * On block redstone. Heavily related to gods of machinery and invention.
@@ -184,7 +197,9 @@ public class AlterManager implements Listener{
 	
 	/**
 	 * Check for alter creation by looking at nearby blocks against templates. 
-	 * For efficency, we should check if the player is in alter building mode. 
+	 * For efficency, we should check if the player is in alter building mode.
+	 *
+	 * @param block the block
 	 */
 	public static void checkForAlterCreation(Block block) {
 		
@@ -196,26 +211,69 @@ public class AlterManager implements Listener{
 		
 		for (AlterTemplate alterTemplate : alterTemplateList) {
 			Boolean matching = true;
+			int layerNumber = 3;
 			for (ArrayList<Material> layer : alterTemplate.getTemplate()) {
 				int incrementTracker = 0; //this controls which direction we increment in
-				int currentX = 0;
-				int currentY = 0;
-				int currentZ = 0;
+				int i = 0;
+				int currentX = -(layerNumber - 1)/2;
+				int currentY = (layerNumber - 1)/2;
+				int currentZ = (layerNumber - 1)/2;
 				for (Material material : layer) {
 					if (block.getLocation().add(currentX, currentY, currentZ) == null ) {
-						currentX++;
-						currentY++; //TODO fix this, see line 200
-						currentZ++;
+						i++; 
+						if (i > layerNumber) {
+							currentX = -(layerNumber - 1)/2;
+							incrementTracker++;
+							if(incrementTracker == 1) {
+								currentZ--;
+							}
+							if(incrementTracker == 2) {
+								currentY--;
+
+							}
+							else {
+								incrementTracker = 0;
+							}
+						}
 					}
 					else if (block.getLocation().add(currentX, currentY, currentZ).getBlock().getType() == material ) {
-						currentX++;
-						currentY++;
-						currentZ++;					}
+						i++; 
+						if (i > layerNumber) {
+							currentX = -(layerNumber - 1)/2;
+							incrementTracker++;
+							if(incrementTracker == 1) {
+								currentZ--;
+							}
+							if(incrementTracker == 2) {
+								currentY--;
+
+							}
+							else {
+								incrementTracker = 0;
+							}
+						}				
+						}
+					else if(isExemptedMaterial(block.getLocation().add(currentX, currentY, currentZ).getBlock().getType())){
+						i++; 
+						if (i > layerNumber) {
+							currentX = -(layerNumber - 1)/2;
+							incrementTracker++;
+							if(incrementTracker == 1) {
+								currentZ--;
+							}
+							if(incrementTracker == 2) {
+								currentY--;
+
+							}
+							else {
+								incrementTracker = 0;
+							}
+						}
+					}
 					else{
 						matching = false;
-						currentX++;
-						currentY++;
-						currentZ++;
+						break;
+
 					}
 				}
 			}
@@ -225,6 +283,23 @@ public class AlterManager implements Listener{
 		}
 	}
 	
+	private static boolean isExemptedMaterial(Material type) {
+		if (type == Material.AIR) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+
+	/**
+	 * Gets the origin.
+	 *
+	 * @param block the block
+	 * @return the origin
+	 * @throws NoOriginException the no origin exception
+	 */
 	public static Location getOrigin(Block block) throws NoOriginException{
 		//first check if 0 is emerald!
 		if (block.getType().name() == originBlockType) {
@@ -273,7 +348,7 @@ public class AlterManager implements Listener{
 			
 				
 		}
-		throw new NoOriginException("Couldn't find origion, max searching distance reached!");
+		throw new NoOriginException("Couldn't find origin, max searching distance reached!");
 	}
 	
 

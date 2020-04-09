@@ -1,42 +1,47 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
 import com.CS4398.spc51.gods.gods.God;
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class Configurator.
  */
 public class Configurator {
 	
-	/** The plugin instance. */
-	private Gods gods;
 	
 	/** The config. */
-	private FileConfiguration config = gods.getConfig();
+	private FileConfiguration config = null;
 	
 	/**
 	 * Instantiates a new configurator.
-	 *
-	 * @param gods the plugin instance
 	 */
-	public Configurator(Gods gods) {
-		this.gods = gods;
+	public Configurator() {
+		config = Gods.gods.getConfig();
+		config.addDefault("Zeus", .75);
+		config.addDefault("Poseidon", 1);
+		config.addDefault("Hades", 1.25);
 	}
 	
 	/**
 	 * Save config.
 	 */
 	public void saveConfig() {
-		gods.saveDefaultConfig();
+		config.options().copyDefaults(true);
+		Gods.gods.saveDefaultConfig();
 	}
 	
 	/**
 	 * Reload.
 	 */
 	public void reload() {
-		gods.getConfig();
-		gods.getLogger().info("Config reloaded!");
+		Gods.gods.getConfig();
+		Gods.gods.getLogger().info("Config reloaded!");
 	}
 
 	/**
@@ -46,7 +51,15 @@ public class Configurator {
 	 * @return the multiplyer
 	 */
 	public float getMultiplyer(God god) {
-		// TODO Auto-generated method stub
+		if (god.getName().equalsIgnoreCase("Zeus")){
+			return config.getInt("Zeus");
+		}
+		else if (god.getName().equalsIgnoreCase("Poseidon")){
+			return config.getInt("Poseidon");
+		}
+		else if (god.getName().equalsIgnoreCase("Hades")){
+			return config.getInt("Hades");
+		}
 		return 0f;
 	}
 

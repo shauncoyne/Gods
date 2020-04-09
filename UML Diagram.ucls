@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="com.CS4398.spc51.gods.gods.Zeus" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/gods/Zeus.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1265" y="1491"/>    
+    <position height="-1" width="-1" x="1517" y="1471"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="com.CS4398.spc51.gods.ChatListener" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/ChatListener.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="965" y="38"/>    
+    <position height="-1" width="-1" x="1001" y="310"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="com.CS4398.spc51.gods.gods.God" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/gods/God.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1636" y="1330"/>    
+    <position height="-1" width="-1" x="1630" y="918"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="com.CS4398.spc51.gods.punishment.Explode" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/punishment/Explode.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="785" y="1491"/>    
+    <position height="-1" width="-1" x="875" y="1451"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="com.CS4398.spc51.gods.gods.Poseidon" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/gods/Poseidon.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1204" y="1243"/>    
+    <position height="-1" width="-1" x="1323" y="1261"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="com.CS4398.spc51.gods.punishment.Punishment" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/punishment/Punishment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="641" y="1313"/>    
+    <position height="-1" width="-1" x="507" y="1155"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="com.CS4398.spc51.gods.alter.NoOriginException" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/alter/NoOriginException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="692" y="45"/>    
+    <position height="-1" width="-1" x="724" y="253"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="com.CS4398.spc51.gods.Gods" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/Gods.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1803" y="1534"/>    
+    <position height="-1" width="-1" x="1767" y="1317"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="com.CS4398.spc51.gods.ActionListener" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/ActionListener.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="952" y="179"/>    
+    <position height="-1" width="-1" x="660" y="403"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -183,7 +183,7 @@
   </class>  
   <class id="21" language="java" name="com.CS4398.spc51.gods.punishment.InfiniteFire" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/punishment/InfiniteFire.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="729" y="1047"/>    
+    <position height="-1" width="-1" x="651" y="961"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -192,7 +192,7 @@
   </class>  
   <class id="22" language="java" name="com.CS4398.spc51.gods.alter.AlterBlock" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/alter/AlterBlock.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="758" y="465"/>    
+    <position height="-1" width="-1" x="940" y="499"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -219,7 +219,7 @@
   </class>  
   <class id="25" language="java" name="com.CS4398.spc51.gods.Configurator" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/Configurator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2071" y="1467"/>    
+    <position height="-1" width="-1" x="1964" y="1295"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -228,7 +228,7 @@
   </class>  
   <class id="26" language="java" name="com.CS4398.spc51.gods.punishment.TeleportPunishment" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/punishment/TeleportPunishment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="879" y="1190"/>    
+    <position height="-1" width="-1" x="799" y="1112"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -255,7 +255,7 @@
   </class>  
   <class id="29" language="java" name="com.CS4398.spc51.gods.punishment.Death" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/punishment/Death.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="863" y="1331"/>    
+    <position height="-1" width="-1" x="819" y="1267"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -282,7 +282,7 @@
   </class>  
   <class id="32" language="java" name="com.CS4398.spc51.gods.CommandManager" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/CommandManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="595" y="180"/>    
+    <position height="-1" width="-1" x="661" y="546"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -291,7 +291,7 @@
   </class>  
   <class id="33" language="java" name="com.CS4398.spc51.gods.gods.Hades" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/gods/Hades.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1987" y="1173"/>    
+    <position height="-1" width="-1" x="1995" y="829"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -300,7 +300,7 @@
   </class>  
   <class id="34" language="java" name="com.CS4398.spc51.gods.gods.Atheist" project="Gods" 
     file="/Gods/src/com/CS4398/spc51/gods/gods/Atheist.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1924" y="1333"/>    
+    <position height="-1" width="-1" x="1922" y="1087"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -391,10 +391,10 @@
   <association id="54">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="55" name="god">        
-        <position height="0" width="0" x="-88" y="376"/>      
+        <position height="0" width="0" x="-94" y="-36"/>      
       </attribute>      
       <multiplicity id="56" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-88" y="376"/>      
+        <position height="0" width="0" x="-94" y="-36"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
@@ -435,10 +435,10 @@
   <association id="65">    
     <end type="SOURCE" refId="25" navigable="false">      
       <attribute id="66" name="gods">        
-        <position height="0" width="0" x="-5510" y="1054"/>      
+        <position height="0" width="0" x="-5546" y="837"/>      
       </attribute>      
       <multiplicity id="67" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-5510" y="1054"/>      
+        <position height="0" width="0" x="-5546" y="837"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
@@ -455,10 +455,10 @@
   <association id="70">    
     <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="71" name="godsArray">        
-        <position height="0" width="0" x="-88" y="376"/>      
+        <position height="0" width="0" x="-94" y="-36"/>      
       </attribute>      
       <multiplicity id="72" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-88" y="376"/>      
+        <position height="0" width="0" x="-94" y="-36"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
@@ -471,10 +471,10 @@
   <association id="74">    
     <end type="SOURCE" refId="3" navigable="false">      
       <attribute id="75" name="god">        
-        <position height="0" width="0" x="-88" y="376"/>      
+        <position height="0" width="0" x="-94" y="-36"/>      
       </attribute>      
       <multiplicity id="76" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-88" y="376"/>      
+        <position height="0" width="0" x="-94" y="-36"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
@@ -499,10 +499,10 @@
   <association id="81">    
     <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="82" name="configurator">        
-        <position height="0" width="0" x="-5256" y="1252"/>      
+        <position height="0" width="0" x="-5363" y="1080"/>      
       </attribute>      
       <multiplicity id="83" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-5256" y="1252"/>      
+        <position height="0" width="0" x="-5363" y="1080"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="25" navigable="true"/>    
@@ -511,10 +511,10 @@
   <association id="84">    
     <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="85" name="gods">        
-        <position height="0" width="0" x="-5510" y="1054"/>      
+        <position height="0" width="0" x="-5546" y="837"/>      
       </attribute>      
       <multiplicity id="86" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-5510" y="1054"/>      
+        <position height="0" width="0" x="-5546" y="837"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
