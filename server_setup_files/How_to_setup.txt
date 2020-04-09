@@ -1,0 +1,14 @@
+install radmin VPN: https://www.radmin-vpn.com/
+
+Create a network, call it something unique. 
+
+
+Run run.bat
+
+once the server is loaded type : stop
+
+Once the server is shutdown, add the gods.jar to the plugins folder.
+
+Run run.bat again.
+
+Now gods is loaded!

@@ -1,15 +1,19 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.punishment;
 
 import org.bukkit.entity.Player;
 
-import com.CS4398.spc51.gods.CommandManager;
+import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Explode.
  */
 public class Explode extends Death {
 	
-	/** The power of the explosion */
+	/**  The power of the explosion. */
 	float explosionPower;
 	
 	/**
@@ -37,7 +41,7 @@ public class Explode extends Death {
 			return true;
 		}
 		catch (Exception e) {
-			CommandManager.gods.getLogger().info(e.getMessage()); 
+			Gods.gods.getLogger().info(e.getMessage()); 
 			return false;
 		}
 	}

@@ -1,20 +1,29 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.gods;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
 import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.Reward;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Zeus. Put his info here
  */
@@ -35,21 +44,21 @@ public class Zeus extends God{
 	 */
 	public void observe(Believer believer, Event e) 
 	{
-		//switch based on the type of event
-		switch (e.getEventName()) 
-		{
-        case "EntityDamageByEntityEvent":  
-        		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
-                 break;
-       // case "PlayerDeathEvent":
-        	//playerDied(believer, (PlayerDeathEvent)e);
-        	//break;
+		switch(e.getEventName()) {
+		
+		
+			case "EntityDeathEvent": 
+
+				playerKilledEntity(believer, (EntityDeathEvent) e);
+				break;
                  
 		}
 		
 	}
 	
+
 	public void reward(int previousBP, int currentBP, Believer believer)
+
 	{
 		switch(currentBP)
 		{
@@ -99,17 +108,17 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void playerDamagedEntity(Believer believer, EntityDamageByEntityEvent e) 
+	private void playerKilledEntity(Believer believer, EntityDeathEvent e) 
 	{
 		switch(e.getEntityType())
 		{
-		case SHEEP : sheepDamaged(believer, e);
-		     break;
-		case COW : cowDamaged(believer, e);
-	         break;
-		case HORSE : horseDamaged(believer, e);
-	         break;
-		case CREEPER : creeperDamaged(believer,e);
+		case SHEEP : 
+			sheepKilled(believer, e);
+		    break;
+		
+//		  case COW : cowDamaged(believer, e); break; case HORSE :
+//		  horseDamaged(believer, e); break; case CREEPER : creeperDamaged(believer,e);
+//		 
 		default:
 			break;
 		}
@@ -123,18 +132,17 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void sheepDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	private void sheepKilled(Believer believer, EntityDeathEvent e) 
 	{
 		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
 		
 		//only take action if damage resulted in death
-		if (e.getEntity().isDead()) 
-		{
-			believer.increaseBeliefPower(believer.getGod(), 1);
-			ItemStack item = new ItemStack(Material.BAKED_POTATO);
-			Reward reward = new GiveItem(believer.getPlayer(), "Thank you for providing me with more sheep in my little sheep heaven!", item);
-			reward.execute();
-		}
+
+		believer.increaseBeliefPower(believer.getGod(), 1);
+		ItemStack item = new ItemStack(Material.BAKED_POTATO);
+		Reward reward = new GiveItem(believer.getPlayer(), "Thank you for providing me with more sheep in my little sheep heaven!", item);
+		reward.execute();
+		
 		
 		
 	}
@@ -200,6 +208,24 @@ public class Zeus extends God{
 			reward.execute();
 		}
 		
+	}
+
+	@Override
+	public Collection<? extends Powerup> getPowerUps(int rank) {
+		
+		ArrayList<PowerUp>()thing = new;
+		ArrayList<PowerUp>();
+		
+		
+		switch(rank)
+		{
+		case 1:
+			break;
+			default break;
+		}
+		return thing;
+		// TODO Auto-generated method stub
+		//return null;
 	}
 	
 

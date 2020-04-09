@@ -3,6 +3,10 @@
   <groupId>io.github.shauncoyne</groupId>
   <artifactId>Gods</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
   <build>
   	<finalName>Gods</finalName>
     <sourceDirectory>src</sourceDirectory>
@@ -21,7 +25,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
-          <release>13</release>
+            <source>1.8</source>
+            <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
@@ -40,6 +45,14 @@
             <version>1.13-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>3.3.0</version>
+    <scope>compile</scope>
+</dependency>
+        
         
         <dependency>
 		  <groupId>org.mockito</groupId>
@@ -48,41 +61,7 @@
 		  <scope>compile</scope> 
 		</dependency>
 		
-		<dependency>
-		  <groupId>org.powermock</groupId>
-		  <artifactId>powermock-module-junit4</artifactId>
-		  <version>2.0.5</version>
-		  <scope>compile</scope>
-		</dependency>
 		
-		<dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4-common</artifactId>
-      <version>2.0.5</version>
-      <scope>compile</scope>
-    </dependency>
-    
-   	
-<dependency>
-    <groupId>org.powermock</groupId>
-    <artifactId>powermock-reflect</artifactId>
-    <version>2.0.5</version>
-    <scope>test</scope>
-</dependency>
-
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-core</artifactId>
-      <version>2.0.5</version>
-      <scope>compile</scope>
-    </dependency>
-    
-	<dependency>
-   	 <groupId>org.powermock</groupId>
-   	 <artifactId>powermock-api-mockito</artifactId>
-   	 <version>1.7.4</version>
-   	 <scope>compile</scope>
-	</dependency>
     
 		
     </dependencies>

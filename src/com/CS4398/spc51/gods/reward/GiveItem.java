@@ -1,12 +1,17 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.CS4398.spc51.gods.CommandManager;
+import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class GiveItem.
  */
 public class GiveItem extends Reward{
@@ -54,7 +59,7 @@ public class GiveItem extends Reward{
 			player.getInventory().addItem(item);
 			return true;
 		} catch (Exception e) {
-			CommandManager.gods.getLogger().info(e.getMessage()); 
+			Gods.gods.getLogger().info(e.getMessage()); 
 			return false;
 		}
 	}

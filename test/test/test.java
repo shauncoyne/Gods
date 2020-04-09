@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package test;
 
 import static org.junit.Assert.*;
@@ -17,23 +20,28 @@ import static org.mockito.Mockito.never;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-@PowerMockIgnore("org.mockito.*")
-//@RunWith(PowerMockRunner.class)
-@PrepareForTest(PlayerJoinEvent.class)
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class test.
+ */
 public class test {
 
+	/**
+	 * Setup.
+	 */
 	@Before
 	public void setup() {
 		
 	}
 	
+	/**
+	 * Test on player join.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
     public void testOnPlayerJoin() throws Exception {
         

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.Material;
@@ -5,8 +8,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.CS4398.spc51.gods.CommandManager;
+import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class EnchantedChestplate.
  */
@@ -32,8 +36,8 @@ public class EnchantedChestplate extends GiveItem {
 	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
 	
 	/**
-	 * Instantiates a new enchanted diamond chestplate
-	 * 
+	 * Instantiates a new enchanted diamond chestplate.
+	 *
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
@@ -62,7 +66,7 @@ public class EnchantedChestplate extends GiveItem {
 		    return true;
 		} 
 		catch (Exception e) {
-			CommandManager.gods.getLogger().info(e.getMessage()); 
+			Gods.gods.getLogger().info(e.getMessage()); 
 			return false;
 		}
 		

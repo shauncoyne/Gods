@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.alter;
 
 import java.io.BufferedReader;
@@ -11,7 +14,9 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
+// TODO: Auto-generated Javadoc
 /**
+ * @author Shaun Coyne (spc51)
  * The Class AlterTemplate contains the layout for alters. 
  * 
  * The algorithm used to determine if a player has created
@@ -27,17 +32,35 @@ import org.bukkit.block.Block;
  */
 public class AlterTemplate {
 	
+	/** The origin. */
 	private Material origin;
+	
+	/** The template. */
 	private ArrayList<ArrayList<Material>> template = new ArrayList<ArrayList<Material>>();
 	
+	/**
+	 * Gets the template.
+	 *
+	 * @return the template
+	 */
 	public ArrayList<ArrayList<Material>> getTemplate() {
 		return template;
 	}
 
+	/**
+	 * Sets the template.
+	 *
+	 * @param template the new template
+	 */
 	public void setTemplate(ArrayList<ArrayList<Material>> template) {
 		this.template = template;
 	}
 
+	/**
+	 * Instantiates a new alter template.
+	 *
+	 * @param templateName the template name
+	 */
 	public AlterTemplate(String templateName) {
 		try {
 		File csvFile = new File(templateName + ".csv");
@@ -80,11 +103,23 @@ public class AlterTemplate {
 			}		
 	}
 
+	/**
+	 * Convert to material.
+	 *
+	 * @param string the string
+	 * @return the material
+	 */
 	private Material convertToMaterial(String string) {
 		Material material = Material.getMaterial(string); //block ID
 		return material;
 	}
 
+	/**
+	 * Convert to block.
+	 *
+	 * @param string the string
+	 * @return the alter block
+	 */
 	private AlterBlock convertToBlock(String string) {
 	    String[] data = string.split(":");
 		Location location = new Location(Bukkit.getWorld(data[0]), Float.parseFloat(data[1]), Float.parseFloat(data[2]), Float.parseFloat(data[3]));//World x y z

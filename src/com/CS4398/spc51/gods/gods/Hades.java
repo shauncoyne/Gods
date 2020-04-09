@@ -1,4 +1,10 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.gods;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -7,12 +13,14 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
 import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.Reward;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Hades. Put his info here
  */
@@ -43,7 +51,9 @@ public class Hades extends God{
 		
 	}
 	
+
 	public void reward(int previousBP, int currentBP, Believer believer)
+
 	{
 		switch(currentBP)
 		{
@@ -128,6 +138,26 @@ public class Hades extends God{
 			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
 		}
 		
+	}
+
+	@Override
+	public Collection<? extends Powerup> getPowerUps(int rank) {
+
+		ArrayList<PowerUp>[]thing = new;
+		ArrayList<PowerUp>();
+		
+		
+		switch(rank)
+		{
+		case 1:
+			break;
+			default break;
+		}
+		return thing;
+		// TODO Auto-generated method stub
+		//return null;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
