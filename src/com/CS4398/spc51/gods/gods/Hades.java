@@ -143,10 +143,9 @@ public class Hades extends God{
 	@Override
 	public Collection<? extends Powerup> getPowerUps(int rank) {
 
-		ArrayList<PowerUp>[]thing = new;
-		ArrayList<PowerUp>();
+		ArrayList<Powerup>thing = new ArrayList<Powerup>();
 		
-		
+	
 		switch(rank)
 		{
 		case 1:
