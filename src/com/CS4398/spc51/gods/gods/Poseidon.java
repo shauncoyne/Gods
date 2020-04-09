@@ -148,13 +148,13 @@ public class Poseidon extends God{
 		{
 		case 1:
 			break;
-			default break;
+			default: break;
 		}
 		return thing;
 		// TODO Auto-generated method stub
 		//return null;
 		// TODO Auto-generated method stub
-		return null;
+		//return null;
 	}
 
 

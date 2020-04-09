@@ -221,7 +221,7 @@ public class Zeus extends God{
 		{
 		case 1:
 			break;
-			default break;
+			default: break;
 		}
 		return thing;
 		// TODO Auto-generated method stub
