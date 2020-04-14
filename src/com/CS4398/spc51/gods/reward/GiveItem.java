@@ -1,6 +1,3 @@
-/*
- * 
- */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.Material;
@@ -9,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Gods;
 
-// TODO: Auto-generated Javadoc
 /**
  * @author Shaun Coyne (spc51)
  * The Class GiveItem.

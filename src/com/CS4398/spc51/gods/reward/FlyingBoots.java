@@ -1,31 +1,30 @@
-/*
- * 
- */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Gods;
 
-// TODO: Auto-generated Javadoc
-/** 
- * The Class Flyer.
+/**
+ * The Class FlyingBoots.
  */
-public class Flyer extends Reward {
-
+public class FlyingBoots extends EnchantedBoots {
+	
 	/**
-	 * Instantiates a new flying reward.
+	 * Instantiates new enchanted diamond boots.
+	 * The enchantment is the ability to fly.
 	 *
 	 * @param player the player
 	 * @param message the message
-	 * 
+	 * @param item the item
 	 */
-	public Flyer(Player player, String message) {
-		super(player, message);
+	public FlyingBoots(Player player, String message, ItemStack item) {
+		super(player, message, item);
+		execute();
 	}
 	
 	/**
-	 * Execute the flying reward.
+	 * Execute flying ability.
 	 *
 	 * @return true, if successful
 	 * 
