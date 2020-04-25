@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
@@ -27,7 +28,7 @@ import com.CS4398.spc51.gods.reward.Reward;
 public class Poseidon extends God{
 
 	/**
-	 * Instantiates a new zeus.
+	 * Instantiates a new poseidon.
 	 */
 	public Poseidon() {
 		super("Poseidon", "Greek");
@@ -44,7 +45,7 @@ public class Poseidon extends God{
 		switch (e.getEventName()) 
 		{
         case "EntityDamageByEntityEvent":  
-        		playerDamagedEntity(believer, (EntityDamageByEntityEvent) e);
+        		playerKilledEntity(believer, (EntityDeathEvent) e);
                  break;
         //case "VehicleCreateEvent" :
         default:
@@ -105,13 +106,18 @@ public class Poseidon extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void playerDamagedEntity(Believer believer, EntityDamageByEntityEvent e) {
-		//I can't think of a good way to make a switch statement here.
-		//you could investigate this if you like
-		if (e.getEntityType() == EntityType.SHEEP) {
-			sheepDamaged(believer, e);
-		}
+	private void playerKilledEntity(Believer believer, EntityDeathEvent e) 
+	{
+		switch(e.getEntityType())
+		{
+		case SHEEP : 
+			sheepKilled(believer, e);
+		    break;
 		
+//		 
+		default:
+			break;
+		}
 	}
 
 	/**
@@ -120,7 +126,7 @@ public class Poseidon extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void sheepDamaged(Believer believer, EntityDamageByEntityEvent e) {
+	private void sheepKilled(Believer believer, EntityDeathEvent e) {
 		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
 		
 		//only take action if damage resulted in death

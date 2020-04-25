@@ -17,11 +17,15 @@ import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Powerup;
+import com.CS4398.spc51.gods.punishment.Explode;
+import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
 import com.CS4398.spc51.gods.reward.LightningAttack;
+import com.CS4398.spc51.gods.reward.EnchantedBoots;
 import com.CS4398.spc51.gods.reward.Reward;
+import org.bukkit.inventory.ItemStack;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -86,7 +90,7 @@ public class Zeus extends God{
 		case 69: 	Reward lightning = new LightningAttack(believer.getPlayer(), "You now behold my power. Smite them all!");
 					lightning.execute();
 					break;
-		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
+		case 70: //Reward boots = new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", BOOTS);
 				//boots.execute();
 				break;
 		case 80: //Reward chestplate - new EnchantedChestplate(believer.getPlayer(), "Be safe, young one.", chestPlate, LOOT_BONUS_MOBS);
@@ -116,8 +120,15 @@ public class Zeus extends God{
 			sheepKilled(believer, e);
 		    break;
 		
-//		  case COW : cowDamaged(believer, e); break; case HORSE :
-//		  horseDamaged(believer, e); break; case CREEPER : creeperDamaged(believer,e);
+		  case COW : 
+			  cowDamaged(believer, e); 
+			  break; 
+		  case HORSE :
+			  horseDamaged(believer, e); 
+			  break; 
+		  case CREEPER : 
+			  creeperDamaged(believer,e);
+		  	  break;
 //		 
 		default:
 			break;
@@ -134,16 +145,10 @@ public class Zeus extends God{
 	 */
 	private void sheepKilled(Believer believer, EntityDeathEvent e) 
 	{
-		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
-		
-		//only take action if damage resulted in death
 
-		believer.increaseBeliefPower(believer.getGod(), 1);
-		ItemStack item = new ItemStack(Material.BAKED_POTATO);
-		Reward reward = new GiveItem(believer.getPlayer(), "Thank you for providing me with more sheep in my little sheep heaven!", item);
-		reward.execute();
-		
-		
+		believer.decreaseBeliefPower(believer.getGod(), 1);
+		Punishment punish = new Explode(believer.getPlayer(), "How dare you!");
+		punish.execute();
 		
 	}
 	
@@ -153,7 +158,7 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void cowDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	private void cowDamaged(Believer believer, EntityDeathEvent e) 
 	{
 		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
 		
@@ -175,7 +180,7 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void horseDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	private void horseDamaged(Believer believer, EntityDeathEvent e) 
 	{
 		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
 		
@@ -198,7 +203,7 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void creeperDamaged(Believer believer, EntityDamageByEntityEvent e) 
+	private void creeperDamaged(Believer believer, EntityDeathEvent e) 
 	{
 		if (e.getEntity().isDead()) 
 		{
