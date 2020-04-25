@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -18,14 +16,15 @@ import org.bukkit.inventory.ItemStack;
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.punishment.Explode;
+import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
+import com.CS4398.spc51.gods.punishment.TeleportPunishment;
 import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
 import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.EnchantedBoots;
 import com.CS4398.spc51.gods.reward.Reward;
-import org.bukkit.inventory.ItemStack;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -81,14 +80,12 @@ public class Zeus extends God{
 		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
 				//leggings.execute();
 				break;
-		case 50: Reward invisible = new Invisibility(believer.getPlayer(), "You have been good to me and my purpose");
-				invisible.execute();
+		case 50: 
 				break;
 		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
 				//helmet.execute();
 				break;
-		case 69: 	Reward lightning = new LightningAttack(believer.getPlayer(), "You now behold my power. Smite them all!");
-					lightning.execute();
+		case 69: 	
 					break;
 		case 70: //Reward boots = new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", BOOTS);
 				//boots.execute();
@@ -99,15 +96,14 @@ public class Zeus extends God{
 		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
 					//sword.execute();
 					break;
-		case 100:	Reward flyer = new Flyer(believer.getPlayer(), "Fly, my son. See the world as your creator intended.");
-					flyer.execute();
+		case 100:
 					break;
 			default: break;
 		}
 	}
 
 	/**
-	 * Player damaged entity.
+	 * Player Killed entity.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
@@ -121,13 +117,13 @@ public class Zeus extends God{
 		    break;
 		
 		  case COW : 
-			  cowDamaged(believer, e); 
+			  cowKilled(believer, e); 
 			  break; 
 		  case HORSE :
-			  horseDamaged(believer, e); 
+			  horseKilled(believer, e); 
 			  break; 
 		  case CREEPER : 
-			  creeperDamaged(believer,e);
+			  creeperKilled(believer,e);
 		  	  break;
 //		 
 		default:
@@ -138,7 +134,7 @@ public class Zeus extends God{
 	//private void playerDied(Believer beliver, PlayerDeathEvent e)
 
 	/**
-	 * Sheep damaged.
+	 * Sheep Killed.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
@@ -147,63 +143,56 @@ public class Zeus extends God{
 	{
 
 		believer.decreaseBeliefPower(believer.getGod(), 1);
-		Punishment punish = new Explode(believer.getPlayer(), "How dare you!");
+		Punishment punish = new TeleportPunishment(believer.getPlayer(), "I never eally liked sheep....but I also don't like you right now.");
 		punish.execute();
 		
 	}
 	
 	/**
-	 * Cow damaged.
+	 * Cow Killed.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void cowDamaged(Believer believer, EntityDeathEvent e) 
+	private void cowKilled(Believer believer, EntityDeathEvent e) 
 	{
-		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
-		
-		//only take action if damage resulted in death
 		if (e.getEntity().isDead()) 
 		{
 			believer.increaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.EGG);
-			Reward reward = new GiveItem(believer.getPlayer(), "I really do love it when you kill cows.", item);
-			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
+			Reward reward = new GiveItem(believer.getPlayer(), "Cows are a sutible means of gaining nutrients when they are killed and harvested. I approve....for now", item);
+			reward.execute();
 		}
 		
 		
 	}
 	
 	/**
-	 * Horse damaged.
+	 * Horse Killed.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void horseDamaged(Believer believer, EntityDeathEvent e) 
+	private void horseKilled(Believer believer, EntityDeathEvent e) 
 	{
-		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
-		
-		//only take action if damage resulted in death
 		if (e.getEntity().isDead()) 
 		{
-			believer.decreaseBeliefPower(believer.getGod(), 1);
-			//ItemStack item = new ItemStack(Material.DIRT);
-			//Punishment punishment = new GiveItem(believer.getPlayer(), "I have been angered by your actions. How dare you kill my little pet! My friend. My brother.", item);
-			//punishment.execute();
-			//removed for errors
+			believer.increaseBeliefPower(believer.getGod(), 2);
+			ItemStack item = new ItemStack(Material.EGG);
+			Reward reward = new GiveItem(believer.getPlayer(), "You have killed one of my brother's dastardly creations...I approve.", item);
+			reward.execute();
 			
 		}
 		
 	}
 	
 	/**
-	 * Creeper damaged.
+	 * Creeper Killed.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void creeperDamaged(Believer believer, EntityDeathEvent e) 
+	private void creeperKilled(Believer believer, EntityDeathEvent e) 
 	{
 		if (e.getEntity().isDead()) 
 		{

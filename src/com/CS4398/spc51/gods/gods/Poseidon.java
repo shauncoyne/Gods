@@ -15,6 +15,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Powerup;
+import com.CS4398.spc51.gods.punishment.InfiniteFire;
+import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
@@ -75,15 +77,12 @@ public class Poseidon extends God{
 		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
 				//leggings.execute();
 				break;
-		case 50: Reward invisible = new Invisibility(believer.getPlayer(), "You have been good to me and my purpose");
-				invisible.execute();
+		case 50: 
 				break;
 		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
 				//helmet.execute();
 				break;
-		case 69: 	Reward lightning = new LightningAttack(believer.getPlayer(), "You now behold my power. Smite them all!");
-					lightning.execute();
-					break;
+		case 69: 	
 		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
 				//boots.execute();
 				break;
@@ -93,8 +92,7 @@ public class Poseidon extends God{
 		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
 					//sword.execute();
 					break;
-		case 100:	Reward flyer = new Flyer(believer.getPlayer(), "Fly, my son. See the world as your creator intended.");
-					flyer.execute();
+		case 100:	
 					break;
 			default: break;
 		}
@@ -113,7 +111,9 @@ public class Poseidon extends God{
 		case SHEEP : 
 			sheepKilled(believer, e);
 		    break;
-		
+		case HORSE :
+			  horseKilled(believer, e); 
+			  break; 
 //		 
 		default:
 			break;
@@ -140,6 +140,24 @@ public class Poseidon extends God{
 			ItemStack item = new ItemStack(Material.BAKED_POTATO);
 			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
 			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
+		}
+		
+	}
+	
+	/**
+	 * Horse Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void horseKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 1);
+			Punishment punish = new InfiniteFire(believer.getPlayer(), "How dare you! You have committed an atrocity! Now you must pay!!");
+			punish.execute();
+			
 		}
 		
 	}

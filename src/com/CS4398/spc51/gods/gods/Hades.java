@@ -73,14 +73,12 @@ public class Hades extends God{
 		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
 				//leggings.execute();
 				break;
-		case 50: Reward invisible = new Invisibility(believer.getPlayer(), "You have been good to me and my purpose");
-				invisible.execute();
+		case 50: 
 				break;
 		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
 				//helmet.execute();
 				break;
-		case 69: 	Reward lightning = new LightningAttack(believer.getPlayer(), "You now behold my power. Smite them all!");
-					lightning.execute();
+		case 69: 	
 					break;
 		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
 				//boots.execute();
@@ -91,8 +89,7 @@ public class Hades extends God{
 		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
 					//sword.execute();
 					break;
-		case 100:	Reward flyer = new Flyer(believer.getPlayer(), "Fly, my son. See the world as your creator intended.");
-					flyer.execute();
+		case 100:	
 					break;
 			default: break;
 		}
