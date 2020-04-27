@@ -76,6 +76,7 @@ public class ActionListener implements Listener{
      	@EventHandler
 	     public void onPlayerJoin(PlayerJoinEvent e){
 	    	 Believer.loadBeliever(e.getPlayer());
+	    	 e.getPlayer().sendMessage("Welcome Back!");
 	     }
 	     
 	     
