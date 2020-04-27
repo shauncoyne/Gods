@@ -7,9 +7,9 @@ import com.CS4398.spc51.gods.Believer;
 
 public class Heal extends Powerup implements Serializable{
 
-	/**
-	 * 
-	 */
+
+	private static final long serialVersionUID = 2480230018181837378L;
+
 	private double increaseAmount;
 	
 
