@@ -1,11 +1,8 @@
-/*
- * 
- */
 package com.CS4398.spc51.gods.reward;
 
 import org.bukkit.entity.Player;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * @author Shaun Coyne (spc51)
  * The Class Reward.
