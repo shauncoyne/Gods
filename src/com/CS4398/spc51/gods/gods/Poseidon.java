@@ -138,7 +138,7 @@ public class Poseidon extends God{
 			
 			believer.increaseBeliefPower(believer.getGod(), 1);
 			ItemStack item = new ItemStack(Material.BAKED_POTATO);
-			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
+			Reward reward = new GiveItem(believer.getPlayer(), "I, Poseidon, accept your sacrafice", item);
 			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
 		}
 		
