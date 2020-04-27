@@ -50,6 +50,10 @@ public class CommandManager implements CommandExecutor{
 					believer.changeGod(args[1]);
 					return true;
 				}
+				if (args[0].equalsIgnoreCase("powerup")){
+					believer.usePowerup(args[1]);
+					return true;
+				}
 			}
 			if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("info")) {

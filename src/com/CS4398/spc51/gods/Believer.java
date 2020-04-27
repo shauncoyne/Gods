@@ -597,4 +597,13 @@ public class Believer implements Listener{
 		this.timerExpired = timerExpired;
 	}
 
+	public void usePowerup(String name) {
+		for (Powerup p : powerupList) {
+			if (p.getName().equalsIgnoreCase(name)) {
+				p.execute(this);
+			}
+		}
+		
+	}
+
 }
