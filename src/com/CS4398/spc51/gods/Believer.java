@@ -363,10 +363,8 @@ public class Believer implements Listener{
 		}
 		
 		if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
-			event.getPlayer().sendMessage("Believer 356");
 
 			if (buildingAlter) {
-				event.getPlayer().sendMessage("Believer 359");
 				if (timerExpired) {
 					timerExpired = false;
 					TimerThread timerThread = new TimerThread(this);
@@ -395,10 +393,8 @@ public class Believer implements Listener{
 		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))
 		{
 			if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
-				event.getPlayer().sendMessage("Believer 356");
 
 				if (buildingAlter) {
-					event.getPlayer().sendMessage("Believer 359");
 					if (timerExpired) {
 						timerExpired = false;
 						TimerThread timerThread = new TimerThread(this);
@@ -446,7 +442,6 @@ public class Believer implements Listener{
 			 * Run.
 			 */
 			public void run(){
-				believer.getPlayer().sendMessage("Believer 399");
 				AlterManager.checkForAlterCreation(block, believer);
 		    }
 			

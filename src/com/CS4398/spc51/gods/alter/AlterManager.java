@@ -287,12 +287,10 @@ public class AlterManager implements Listener{
 	 */
 	public static void checkForAlterCreation(Block block, Believer believer) {
 		if (simpleAlter) {
-			believer.getPlayer().sendMessage("AlterManager 286");
 			Location origin = null;
 			String name = "null";
 			int index = 0;
 			if(block.getType().equals(Material.WALL_SIGN) || block.getType().equals(Material.LEGACY_SIGN_POST) || block.getType().equals(Material.SIGN)){
-				believer.getPlayer().sendMessage("AlterManager 291");
  
 				Sign sign = (Sign) block.getState();
 		         String[] ln = sign.getLines();
