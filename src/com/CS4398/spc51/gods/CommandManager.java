@@ -61,7 +61,11 @@ public class CommandManager implements CommandExecutor{
 					sender.sendMessage("Your current belief power is: " + belief_power);
 					sender.sendMessage("Your current rank is: " + rank);
 				}
+				else if(args[0].equalsIgnoreCase("template")) {
+					believer.startListeningForAlterTemplate();
+				}
 				else if(args[0].equalsIgnoreCase("build")) {
+					believer.getPlayer().sendMessage("COMMAND MANGER 69");
 					believer.startListeningForAlter();
 				}
 				else if(args[0].equalsIgnoreCase("pray")) {

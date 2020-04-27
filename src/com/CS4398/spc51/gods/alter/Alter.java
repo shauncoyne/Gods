@@ -25,11 +25,6 @@ public class Alter {
 	/** The creater UUID. */
 	private UUID createrUUID;
 	
-	/** The random phrases the god may say. */
-	private HashMap phrases; 
-	
-	/** The responses specific responses the god says on certain interactions. */
-	private HashMap responses;
 
 	/** The alter blocks. */
 	private ArrayList<ArrayList<AlterBlock>> alterBlocks; 
@@ -55,7 +50,24 @@ public class Alter {
 	 * @return true, if successful
 	 */
 	public boolean near(Location location) {
-		// TODO Auto-generated method stub
+		for (ArrayList<AlterBlock> list: alterBlocks) {
+			for (AlterBlock b: list) {
+				if(location.distanceSquared(b.getLocation()) < 100) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean hit(Location location) {
+		for (ArrayList<AlterBlock> list: alterBlocks) {
+			for (AlterBlock b: list) {
+				if(location.equals(location)) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 

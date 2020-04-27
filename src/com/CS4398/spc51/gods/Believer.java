@@ -19,7 +19,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 import com.CS4398.spc51.gods.alter.AlterGenerator;
 import com.CS4398.spc51.gods.alter.AlterManager;
@@ -46,7 +48,7 @@ import scala.reflect.io.Directory;
 public class Believer implements Listener{
 	
 	/** The alter building timeout. */
-	public static int alterBuildingTimeout = 20; //number of seconds alter detection will be on for this player
+	public static int alterBuildingTimeout = 90; //number of seconds alter detection will be on for this player
 	
 	/** The believer list. */
 	public static ArrayList<Believer> believerList = new ArrayList<Believer>();
@@ -61,9 +63,22 @@ public class Believer implements Listener{
 	/**  This is the rank of the player. */
 	private int rank;
 	
+	private boolean buildingAlter = true;
+	
+	private boolean timerExpired = true;
+	
+
 	
 	/** this is true when the player requests to be in alter building mode. */
 	
+	public boolean isBuildingAlter() {
+		return buildingAlter;
+	}
+
+	public void setBuildingAlter(boolean buildingAlter) {
+		this.buildingAlter = buildingAlter;
+	}
+
 	/** The player UUID. */
 	private UUID playerUUID;
 	
@@ -311,13 +326,27 @@ public class Believer implements Listener{
 	 */
 	public void startListeningForAlter() {
 		
+		this.getPlayer().sendMessage("Beleiver 324");
 
 		Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
 		
 		
 	}
+	
+	/**
+	 * Start listening for alter template.
+	 */
+	public void startListeningForAlterTemplate() {
+		
+		buildingAlter = false;
+		Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
+		
+		
+	}
 	public static void stopListeningForAlter(Believer believer) {
-	       HandlerList.unregisterAll(believer);
+		believer.setBuildingAlter(true); //return to default state. 
+		believer.setTimerExpired(true);
+	    HandlerList.unregisterAll(believer);
 
 	}
 	/**
@@ -328,15 +357,67 @@ public class Believer implements Listener{
 	 */
 	@EventHandler
     public void onBlockPlaced(BlockPlaceEvent event){
+		
+		if (true) {
+			return; // this is done because currently we use right click for signs. In the future this will be re-enabled
+		}
+		
 		if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
-			//AlterManager.checkForAlterCreation(event.getBlock());
+
+			if (buildingAlter) {
+				if (timerExpired) {
+					timerExpired = false;
+					TimerThread timerThread = new TimerThread(this);
+					timerThread.run();
+
+				}
+				AlterThread alterThread = new AlterThread(this, event.getBlock());
+				alterThread.run();
+			}
+			else {
 			event.getPlayer().sendMessage("Block placed!");
-			AlterThread alterThread = new AlterThread(this, event.getBlock());
-			TimerThread timerThread = new TimerThread(this, System.nanoTime());
-			timerThread.run();
-			alterThread.run();
+			if (timerExpired) {
+				timerExpired = false;
+				TimerThread timerThread = new TimerThread(this);
+				timerThread.run();
+
+			}
+			AlterTemplateThread alterTemplateThread = new AlterTemplateThread(this, event.getBlock());
+			alterTemplateThread.run();
+			}
 		}
     }
+	@EventHandler
+	public void OnPlayerInteract(PlayerInteractEvent event)
+	{	
+		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))
+		{
+			if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
+
+				if (buildingAlter) {
+					if (timerExpired) {
+						timerExpired = false;
+						TimerThread timerThread = new TimerThread(this);
+						timerThread.run();
+
+					}
+					AlterThread alterThread = new AlterThread(this, event.getClickedBlock());
+					alterThread.run();
+				}
+				else {
+				event.getPlayer().sendMessage("Block placed!");
+				if (timerExpired) {
+					timerExpired = false;
+					TimerThread timerThread = new TimerThread(this);
+					timerThread.run();
+
+				}
+				AlterTemplateThread alterTemplateThread = new AlterTemplateThread(this, event.getClickedBlock());
+				alterTemplateThread.run();
+				}
+			}
+		}
+	}
 
 
  	private class AlterThread implements Runnable{
@@ -361,18 +442,16 @@ public class Believer implements Listener{
 			 * Run.
 			 */
 			public void run(){
-				//AlterManager.checkForAlterCreation(event.getBlock());
-				AlterGenerator.generateAlter(block);
+				AlterManager.checkForAlterCreation(block, believer);
 		    }
 			
 		  }
- 	private class TimerThread implements Runnable{
+ 	private class AlterTemplateThread implements Runnable{
 	 	
  		/** The believer. */
  		Believer believer;
  		
- 		Long startTime;
- 		Long maxTime;
+ 		Block block;
 
 
 	    /**
@@ -380,19 +459,49 @@ public class Believer implements Listener{
 		 *
 		 * @param believer the believer
 		 */
-		public TimerThread(Believer believer, Long startTime) {
+		public AlterTemplateThread(Believer believer, Block block) {
 	    	this.believer = believer;
-	    	this.startTime = startTime;
+	    	this.block = block;
 	}
 		
 		/**
 		 * Run.
 		 */
 		public void run(){
-			while(System.nanoTime() - startTime < Believer.alterBuildingTimeout) {
-				//do nothing
+			AlterGenerator.generateAlter(block);
+	    }
+		
+	  }
+ 	private class TimerThread implements Runnable{
+	 	
+ 		/** The believer. */
+ 		Believer believer;
+ 		
+
+
+	    /**
+		 * Instantiates a new block listener.
+		 *
+		 * @param believer the believer
+		 */
+		public TimerThread(Believer believer) {
+	    	this.believer = believer;
+
+	}
+		
+		/**
+		 * Run.
+		 */
+		public void run(){
+			try {
+				Thread.sleep(alterBuildingTimeout * 1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			Believer.stopListeningForAlter(believer);
+			believer.getPlayer().sendMessage("Timer Expired");
+
 	    }
 		
 	  }
@@ -478,6 +587,14 @@ public class Believer implements Listener{
 			}
 		}
 		return null;
+	}
+
+	public boolean isTimerExpired() {
+		return timerExpired;
+	}
+
+	public void setTimerExpired(boolean timerExpired) {
+		this.timerExpired = timerExpired;
 	}
 
 }

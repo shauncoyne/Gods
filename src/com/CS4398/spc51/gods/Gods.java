@@ -71,5 +71,6 @@ public class Gods extends JavaPlugin{
         //TODO Need to unregister the listeners
         
         Believer.saveAll();
+        AlterManager.saveAll();
     }
 }
