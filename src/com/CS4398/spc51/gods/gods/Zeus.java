@@ -12,6 +12,9 @@ import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
+import com.CS4398.spc51.gods.punishment.Death;
+import com.CS4398.spc51.gods.punishment.Explode;
+import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.punishment.TeleportPunishment;
 import com.CS4398.spc51.gods.reward.EnchantedBoots;
@@ -136,9 +139,18 @@ public class Zeus extends God{
 	{
 		switch(e.getEntityType())
 		{
-		case SHEEP : 
-			sheepKilled(believer, e);
+		case COW : 
+			cowKilled(believer, e);
 		    break;
+		case VILLAGER : 
+			villagerKilled(believer, e);
+		    break;
+	 
+		case ENDER_DRAGON : 
+			enderdragonKilled(believer, e);
+		    break;
+	 
+	 
 	 
 		default:
 			break;
@@ -148,16 +160,46 @@ public class Zeus extends God{
 	//private void playerDied(Believer beliver, PlayerDeathEvent e)
 
 	/**
-	 * Sheep Killed.
+	 * Cow Killed.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void sheepKilled(Believer believer, EntityDeathEvent e) 
+	private void cowKilled(Believer believer, EntityDeathEvent e) 
 	{
 
 		believer.decreaseBeliefPower(believer.getGod(), 1);
-		Punishment punish = new TeleportPunishment(believer.getPlayer(), "I never eally liked sheep....but I also don't like you right now.");
+		Punishment punish = new Explode(believer.getPlayer(), "There is but one I ask you do not kill, for it is sacred to me. How dare you go against that.");
+		punish.execute();
+		
+	}
+	
+	/**
+	 * Villager Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void villagerKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.decreaseBeliefPower(believer.getGod(), 1);
+		Punishment punish = new Death(believer.getPlayer(), "The villagers were made in my image. Do not disrespect my image!");
+		punish.execute();
+		
+	}
+	
+	/**
+	 * Ender Dragon Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void enderdragonKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.decreaseBeliefPower(believer.getGod(), 1);
+		Punishment punish = new InfiniteFire(believer.getPlayer(), "How dre you slay the most powerful beast. BE ASHAMED.");
 		punish.execute();
 		
 	}
