@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.CS4398.spc51.gods.alter;
 /*
  * This class is used for debugging, design, and research purposes. It is created such that someone can create a floating
@@ -15,8 +18,17 @@ import org.bukkit.block.Block;
 
 import com.CS4398.spc51.gods.Gods;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AlterGenerator.
+ */
 public class AlterGenerator {
 
+/**
+ * Generate alter.
+ *
+ * @param block the block
+ */
 public static void generateAlter(Block block) {
 		
 		//try {

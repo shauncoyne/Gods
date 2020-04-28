@@ -5,6 +5,8 @@ package com.CS4398.spc51.gods.alter;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class NoOriginException.
+ *
  * @author Shaun Coyne (spc51)
  * The Class NoOriginException.
  */

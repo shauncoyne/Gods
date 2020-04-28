@@ -9,6 +9,8 @@ import com.CS4398.spc51.gods.gods.God;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class Configurator.
+ *
  * @author Shaun Coyne (spc51)
  * The Class Configurator.
  */

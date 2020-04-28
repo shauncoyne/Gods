@@ -40,6 +40,8 @@ import com.google.gson.JsonIOException;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class AlterManager.
+ *
  * @author Shaun Coyne (spc51)
  * The Class AlterManager. Listens for actions on blocks to see if the Alters have been created or destroyed. If this method is inefficent, we could periodically check the alters to see if they are intact.
  */
@@ -61,6 +63,7 @@ public class AlterManager implements Listener{
 	private static Material originBlockMaterial= Material.EMERALD_BLOCK;
 
 	
+	/** The simple alter. */
 	public static boolean simpleAlter = true;
 	
 	/**
@@ -73,6 +76,9 @@ public class AlterManager implements Listener{
 	}
 	
 	
+	/**
+	 * Load.
+	 */
 	private void load() {
 		try {
 
@@ -114,8 +120,14 @@ public class AlterManager implements Listener{
 		
 	}
 	
+	/**
+	 * Alter almost damaged.
+	 *
+	 * @param alter the alter
+	 * @param player the player
+	 */
 	private void alterAlmostDamaged(Alter alter, Player player) {
-		for(Believer b : alter.getGod().getBelievers()) {
+		for(Believer b : (ArrayList<Believer>) alter.getGod().getBelievers()) {
 			if(Bukkit.getPlayer(b.getPlayerUUID()) != null) {
 				b.getPlayer().sendMessage("Your God's Alter is being attacked by " + player.getCustomName() +"!");
 			}
@@ -124,11 +136,23 @@ public class AlterManager implements Listener{
 	}
 
 
+	/**
+	 * Alter damaged.
+	 *
+	 * @param alter the alter
+	 * @param player the player
+	 */
 	private void alterDamaged(Alter alter, Player player) {
+		try {
 		alterList.remove(alter);
-		for(Believer b : alter.getGod().getBelievers()) {
+		}
+		catch(Exception e) {
+			System.out.println("Couldn't find alter. List size: "+ alterList.size());
+		}
+		for(Believer b : (ArrayList<Believer>) alter.getGod().getBelievers()) {
 			if(Bukkit.getPlayer(b.getPlayerUUID()) != null) {
 				b.getPlayer().sendMessage("Your God's Alter has been destroyed by " + player.getCustomName() +"!");
+				b.changeGod("atheist");
 			}
 		}
 		
@@ -253,21 +277,26 @@ public class AlterManager implements Listener{
 	
 	/**
 	 * Creates the alter.
-	 * @param origin 
-	 * @param index 
-	 * @param believer 
+	 *
+	 * @param believer the believer
+	 * @param index the index
+	 * @param origin the origin
 	 */
 	public static void createAlter(Believer believer, int index, Location origin) {
-		believer.getPlayer().sendMessage("AlterManager 258");
+		believer.getPlayer().sendMessage("found origin");
 		ArrayList<AlterBlock> list = new ArrayList<AlterBlock>();
 		AlterBlock block = new AlterBlock(origin, Material.EMERALD_BLOCK);
 		list.add(block);
 		ArrayList<ArrayList<AlterBlock>> super_list = new ArrayList<ArrayList<AlterBlock>>();
 		super_list.add(list);
 		Alter alter = new Alter(believer.getPlayerUUID(), Gods.godsArray[index], super_list);
+		believer.getPlayer().sendMessage("Created Alter");
+
 		alterList.add(alter);
+		believer.getPlayer().sendMessage("Added alter to list");
+
 		believer.getPlayer().sendMessage("You have created an Alter for the god: " + Gods.godsArray[index].getName());
-		believer.changeGod(Gods.godsArray[index].getName());
+		//believer.changeGod(Gods.godsArray[index].getName());
 		believer.getPlayer().sendMessage("You now worship me, " + Gods.godsArray[index].getName() + ", the most gracious God. Protect my alter at all costs.");
 
 	}
@@ -284,6 +313,7 @@ public class AlterManager implements Listener{
 	 * For efficency, we should check if the player is in alter building mode.
 	 *
 	 * @param block the block
+	 * @param believer the believer
 	 */
 	public static void checkForAlterCreation(Block block, Believer believer) {
 		if (simpleAlter) {
@@ -291,7 +321,8 @@ public class AlterManager implements Listener{
 			String name = "null";
 			int index = 0;
 			if(block.getType().equals(Material.WALL_SIGN) || block.getType().equals(Material.LEGACY_SIGN_POST) || block.getType().equals(Material.SIGN)){
- 
+				believer.getPlayer().sendMessage("Found the sign, looking for alter!");
+
 				Sign sign = (Sign) block.getState();
 		         String[] ln = sign.getLines();
 		         name = checkForGod(ln);
@@ -309,6 +340,8 @@ public class AlterManager implements Listener{
 
 			}
 			try {
+				believer.getPlayer().sendMessage("getting origin");
+
 				origin = getOrigin(block);
 			} catch (NoOriginException e) {
 				believer.getPlayer().sendMessage("No origin");
@@ -403,6 +436,12 @@ public class AlterManager implements Listener{
 		}
 	}
 	
+	/**
+	 * Check for god.
+	 *
+	 * @param ln the ln
+	 * @return the string
+	 */
 	private static String checkForGod(String[] ln) {
 		for (String s : ln) {
 			System.out.println(s);
@@ -417,6 +456,12 @@ public class AlterManager implements Listener{
 	}
 
 
+	/**
+	 * Checks if is exempted material.
+	 *
+	 * @param type the type
+	 * @return true, if is exempted material
+	 */
 	private static boolean isExemptedMaterial(Material type) {
 		if (type == Material.AIR) {
 			return true;
@@ -507,6 +552,9 @@ public class AlterManager implements Listener{
 	}
 
 
+	/**
+	 * Save all.
+	 */
 	public static void saveAll() {
 		try {
 	    	if(!Gods.gods.getDataFolder().exists()) {

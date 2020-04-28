@@ -29,6 +29,11 @@ public class Gods extends JavaPlugin{
 	/** The gods. */
 	public static Gods gods;
 	
+    public Gods()
+    {
+        super();
+    }
+	
 	protected Gods(JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file)
     {
         super(loader, description, dataFolder, file);

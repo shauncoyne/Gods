@@ -13,6 +13,8 @@ import com.CS4398.spc51.gods.alter.Alter;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class SacrificeEvent.
+ *
  * @author Shaun Coyne (spc51)
  * The Class SacrificeEvent.
  */

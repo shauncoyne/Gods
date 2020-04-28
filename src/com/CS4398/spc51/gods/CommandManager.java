@@ -10,9 +10,11 @@ import org.bukkit.entity.Player;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class CommandManager.
+ *
  * @author Shaun Coyne (spc51)
  * The Class CommandManager will listen for all commands and handle Gods
- * plugin commands. 
+ * plugin commands.
  */
 public class CommandManager implements CommandExecutor{
 	
@@ -69,7 +71,6 @@ public class CommandManager implements CommandExecutor{
 					believer.startListeningForAlterTemplate();
 				}
 				else if(args[0].equalsIgnoreCase("build")) {
-					believer.getPlayer().sendMessage("COMMAND MANGER 69");
 					believer.startListeningForAlter();
 				}
 				else if(args[0].equalsIgnoreCase("pray")) {

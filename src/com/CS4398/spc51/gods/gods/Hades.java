@@ -35,6 +35,9 @@ import com.CS4398.spc51.gods.reward.SwordOfSouls;
  * The Class Hades. Put his info here
  */
 public class Hades extends God{
+	
+	private static ArrayList<Believer> believers = new ArrayList<Believer>();
+
 
 	/**
 	 * Instantiates a new Hades.
@@ -389,6 +392,31 @@ public class Hades extends God{
 		}
 		return thing;
 
+	}
+	
+
+	/**
+	 * Gets the believers.
+	 *
+	 * @return the believers
+	 */
+	public ArrayList<Believer> getBelievers() {
+		return Hades.believers;
+	}
+	public static void addBeliever(Believer b) {
+		believers.add(b);
+	}
+	public static void removeBeliever(Believer b) {
+		believers.remove(b);
+	}
+
+	/**
+	 * Sets the believers.
+	 *
+	 * @param believers the new believers
+	 */
+	public static void setBelievers(ArrayList<Believer> believers) {
+		Hades.believers = believers;
 	}
 
 

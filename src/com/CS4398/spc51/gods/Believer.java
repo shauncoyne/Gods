@@ -25,7 +25,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 import com.CS4398.spc51.gods.alter.AlterGenerator;
 import com.CS4398.spc51.gods.alter.AlterManager;
+import com.CS4398.spc51.gods.gods.Atheist;
 import com.CS4398.spc51.gods.gods.God;
+import com.CS4398.spc51.gods.gods.Hades;
+import com.CS4398.spc51.gods.gods.Poseidon;
+import com.CS4398.spc51.gods.gods.Zeus;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -36,45 +40,53 @@ import scala.reflect.io.Directory;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class Believer.
+ *
  * @author Shaun Coyne (spc51)
  * The Class Believer. 
- * 					TODO this should have a rank, a powerup list,  and a beliefPower.
- * 					TODO on rank increase check to the god to see if we need to update powerup list
- * 					TODO on beliefPower increase check to seee if we need to increase rank
- * 					TODO on beliefPower increase, check god to see if we need to reward the player
- * 					TODO similar logic applies to decreases
- * 					TODO need to add save and load logic to player objects to save and load  them from a yaml
+ * This is where we store all the information about a player. This class handles logic for saving and loading from disk. Managing the powerups the player has. And is where the rest of the plugin interfaces with the player.
  */
 public class Believer implements Listener{
 	
-	/** The alter building timeout. */
-	public static int alterBuildingTimeout = 90; //number of seconds alter detection will be on for this player
+	/** The alter building timeout length. Controls how long the listener is registered. */
+	public static int alterBuildingTimeout = 30; //number of seconds alter detection will be on for this player
 	
-	/** The believer list. */
+	/** The believer list. This is a static list of all the believers who have been on the server since startup */
 	public static ArrayList<Believer> believerList = new ArrayList<Believer>();
 	
-	/** The powerup list. */
+	/** The powerup list. This is the list of all the powerups the believer has. */
 	private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
 	
 	/** The belief power. This is how much the player has
-	 * please their god */
+	 * pleased their god */
 	private float beliefPower;
 	
 	/**  This is the rank of the player. */
 	private int rank;
 	
+	/** The building alter. This is how we know if the player is building an alter or is saving a template. By default, the player is building an alter */
 	private boolean buildingAlter = true;
 	
+	/** The timer expired. This is how we keep track of the need to start a timer. Timer is started when the believer starts building after the "/gods build" or "/gods template" command is run*/
 	private boolean timerExpired = true;
 	
 
 	
-	/** this is true when the player requests to be in alter building mode. */
+	/**
+	 *  this is true when the player requests to be in alter building mode.
+	 *
+	 * @return true, if is building alter
+	 */
 	
 	public boolean isBuildingAlter() {
 		return buildingAlter;
 	}
 
+	/**
+	 * Sets the building alter.
+	 *
+	 * @param buildingAlter the new building alter
+	 */
 	public void setBuildingAlter(boolean buildingAlter) {
 		this.buildingAlter = buildingAlter;
 	}
@@ -82,10 +94,20 @@ public class Believer implements Listener{
 	/** The player UUID. */
 	private UUID playerUUID;
 	
+	/**
+	 * Gets the player UUID.
+	 *
+	 * @return the player UUID
+	 */
 	public UUID getPlayerUUID() {
 		return playerUUID;
 	}
 
+	/**
+	 * Sets the player UUID.
+	 *
+	 * @param playerUUID the new player UUID
+	 */
 	public void setPlayerUUID(UUID playerUUID) {
 		this.playerUUID = playerUUID;
 	}
@@ -130,6 +152,8 @@ public class Believer implements Listener{
 		this.playerUUID = player.getUniqueId();
 		this.setRank(rank);
 		god = Gods.godsArray[0].getName();
+		Atheist.addBeliever(this);
+
 
 	}
 	
@@ -142,6 +166,8 @@ public class Believer implements Listener{
 		beliefPower = 0f;
 		this.playerUUID = uniqueId;
 		god = Gods.godsArray[0].getName();
+		Atheist.addBeliever(this);
+
 	}
 
 	/**
@@ -168,6 +194,22 @@ public class Believer implements Listener{
 			System.out.println("Could not load user, are they new?");
 			Believer newBeliever = new Believer(uuid);
 			believerList.add(newBeliever);
+			switch (newBeliever.god) {
+			case "atheist":
+				Atheist.addBeliever(newBeliever);
+			case "Zues":
+				Zeus.addBeliever(newBeliever);
+				break;
+			case "Poseidon":
+				Poseidon.addBeliever(newBeliever);
+				break;
+			case "Hades":
+				Hades.addBeliever(newBeliever);
+				break;
+
+			default:
+				break;
+			}
 			//TODO LOG: A player has joined that is not a believer. They must be new! Adding them now.
 		}
 	}
@@ -188,6 +230,22 @@ public class Believer implements Listener{
 				System.out.println("ERROR: LOADED NULL FROM JSON");
 			}
 			believerList.add(believer);
+			switch (believer.god) {
+			case "atheist":
+				Atheist.addBeliever(believer);
+			case "Zues":
+				Zeus.addBeliever(believer);
+				break;
+			case "Poseidon":
+				Poseidon.addBeliever(believer);
+				break;
+			case "Hades":
+				Hades.addBeliever(believer);
+				break;
+
+			default:
+				break;
+			}
 			return true;
 		}
 		catch(Exception e) {
@@ -326,7 +384,6 @@ public class Believer implements Listener{
 	 */
 	public void startListeningForAlter() {
 		
-		this.getPlayer().sendMessage("Beleiver 324");
 
 		Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
 		
@@ -343,6 +400,12 @@ public class Believer implements Listener{
 		
 		
 	}
+	
+	/**
+	 * Stop listening for alter.
+	 *
+	 * @param believer the believer
+	 */
 	public static void stopListeningForAlter(Believer believer) {
 		believer.setBuildingAlter(true); //return to default state. 
 		believer.setTimerExpired(true);
@@ -387,6 +450,12 @@ public class Believer implements Listener{
 			}
 		}
     }
+	
+	/**
+	 * On player interact.
+	 *
+	 * @param event the event
+	 */
 	@EventHandler
 	public void OnPlayerInteract(PlayerInteractEvent event)
 	{	
@@ -420,18 +489,23 @@ public class Believer implements Listener{
 	}
 
 
- 	private class AlterThread implements Runnable{
+ 	/**
+	  * The Class AlterThread.
+	  */
+	 private class AlterThread implements Runnable{
 		 	
 	 		/** The believer. */
 	 		Believer believer;
 	 		
-	 		Block block;
+	 		/** The block. */
+		 	Block block;
 
 
 		    /**
     		 * Instantiates a new block listener.
     		 *
     		 * @param believer the believer
+    		 * @param block the block
     		 */
     		public AlterThread(Believer believer, Block block) {
 		    	this.believer = believer;
@@ -446,19 +520,25 @@ public class Believer implements Listener{
 		    }
 			
 		  }
- 	private class AlterTemplateThread implements Runnable{
+ 	
+	 /**
+	  * The Class AlterTemplateThread.
+	  */
+	 private class AlterTemplateThread implements Runnable{
 	 	
  		/** The believer. */
  		Believer believer;
  		
- 		Block block;
+ 		/** The block. */
+		 Block block;
 
 
 	    /**
-		 * Instantiates a new block listener.
-		 *
-		 * @param believer the believer
-		 */
+    	 * Instantiates a new block listener.
+    	 *
+    	 * @param believer the believer
+    	 * @param block the block
+    	 */
 		public AlterTemplateThread(Believer believer, Block block) {
 	    	this.believer = believer;
 	    	this.block = block;
@@ -472,7 +552,11 @@ public class Believer implements Listener{
 	    }
 		
 	  }
- 	private class TimerThread implements Runnable{
+ 	
+	 /**
+	  * The Class TimerThread.
+	  */
+	 private class TimerThread implements Runnable{
 	 	
  		/** The believer. */
  		Believer believer;
@@ -531,6 +615,22 @@ public class Believer implements Listener{
 		{
 			if (g.getName().equalsIgnoreCase(godName)) {
 				god = g.getName();
+				switch (god) {
+				case "atheist":
+					Atheist.addBeliever(this);
+				case "Zues":
+					Zeus.addBeliever(this);
+					break;
+				case "Poseidon":
+					Poseidon.addBeliever(this);
+					break;
+				case "Hades":
+					Hades.addBeliever(this);
+					break;
+
+				default:
+					break;
+				}
 			}
 		}
 		
@@ -561,16 +661,29 @@ public class Believer implements Listener{
 
 	}
 	
+	/**
+	 * Increase rank.
+	 */
 	public void increaseRank() {
 		rank++;
 		powerupList.addAll(getGod().getPowerUps(rank));
 		
 	}
+	
+	/**
+	 * Decrease rank.
+	 */
 	public void decreaseRank() {
 		powerupList.removeAll(getGod().getPowerUps(rank));
 		rank--;
 	}
 
+	/**
+	 * Checks for power.
+	 *
+	 * @param name the name
+	 * @return true, if successful
+	 */
 	public boolean hasPower(String name) {
 		for (Powerup power : powerupList) {
 			if (power.getName().equalsIgnoreCase(name)) {
@@ -580,6 +693,12 @@ public class Believer implements Listener{
 		return false;
 	}
 
+	/**
+	 * Gets the power.
+	 *
+	 * @param powerName the power name
+	 * @return the power
+	 */
 	public Powerup getPower(String powerName) {
 		for (Powerup power : powerupList) {
 			if (power.getName().equalsIgnoreCase(powerName)) {
@@ -589,14 +708,29 @@ public class Believer implements Listener{
 		return null;
 	}
 
+	/**
+	 * Checks if is timer expired.
+	 *
+	 * @return true, if is timer expired
+	 */
 	public boolean isTimerExpired() {
 		return timerExpired;
 	}
 
+	/**
+	 * Sets the timer expired.
+	 *
+	 * @param timerExpired the new timer expired
+	 */
 	public void setTimerExpired(boolean timerExpired) {
 		this.timerExpired = timerExpired;
 	}
 
+	/**
+	 * Use powerup.
+	 *
+	 * @param name the name
+	 */
 	public void usePowerup(String name) {
 		for (Powerup p : powerupList) {
 			if (p.getName().equalsIgnoreCase(name)) {

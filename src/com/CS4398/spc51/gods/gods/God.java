@@ -25,6 +25,8 @@ import com.CS4398.spc51.gods.powerup.Powerup;
  */
 
 /**
+ * The Class God.
+ *
  * @author Shaun Coyne (spc51)
  * The Class God.
  */
@@ -37,8 +39,7 @@ public abstract class God {
 	/** The religion. */
 	private String religion;
 	
-	/** The player believers. */
-	private ArrayList<Believer> believers;
+
 	
 	/** The player enemies. */
 	private ArrayList enemies;
@@ -67,6 +68,7 @@ public abstract class God {
 	 *
 	 * @param previousBP the previous BP
 	 * @param currentBP the current BP
+	 * @param believer the believer
 	 */
 	public abstract void reward(float previousBP, float currentBP, Believer believer);
 
@@ -88,15 +90,20 @@ public abstract class God {
 		this.name = name;
 	}
 
+	/**
+	 * Gets the power ups.
+	 *
+	 * @param rank the rank
+	 * @return the power ups
+	 */
 	public abstract Collection<? extends Powerup> getPowerUps(int rank);
 
-	public ArrayList<Believer> getBelievers() {
-		return believers;
-	}
+	public abstract Object getBelievers();
 
-	public void setBelievers(ArrayList<Believer> believers) {
-		this.believers = believers;
-	}
+
+	
+
+	
 	
 
 }

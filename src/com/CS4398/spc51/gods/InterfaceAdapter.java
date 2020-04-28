@@ -16,6 +16,8 @@ import com.google.gson.JsonSerializer;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class InterfaceAdapter.
+ *
  * @author Mauricio Silva Manrique
  * https://technology.finra.org/code/serialize-deserialize-interfaces-in-java.html
  * The Class InterfaceAdapter.

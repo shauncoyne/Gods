@@ -20,15 +20,25 @@ import com.CS4398.spc51.gods.gods.God;
 
 // TODO: Auto-generated Javadoc
 /**
- * @author Shaun Coyne (spc51)
- *
- * The listener interface for receiving action events.
+ * 
+ *  * The listener interface for receiving action events.
  * The class that is interested in processing an action
  * event relevant to Gods. It will identify the god it
  * needs to pass the event to, unless the believer is an
  * Atheist. At this point we pick a god at random to send
- * it to
+ * it to.
+ * 
+ * 
+ * The listener interface for receiving action events.
+ * The class that is interested in processing a action
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addActionListener<code> method. When
+ * the action event occurs, that object's appropriate
+ * method is invoked.
  *
+ * @author Shaun Coyne (spc51)
+ * 
  * @see ActionEvent
  */
 public class ActionListener implements Listener{
@@ -69,9 +79,10 @@ public class ActionListener implements Listener{
 			
 		
 	     /**
-     	 * On player join.
+     	 * On player join. When a play joins we need to load or create a believer object and add it to the believer list. 
+     	 * This method also welcomes the player back to the server
      	 *
-     	 * @param e the e
+     	 * @param e the player that joined
      	 */
      	@EventHandler
 	     public void onPlayerJoin(PlayerJoinEvent e){

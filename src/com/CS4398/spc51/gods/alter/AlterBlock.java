@@ -9,6 +9,8 @@ import org.bukkit.block.Block;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class AlterBlock.
+ *
  * @author Shaun Coyne (spc51)
  * The Class AlterBlock.
  */

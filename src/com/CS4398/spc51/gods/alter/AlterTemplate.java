@@ -16,6 +16,8 @@ import org.bukkit.block.Block;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class AlterTemplate.
+ *
  * @author Shaun Coyne (spc51)
  * The Class AlterTemplate contains the layout for alters. 
  * 

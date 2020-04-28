@@ -13,10 +13,14 @@ import com.CS4398.spc51.gods.powerup.Powerup;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class Atheist.
+ *
  * @author Shaun Coyne (spc51)
  * The Class Atheist.
  */
 public class Atheist extends God{
+	
+	private static ArrayList<Believer> believers = new ArrayList<Believer>();
 
 	/**
 	 * Instantiates a new atheist.
@@ -43,6 +47,7 @@ public class Atheist extends God{
 	 *
 	 * @param previousBP the previous BP
 	 * @param currentBP the current BP
+	 * @param believer the believer
 	 */
 	@Override
 	public void reward(float previousBP, float currentBP, Believer believer) {
@@ -50,6 +55,12 @@ public class Atheist extends God{
 		
 	}
 
+	/**
+	 * Gets the power ups.
+	 *
+	 * @param rank the rank
+	 * @return the power ups
+	 */
 	@Override
 	public Collection<? extends Powerup> getPowerUps(int rank) {
 		ArrayList<Powerup>thing = new ArrayList<Powerup>();
@@ -58,6 +69,30 @@ public class Atheist extends God{
 		return thing;
 		// TODO Auto-generated method stub
 		//return null;
+	}
+	
+	/**
+	 * Gets the believers.
+	 *
+	 * @return the believers
+	 */
+	public ArrayList<Believer> getBelievers() {
+		return Atheist.believers;
+	}
+	public static void addBeliever(Believer b) {
+		believers.add(b);
+	}
+	public static void removeBeliever(Believer b) {
+		believers.remove(b);
+	}
+
+	/**
+	 * Sets the believers.
+	 *
+	 * @param believers the new believers
+	 */
+	public static void setBelievers(ArrayList<Believer> believers) {
+		Atheist.believers = believers;
 	}
 
 }

@@ -35,6 +35,9 @@ import com.CS4398.spc51.gods.reward.Trident;
  * The Class Poseidon. Put his info here
  */
 public class Poseidon extends God{
+	
+	private static ArrayList<Believer> believers = new ArrayList<Believer>();
+
 
 	/**
 	 * Instantiates a new poseidon.
@@ -383,7 +386,30 @@ public class Poseidon extends God{
 		}
 		return thing;
 	}
+	
+	/**
+	 * Gets the believers.
+	 *
+	 * @return the believers
+	 */
+	public ArrayList<Believer> getBelievers() {
+		return Poseidon.believers;
+	}
+	public static void addBeliever(Believer b) {
+		believers.add(b);
+	}
+	public static void removeBeliever(Believer b) {
+		believers.remove(b);
+	}
 
+	/**
+	 * Sets the believers.
+	 *
+	 * @param believers the new believers
+	 */
+	public static void setBelievers(ArrayList<Believer> believers) {
+		Poseidon.believers = believers;
+	}
 	
 
 

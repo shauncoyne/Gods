@@ -14,6 +14,8 @@ import com.CS4398.spc51.gods.gods.God;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class Alter.
+ *
  * @author Shaun Coyne (spc51)
  * The Class Alter.
  */
@@ -60,6 +62,12 @@ public class Alter {
 		return false;
 	}
 	
+	/**
+	 * Hit.
+	 *
+	 * @param location the location
+	 * @return true, if successful
+	 */
 	public boolean hit(Location location) {
 		for (ArrayList<AlterBlock> list: alterBlocks) {
 			for (AlterBlock b: list) {

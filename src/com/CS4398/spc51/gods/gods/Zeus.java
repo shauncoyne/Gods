@@ -34,6 +34,9 @@ import com.CS4398.spc51.gods.reward.TeleportReward;
  * The Class Zeus. Put his info here
  */
 public class Zeus extends God{
+	
+	private static ArrayList<Believer> believers = new ArrayList<Believer>();
+
 
 	/**
 	 * Instantiates a new zeus.
@@ -390,6 +393,29 @@ public class Zeus extends God{
 		return thing;
 		// TODO Auto-generated method stub
 		//return null;
+	}
+	/**
+	 * Gets the believers.
+	 *
+	 * @return the believers
+	 */
+	public ArrayList<Believer> getBelievers() {
+		return Zeus.believers;
+	}
+	public static void addBeliever(Believer b) {
+		believers.add(b);
+	}
+	public static void removeBeliever(Believer b) {
+		believers.remove(b);
+	}
+
+	/**
+	 * Sets the believers.
+	 *
+	 * @param believers the new believers
+	 */
+	public static void setBelievers(ArrayList<Believer> believers) {
+		Zeus.believers = believers;
 	}
 	
 
