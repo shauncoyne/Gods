@@ -7,10 +7,9 @@ import org.bukkit.inventory.ItemStack;
 import com.CS4398.spc51.gods.Gods;
 
 /**
- * @author Shaun Coyne (spc51)
  * The Class GiveItem.
  */
-public class GiveItem extends Reward{
+public class GiveItem extends Reward {
 	
 	/** The item. */
 	ItemStack item;
