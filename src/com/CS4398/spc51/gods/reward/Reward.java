@@ -4,7 +4,6 @@ import org.bukkit.entity.Player;
 
 
 /**
- * @author Shaun Coyne (spc51)
  * The Class Reward.
  */
 public abstract class Reward {

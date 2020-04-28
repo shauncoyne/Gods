@@ -25,8 +25,8 @@ public class EnchantedBoots extends GiveItem {
 	 */
 	public EnchantedBoots(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_BOOTS, 1);
-		item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
+		this.item = new ItemStack(Material.DIAMOND_BOOTS, 1);
+		this.item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
 	}
 	
 	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
@@ -41,23 +41,20 @@ public class EnchantedBoots extends GiveItem {
 	 */
 	public EnchantedBoots(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_BOOTS, 1);
-		
+		this.item = new ItemStack(Material.DIAMOND_BOOTS, 1);
 		this.enchantment = enchantment;
-		item.addEnchantment(this.enchantment, 2);
+		this.item.addEnchantment(this.enchantment, 2);
 	}
 	
 	/**
 	 * Execute.
-	 *
-	 * @return true, if successful
 	 * 
+	 * @return true, if successful
 	 */
 	@Override
 	public boolean execute() {
 
 		try {
-		    //player.getInventory().setBoots(item);
 			player.getEquipment().setBoots(item);
 		    return true;
 		} 
