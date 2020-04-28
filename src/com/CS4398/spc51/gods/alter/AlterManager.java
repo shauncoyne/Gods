@@ -296,7 +296,7 @@ public class AlterManager implements Listener{
 		believer.getPlayer().sendMessage("Added alter to list");
 
 		believer.getPlayer().sendMessage("You have created an Alter for the god: " + Gods.godsArray[index].getName());
-		//believer.changeGod(Gods.godsArray[index].getName());
+		believer.changeGod(Gods.godsArray[index].getName());
 		believer.getPlayer().sendMessage("You now worship me, " + Gods.godsArray[index].getName() + ", the most gracious God. Protect my alter at all costs.");
 
 	}
@@ -339,17 +339,17 @@ public class AlterManager implements Listener{
 		         }
 
 			}
-			//try {
+			try {
 				believer.getPlayer().sendMessage("getting origin");
 
-				//origin = getOrigin(block);
-				origin = block.getLocation();
-/*			} catch (NoOriginException e) {
+				origin = getOrigin(block);
+				//origin = block.getLocation();
+			} catch (NoOriginException e) {
 				believer.getPlayer().sendMessage("No origin");
 
 				System.out.println("No origin.");
 				return;
-			}*/
+			}
 			createAlter(believer, index, origin);
 			
 			

@@ -474,10 +474,8 @@ public class Believer implements Listener{
 						timerThread.run();
 
 					}
-					//AlterThread alterThread = new AlterThread(this, event.getClickedBlock());
-					//alterThread.run();
-					this.getPlayer().sendMessage("Looking for sign...");
-					AlterManager.checkForAlterCreation(event.getClickedBlock(), this);
+					AlterThread alterThread = new AlterThread(this, event.getClickedBlock());
+					alterThread.run();
 				}
 				else {
 				event.getPlayer().sendMessage("Block placed!");
