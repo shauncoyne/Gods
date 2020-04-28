@@ -19,6 +19,7 @@ public class TeleportReward extends Reward {
 
 	/** 
 	 * Instantiates a new teleport reward.
+	 * The player will teleport to the spawn location.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -26,12 +27,12 @@ public class TeleportReward extends Reward {
 	 */
 	public TeleportReward(Player player, String message) {
 		super(player, message);
-		world = player.getWorld();
-		location = new Location(world, 0, 0, 0);
+		world = this.player.getWorld();
+		location = world.getSpawnLocation();
 	}
 	
 	/** 
-	 * Instantiates a new teleport punishment.
+	 * Instantiates a new teleport reward.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -40,12 +41,12 @@ public class TeleportReward extends Reward {
 	 */
 	public TeleportReward(Player player, String message, Location location) {
 		super(player, message);
-		world = player.getWorld();
+		world = this.player.getWorld();
 		this.location = location;
 	}
 	
 	/**
-	 * Execute the teleport punishment.
+	 * Execute the teleport reward.
 	 *
 	 * @return true, if successful
 	 * 
