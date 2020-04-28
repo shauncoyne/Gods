@@ -25,39 +25,39 @@ public class EnchantedLeggings extends GiveItem {
 	 */
 	public EnchantedLeggings(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
-		item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
+		this.item = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
+		
+		// default enchantment
+		enchantment = Enchantment.PROTECTION_FIRE;
+		this.item.addEnchantment(enchantment, 2);
 	}
-	
-	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
-	
+
 	/**
 	 * Instantiates new enchanted diamond leggings.
 	 *
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
-	 * @param enchantment the enchantment
+	 * @param enchantment the custom enchantment
 	 */
 	public EnchantedLeggings(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
+		this.item = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
 		
+		// custom enchantment
 		this.enchantment = enchantment;
-		item.addEnchantment(this.enchantment, 2);
+		this.item.addEnchantment(this.enchantment, 2);
 	}
 	
 	/**
 	 * Execute.
 	 *
 	 * @return true, if successful
-	 * 
 	 */
 	@Override
 	public boolean execute() {
 
 		try {
-		    //player.getInventory().setLeggings(item);
 			player.getEquipment().setLeggings(item);
 		    return true;
 		} 

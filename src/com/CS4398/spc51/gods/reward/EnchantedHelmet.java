@@ -16,8 +16,8 @@ public class EnchantedHelmet extends GiveItem {
 	Enchantment enchantment;
 	
 	/**
-	 * Instantiates new enchanted diamond helmet.
-	 * The default enchantment is fire protection.
+	 * Instantiates a new enchanted diamond helmet.
+	 * The default enchantment is falling protection.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -25,11 +25,12 @@ public class EnchantedHelmet extends GiveItem {
 	 */
 	public EnchantedHelmet(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_HELMET, 1);
-		item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
+		this.item = new ItemStack(Material.DIAMOND_HELMET, 1);
+		
+		// default enchantment
+		enchantment = Enchantment.PROTECTION_FALL;
+		this.item.addEnchantment(enchantment, 2);
 	}
-	
-	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
 	
 	/**
 	 * Instantiates a new enchanted diamond helmet with a custom enchantment.
@@ -37,27 +38,26 @@ public class EnchantedHelmet extends GiveItem {
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
-	 * @param enchantment the enchantment
+	 * @param enchantment the custom enchantment
 	 */
 	public EnchantedHelmet(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_HELMET, 1);
+		this.item = new ItemStack(Material.DIAMOND_HELMET, 1);
 		
+		// custom enchantment
 		this.enchantment = enchantment;
-		item.addEnchantment(this.enchantment, 2);
+		this.item.addEnchantment(this.enchantment, 2);
 	}
 	
 	/**
 	 * Execute.
 	 *
 	 * @return true, if successful
-	 * 
 	 */
 	@Override
 	public boolean execute() {
 
 		try {
-		    //player.getInventory().setHelmet(item);
 			player.getEquipment().setHelmet(item);
 		    return true;
 		} 
