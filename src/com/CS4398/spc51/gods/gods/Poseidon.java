@@ -66,42 +66,60 @@ public class Poseidon extends God{
 	public void reward(float previousBP, float currentBP, Believer believer)
 
 	{
-		switch((int)currentBP)
+		if(previousBP < 10.0 && currentBP >= 10.0 && currentBP < 15.0)
 		{
-		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "Welcome to our cult. Here you are safe. Here you are fed.");
-					give.execute();
-					break;
-		case 15:Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "These boots shall help you on your journey of peace and rightouesness in praising Me.", null);
-				enchanBoots.execute();
-				break;
-		case 20:Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "Protect yourself from those who wish you ill.", null);
-				enchanChest.execute();
-				break;
-		case 30: Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "Armor for a memeber of my army. Praise me, and I shall protect you.", null);
-				enchanLeg.execute();
-				break;
-		case 40: Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "Your thoughts are sacred. Protect them.", null);
-				enchanHat.execute();
-				break;
-		case 50: Reward enchanSword = new EnchantedSword(believer.getPlayer(), "Kill the nonbelivers. Spread our message to any who resist.", null);
-				enchanSword.execute();
-				break;
-		case 60: Reward frost = new FrostBoots(believer.getPlayer(), "These boots were made with you in mind. use them wisely.", null);
-				frost.execute();
-				break;	
-		case 70: Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Do not let the enemy see what you are up to. Be safe, be smart.", null);
-				invisi.execute();
-				break;
-		case 80: Reward torBoots = new TorpedoBoots(believer.getPlayer(), "Think of this as an upgrade. Thank me later, child.", null);
-				torBoots.execute();
-				break;
-		case 90: Reward scubaHat = new ScubaHelmet(believer.getPlayer(), "You may now visit the depths without worry. Come, my child.", null);
-				scubaHat.execute();
-					break;
-		case 100:	Reward trid = new Trident(believer.getPlayer(), "The ultimate gift for the ultimate follower. Spread our message. Kill our enemies.", null);
-					trid.execute();
-					break;
-			default: break;
+			Reward give = new GiveItem(believer.getPlayer(), "Welcome to our cult. Here you are safe. Here you are fed.");
+			give.execute();
+		}
+		else if(previousBP < 15.0 && currentBP >= 15.0 && currentBP < 20.0)
+		{
+			Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "These boots shall help you on your journey of peace and rightouesness in praising Me.", null);
+			enchanBoots.execute();
+		}
+		else if(previousBP < 20.0 && currentBP >= 20.0 && currentBP < 30.0)
+		{
+			Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "Protect yourself from those who wish you ill.", null);
+			enchanChest.execute();
+		}
+		else if(previousBP < 30.0 && currentBP >= 30.0 && currentBP < 40.0)
+		{
+			Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "Armor for a memeber of my army. Praise me, and I shall protect you.", null);
+			enchanLeg.execute();
+		}
+		else if(previousBP < 40.0 && currentBP >= 40.0 && currentBP < 50.0)
+		{
+			Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "Your thoughts are sacred. Protect them.", null);
+			enchanHat.execute();
+		}
+		else if(previousBP < 50.0 && currentBP >= 50.0 && currentBP < 60.0)
+		{
+			Reward enchanSword = new EnchantedSword(believer.getPlayer(), "Kill the nonbelivers. Spread our message to any who resist.", null);
+			enchanSword.execute();
+		}
+		else if(previousBP < 60.0 && currentBP >= 60.0 && currentBP < 69.0)
+		{
+			Reward frost = new FrostBoots(believer.getPlayer(), "These boots were made with you in mind. use them wisely.", null);
+			frost.execute();
+		}
+		else if(previousBP < 70.0 && currentBP >= 70.0 && currentBP < 80.0)
+		{
+			Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Do not let the enemy see what you are up to. Be safe, be smart.", null);
+			invisi.execute();
+		}
+		else if(previousBP < 80.0 && currentBP >= 80.0 && currentBP < 90.0)
+		{
+			Reward torBoots = new TorpedoBoots(believer.getPlayer(), "Think of this as an upgrade. Thank me later, child.", null);
+			torBoots.execute();
+		}
+		else if(previousBP < 90.0 && currentBP >= 90.0 && currentBP < 100.0)
+		{
+			Reward scubaHat = new ScubaHelmet(believer.getPlayer(), "You may now visit the depths without worry. Come, my child.", null);
+			scubaHat.execute();
+		}
+		else if(previousBP < 100.0 && currentBP >= 100.0 && currentBP < 110.0)
+		{
+			Reward trid = new Trident(believer.getPlayer(), "The ultimate gift for the ultimate follower. Spread our message. Kill our enemies.", null);
+			trid.execute();
 		}
 	}
 

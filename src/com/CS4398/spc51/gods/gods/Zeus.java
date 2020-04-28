@@ -14,8 +14,23 @@ import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
 import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.punishment.TeleportPunishment;
+import com.CS4398.spc51.gods.reward.EnchantedBoots;
+import com.CS4398.spc51.gods.reward.EnchantedChestplate;
+import com.CS4398.spc51.gods.reward.EnchantedHelmet;
+import com.CS4398.spc51.gods.reward.EnchantedLeggings;
+import com.CS4398.spc51.gods.reward.EnchantedSword;
+import com.CS4398.spc51.gods.reward.FlamingSword;
+import com.CS4398.spc51.gods.reward.FlyingBoots;
+import com.CS4398.spc51.gods.reward.FrostBoots;
 import com.CS4398.spc51.gods.reward.GiveItem;
+import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
+import com.CS4398.spc51.gods.reward.LightningAttack;
+import com.CS4398.spc51.gods.reward.LuckyHelmet;
 import com.CS4398.spc51.gods.reward.Reward;
+import com.CS4398.spc51.gods.reward.ScubaHelmet;
+import com.CS4398.spc51.gods.reward.TeleportReward;
+import com.CS4398.spc51.gods.reward.TorpedoBoots;
+import com.CS4398.spc51.gods.reward.Trident;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -54,32 +69,60 @@ public class Zeus extends God{
 	public void reward(float previousBP, float currentBP, Believer believer)
 
 	{
-		switch((int)currentBP)
+		if(previousBP < 10.0 && currentBP >= 10.0 && currentBP < 15.0)
 		{
-		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
-					give.execute();
-					break;
-		case 15:
-				break;
-		case 20:
-				break;
-		case 30:
-				break;
-		case 40: 
-				break;
-		case 50: 
-				break;
-		case 60:
-				break;
-		case 70: 
-				break;
-		case 80:
-				break;
-		case 90: 
-					break;
-		case 100:
-					break;
-			default: break;
+			Reward give = new GiveItem(believer.getPlayer(), "My child, obey me and you shall be rewarded. Disobey me, and suffer my wrath");
+			give.execute();
+		}
+		else if(previousBP < 15.0 && currentBP >= 15.0 && currentBP < 20.0)
+		{
+			Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "Be strong, child. May each step you praise me more.", null);
+			enchanBoots.execute();
+		}
+		else if(previousBP < 20.0 && currentBP >= 20.0 && currentBP < 30.0)
+		{
+			Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "You were made in my image. May you grow stronger to be like me.", null);
+			enchanChest.execute();
+		}
+		else if(previousBP < 30.0 && currentBP >= 30.0 && currentBP < 40.0)
+		{
+			Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "I shall help you improve, so long as your dedication to me never falters.", null);
+			enchanLeg.execute();
+		}
+		else if(previousBP < 40.0 && currentBP >= 40.0 && currentBP < 50.0)
+		{
+			Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "My child, may you feel safe under my protection. May you tell all those who oppose me about my power.", null);
+			enchanHat.execute();
+		}
+		else if(previousBP < 50.0 && currentBP >= 50.0 && currentBP < 60.0)
+		{
+			Reward flameSword = new FlamingSword(believer.getPlayer(), "You are an extension of me now. Feel my power within you.", null);
+			flameSword.execute();
+		}
+		else if(previousBP < 60.0 && currentBP >= 60.0 && currentBP < 69.0)
+		{
+			Reward flyBoot = new FlyingBoots(believer.getPlayer(), "Take to the skies, my child. Fly to join me.", null);
+			flyBoot.execute();
+		}
+		else if(previousBP < 70.0 && currentBP >= 70.0 && currentBP < 80.0)
+		{
+			Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Your powers grow strong whe I grow strong. Praise me and feel it.", null);
+			invisi.execute();
+		}
+		else if(previousBP < 80.0 && currentBP >= 80.0 && currentBP < 90.0)
+		{
+			Reward luckHat = new LuckyHelmet(believer.getPlayer(), "You luck has increased just as your chnace of survival increased when you started praising me.", null);
+			luckHat.execute();
+		}
+		else if(previousBP < 90.0 && currentBP >= 90.0 && currentBP < 100.0)
+		{
+			Reward teleport = new TeleportReward(believer.getPlayer(), "When you follow the strongest God, you are rewarded with gifts that are far beyond your comprehension.", null);
+			teleport.execute();
+		}
+		else if(previousBP < 100.0 && currentBP >= 100.0 && currentBP < 110.0)
+		{
+			Reward lightining = new LightningAttack(believer.getPlayer(), "Rise, my child, and smite our enemies.");
+			lightining.execute();
 		}
 	}
 
