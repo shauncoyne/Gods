@@ -335,7 +335,9 @@ public class Believer implements Listener{
 	 */
 	public void decreaseBeliefPower(God god, int level) {
 		float multiplyer = Gods.configurator.getMultiplyer(god);
-		beliefPower = beliefPower - level * multiplyer;		
+		beliefPower = beliefPower - level * multiplyer;
+		god.getRank(beliefPower);
+		
 	}
 
 	/**
