@@ -10,9 +10,11 @@ import org.bukkit.inventory.ItemStack;
  */
 public class Trident extends GiveItem {
 	
+	Enchantment enchantment;
+
 	/**
 	 * Instantiates a new trident from Poseidon.
-	 * The default enchantment does more damage to underwater mobs or wet mobs.
+	 * The trident does more damage to underwater mobs or wet mobs.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -20,8 +22,9 @@ public class Trident extends GiveItem {
 	 */
 	public Trident(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		item = new ItemStack(Material.TRIDENT, 1);
-		Enchantment enchantment = Enchantment.IMPALING;
-		item.addEnchantment(enchantment, 2);
+		this.item = new ItemStack(Material.TRIDENT, 1);
+		
+		enchantment = Enchantment.IMPALING;
+		this.item.addEnchantment(enchantment, 2);
 	}
 }
