@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Powerup;
+import com.CS4398.spc51.gods.powerup.Pray;
 import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.reward.Flyer;
@@ -171,6 +172,8 @@ public class Poseidon extends God{
 		switch(rank)
 		{
 		case 1:
+			Powerup p = new Pray("fastPray", 10, 5);
+			thing.add(p);
 			break;
 		case 2:
 			break;

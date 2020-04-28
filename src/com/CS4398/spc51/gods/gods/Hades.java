@@ -15,6 +15,9 @@ import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Powerup;
+import com.CS4398.spc51.gods.powerup.Pray;
+import com.CS4398.spc51.gods.punishment.Punishment;
+import com.CS4398.spc51.gods.punishment.TeleportPunishment;
 import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
@@ -105,8 +108,8 @@ public class Hades extends God{
 	{
 		switch(e.getEntityType())
 		{
-		case SHEEP : 
-			sheepKilled(believer, e);
+		case ZOMBIE : 
+			zombieKilled(believer, e);
 		    break;
 		
 		
@@ -122,22 +125,13 @@ public class Hades extends God{
 	 * @param believer the believer
 	 * @param e the entity
 	 */
-	private void sheepKilled(Believer believer, EntityDeathEvent e) 
+	private void zombieKilled(Believer believer, EntityDeathEvent e) 
 	{
-		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
-		
-		//only take action if damage resulted in death
 		if (e.getEntity().isDead()) 
 		{
-			//believer.decreaseBeliefPower(believer.getGod(), 1); // 1 is the smallest int. The bigger the int, the bigger the decrease
-			//believer.getPlayer().sendMessage("You have killed a sheep, I don't like this"); //Actually, we make a punishment object here.
-			
-			////OR////
-			
-			believer.increaseBeliefPower(believer.getGod(), 1);
-			ItemStack item = new ItemStack(Material.BAKED_POTATO);
-			Reward reward = new GiveItem(believer.getPlayer(), "I, Zues, accept your sacrafice", item);
-			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
+			believer.decreaseBeliefPower(believer.getGod(), 1);
+			Punishment punish = new TeleportPunishment(believer.getPlayer(), "I never eally liked sheep....but I also don't like you right now.");
+			punish.execute();
 		}
 		
 	}
@@ -151,6 +145,8 @@ public class Hades extends God{
 		switch(rank)
 		{
 		case 1:
+			Powerup p = new Pray("fastPray", 10, 5);
+			thing.add(p);
 			break;
 		case 2:
 			break;
