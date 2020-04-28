@@ -70,6 +70,11 @@ public class Hades extends God{
 			Reward give = new GiveItem(believer.getPlayer(), "Here kid, take this. Or throw it on the ground. See if I care.");
 			give.execute();
 		}
+		if(currentBP >= 11 && previousBP < 11)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now fastPray to your God.");
+		}
 		else if(previousBP < 15.0 && currentBP >= 15.0 && currentBP < 20.0)
 		{
 			Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "Your boots? They suck. Have these instead.", null);
@@ -79,6 +84,11 @@ public class Hades extends God{
 		{
 			Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "I found this lying around. Thought you would like. Anyways, keep believing in me and I'll get you more cool things.", null);
 			enchanChest.execute();
+		}
+		if(currentBP >= 21 && previousBP < 21)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now smallHeal.");
 		}
 		else if(previousBP < 30.0 && currentBP >= 30.0 && currentBP < 40.0)
 		{

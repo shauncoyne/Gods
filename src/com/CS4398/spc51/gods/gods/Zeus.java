@@ -71,6 +71,11 @@ public class Zeus extends God{
 			Reward give = new GiveItem(believer.getPlayer(), "My child, obey me and you shall be rewarded. Disobey me, and suffer my wrath");
 			give.execute();
 		}
+		if(currentBP >= 11 && previousBP < 11)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now fastPray to your God.");
+		}
 		else if(previousBP < 15.0 && currentBP >= 15.0 && currentBP < 20.0)
 		{
 			Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "Be strong, child. May each step you praise me more.", null);
@@ -80,6 +85,11 @@ public class Zeus extends God{
 		{
 			Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "You were made in my image. May you grow stronger to be like me.", null);
 			enchanChest.execute();
+		}
+		if(currentBP >= 21 && previousBP < 21)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now smallHeal.");
 		}
 		else if(previousBP < 30.0 && currentBP >= 30.0 && currentBP < 40.0)
 		{
