@@ -150,7 +150,29 @@ public class Hades extends God{
 		    break;
 		case PIG_ZOMBIE : 
 			zombiePigKilled(believer, e);
-		    break;		 
+		    break;	
+		case HORSE :
+			  horseKilled(believer, e); 
+			  break; 
+		case SQUID :
+			  squidKilled(believer, e); 
+			  break;
+		case ENDERMAN :
+			  endermanKilled(believer, e); 
+			  break;
+		case TURTLE :
+			  turtleKilled(believer, e); 
+			  break;
+		case COW : 
+			cowKilled(believer, e);
+		    break;
+		case VILLAGER : 
+			villagerKilled(believer, e);
+		    break;
+	 
+		case ENDER_DRAGON : 
+			enderdragonKilled(believer, e);
+		    break;
 		default:
 			break;
 		}
@@ -219,6 +241,105 @@ public class Hades extends God{
 			punish.execute();
 		}
 		
+	}
+	/**
+	 * Horse Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void horseKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 4);
+		}
+		
+	}
+	/**
+	 * Squid Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void squidKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 3);
+			
+			
+		}
+		
+	}
+	/**
+	 * Enderman Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void endermanKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 5);
+			
+			
+		}
+		
+	}
+	/**
+	 * Turtle Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void turtleKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 2);
+			
+		}
+		
+	}
+	/**
+	 * Cow Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void cowKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.increaseBeliefPower(believer.getGod(), 3);
+		
+	}
+	
+	/**
+	 * Villager Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void villagerKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.increaseBeliefPower(believer.getGod(), 2);
+		
+	}
+	
+	/**
+	 * Ender Dragon Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void enderdragonKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.increaseBeliefPower(believer.getGod(), 4);
+
 	}
 	
 

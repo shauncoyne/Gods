@@ -144,7 +144,29 @@ public class Poseidon extends God{
 			  break;
 		case TURTLE :
 			  turtleKilled(believer, e); 
-			  break;	 
+			  break;	
+		case COW : 
+			cowKilled(believer, e);
+		    break;
+		case VILLAGER : 
+			villagerKilled(believer, e);
+		    break;
+	 
+		case ENDER_DRAGON : 
+			enderdragonKilled(believer, e);
+		    break;
+		case ZOMBIE : 
+			zombieKilled(believer, e);
+		    break;
+		case ZOMBIE_HORSE : 
+			zombieHorseKilled(believer, e);
+		    break;
+		case ZOMBIE_VILLAGER : 
+			zombieVillagerKilled(believer, e);
+		    break;
+		case PIG_ZOMBIE : 
+			zombiePigKilled(believer, e);
+		    break;	
 		default:
 			break;
 		}
@@ -214,6 +236,102 @@ public class Poseidon extends God{
 			believer.decreaseBeliefPower(believer.getGod(), 2);
 			Punishment punish = new Explode(believer.getPlayer(), "Graceful, beautiful, and now dead. Just like you.");
 			punish.execute();
+			
+		}
+		
+	}
+	/**
+	 * Cow Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void cowKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.increaseBeliefPower(believer.getGod(), 1);
+		
+	}
+	
+	/**
+	 * Villager Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void villagerKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.increaseBeliefPower(believer.getGod(), 4);
+		
+	}
+	
+	/**
+	 * Ender Dragon Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void enderdragonKilled(Believer believer, EntityDeathEvent e) 
+	{
+
+		believer.increaseBeliefPower(believer.getGod(), 5);
+		
+	}
+	/**
+	 * Zombie damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 1);
+		}
+		
+	}
+	/**
+	 * Zombie Horse damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieHorseKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 2);
+		}
+		
+	}
+	/**
+	 * Zombie Villager damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieVillagerKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 3);
+
+		}
+		
+	}
+	/**
+	 * Zombie pig damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombiePigKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 2);
 			
 		}
 		

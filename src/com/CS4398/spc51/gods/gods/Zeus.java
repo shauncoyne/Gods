@@ -16,24 +16,18 @@ import com.CS4398.spc51.gods.punishment.Death;
 import com.CS4398.spc51.gods.punishment.Explode;
 import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
-import com.CS4398.spc51.gods.punishment.TeleportPunishment;
 import com.CS4398.spc51.gods.reward.EnchantedBoots;
 import com.CS4398.spc51.gods.reward.EnchantedChestplate;
 import com.CS4398.spc51.gods.reward.EnchantedHelmet;
 import com.CS4398.spc51.gods.reward.EnchantedLeggings;
-import com.CS4398.spc51.gods.reward.EnchantedSword;
 import com.CS4398.spc51.gods.reward.FlamingSword;
 import com.CS4398.spc51.gods.reward.FlyingBoots;
-import com.CS4398.spc51.gods.reward.FrostBoots;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
 import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.LuckyHelmet;
 import com.CS4398.spc51.gods.reward.Reward;
-import com.CS4398.spc51.gods.reward.ScubaHelmet;
 import com.CS4398.spc51.gods.reward.TeleportReward;
-import com.CS4398.spc51.gods.reward.TorpedoBoots;
-import com.CS4398.spc51.gods.reward.Trident;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -149,6 +143,30 @@ public class Zeus extends God{
 		case ENDER_DRAGON : 
 			enderdragonKilled(believer, e);
 		    break;
+		case ZOMBIE : 
+			zombieKilled(believer, e);
+		    break;
+		case ZOMBIE_HORSE : 
+			zombieHorseKilled(believer, e);
+		    break;
+		case ZOMBIE_VILLAGER : 
+			zombieVillagerKilled(believer, e);
+		    break;
+		case PIG_ZOMBIE : 
+			zombiePigKilled(believer, e);
+		    break;	
+		case HORSE :
+			  horseKilled(believer, e); 
+			  break; 
+		case SQUID :
+			  squidKilled(believer, e); 
+			  break;
+		case ENDERMAN :
+			  endermanKilled(believer, e); 
+			  break;
+		case TURTLE :
+			  turtleKilled(believer, e); 
+			  break;
 	 
 	 
 	 
@@ -199,8 +217,127 @@ public class Zeus extends God{
 	{
 
 		believer.decreaseBeliefPower(believer.getGod(), 1);
-		Punishment punish = new InfiniteFire(believer.getPlayer(), "How dre you slay the most powerful beast. BE ASHAMED.");
+		Punishment punish = new InfiniteFire(believer.getPlayer(), "How dare you slay the most powerful beast. BE ASHAMED.");
 		punish.execute();
+		
+	}
+	/**
+	 * Zombie damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 1);
+		}
+		
+	}
+	/**
+	 * Zombie Horse damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieHorseKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 2);
+		}
+		
+	}
+	/**
+	 * Zombie Villager damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieVillagerKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 3);
+
+		}
+		
+	}
+	/**
+	 * Zombie pig damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombiePigKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 2);
+			
+		}
+		
+	}
+	/**
+	 * Horse Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void horseKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 4);
+		}
+		
+	}
+	/**
+	 * Squid Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void squidKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 3);
+			
+			
+		}
+		
+	}
+	/**
+	 * Enderman Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void endermanKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 5);
+			
+			
+		}
+		
+	}
+	/**
+	 * Turtle Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void turtleKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.increaseBeliefPower(believer.getGod(), 2);
+			
+		}
 		
 	}
 	
