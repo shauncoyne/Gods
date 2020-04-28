@@ -14,15 +14,26 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
+import com.CS4398.spc51.gods.punishment.Explode;
+import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.punishment.TeleportPunishment;
-import com.CS4398.spc51.gods.reward.Flyer;
+import com.CS4398.spc51.gods.reward.EnchantedBoots;
+import com.CS4398.spc51.gods.reward.EnchantedChestplate;
+import com.CS4398.spc51.gods.reward.EnchantedHelmet;
+import com.CS4398.spc51.gods.reward.EnchantedLeggings;
+import com.CS4398.spc51.gods.reward.EnchantedSword;
 import com.CS4398.spc51.gods.reward.GiveItem;
-import com.CS4398.spc51.gods.reward.Invisibility;
+import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
+import com.CS4398.spc51.gods.reward.FlamingSword;
+import com.CS4398.spc51.gods.reward.FlyingBoots;
 import com.CS4398.spc51.gods.reward.LightningAttack;
+import com.CS4398.spc51.gods.reward.LuckyHelmet;
 import com.CS4398.spc51.gods.reward.Reward;
+import com.CS4398.spc51.gods.reward.SwordOfSouls;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -61,38 +72,41 @@ public class Hades extends God{
 	{
 		switch((int)currentBP)
 		{
-		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
+		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "Here kid, take this. Or throw it on the ground. See if I care.");
 					give.execute();
 					break;
-		case 15: Reward giveNext = new GiveItem(believer.getPlayer(), "Please take this small gift of appreciation");
-				giveNext.execute();
+		case 15: Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "Your boots? They suck. Have these instead.", null);
+				enchanBoots.execute();
 				break;
-		case 20: Reward giveAgain = new GiveItem(believer.getPlayer(), "Please enjoy this");
-				giveAgain.execute();
+		case 20: Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "I found this lying around. Thought you would like. Anyways, keep believing in me and I'll get you more cool things.", null);
+				enchanChest.execute();
 				break;
-		case 30: Reward giveAnother = new GiveItem(believer.getPlayer(), "I appreciate you, young one");
-				giveAnother.execute();
+		case 30: Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "I promised you some cool things, didn't I? Take this.", null);
+				enchanLeg.execute();
 				break;
-		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
-				//leggings.execute();
+		case 40: Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "Protect that head of your. It belives in me, so I like it.", null);
+				enchanHat.execute();
 				break;
-		case 50: 
+		case 50:Reward enchanSword = new EnchantedSword(believer.getPlayer(), "You impress me everyday, kid. Go kill some more things.", null);
+				enchanSword.execute();
 				break;
-		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
-				//helmet.execute();
+		case 60: Reward flameSword = new FlamingSword(believer.getPlayer(), "Nice.", null);
+				flameSword.execute();
 				break;
-		case 69: 	
+		case 69: 	Reward flameSword = new FlamingSword(believer.getPlayer(), "Nice.", null);
+					flameSword.execute();
 					break;
-		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
-				//boots.execute();
+		case 70:Reward luckyHat = new LuckyHelmet(believer.getPlayer(), "Perhaps some luck would do you good. Or not. I just wanna see what will happen.", null);
+				luckyHat.execute();
 				break;
-		case 80: //Reward chestplate - new EnchantedChestplate(believer.getPlayer(), "Be safe, young one.", chestPlate, LOOT_BONUS_MOBS);
-				//chestplate.execute();
+		case 80: Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Try to sneak up on an enemy.... and then send me their soul.", null);
+					invisi.execute();
 				break;
-		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
-					//sword.execute();
+		case 90:	Reward flyBoots = new FlyingBoots(believer.getPlayer(), "The gift of flight from the God of the underworld. You have earned it, young one.", null);
+					flyBoots.execute();
 					break;
-		case 100:	
+		case 100:	Reward soulSword = new SwordOfSouls(believer.getPlayer(), "This is the best thing I could think of to give you. You're a good kid.", null);
+					soulSword.execute();
 					break;
 			default: break;
 		}
@@ -111,8 +125,12 @@ public class Hades extends God{
 		case ZOMBIE : 
 			zombieKilled(believer, e);
 		    break;
-		
-		
+		case ZOMBIE_HORSE : 
+			zombieKilled(believer, e);
+		    break;
+		case ZOMBIE_VILLAGER : 
+			zombieVillagerKilled(believer, e);
+		    break;
 //		 
 		default:
 			break;
@@ -120,7 +138,7 @@ public class Hades extends God{
 	}
 
 	/**
-	 * Sheep damaged.
+	 * Zombie damaged.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
@@ -130,7 +148,39 @@ public class Hades extends God{
 		if (e.getEntity().isDead()) 
 		{
 			believer.decreaseBeliefPower(believer.getGod(), 1);
-			Punishment punish = new TeleportPunishment(believer.getPlayer(), "I never eally liked sheep....but I also don't like you right now.");
+			Punishment punish = new InfiniteFire(believer.getPlayer(), "Must I warn you? No one is to kill the army of the dead...");
+			punish.execute();
+		}
+		
+	}
+	/**
+	 * Zombie Horse damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieHorseKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 1);
+			Punishment punish = new TeleportPunishment(believer.getPlayer(), "Those who are undead belong to me. Do not dispose of them...Or I shall dispose of you.");
+			punish.execute();
+		}
+		
+	}
+	/**
+	 * Zombie Horse damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombieVillagerKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 1);
+			Punishment punish = new Explode(believer.getPlayer(), "So now you desire flesh as well...Blood for undead blood is what I say...");
 			punish.execute();
 		}
 		
@@ -148,7 +198,8 @@ public class Hades extends God{
 			Powerup p = new Pray("fastPray", 10, 5);
 			thing.add(p);
 			break;
-		case 2:
+		case 2: Powerup h = new Heal("smallHeal", 30, 10000, 5);
+			thing.add(h);
 			break;
 		case 3:
 			break;

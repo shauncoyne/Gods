@@ -86,8 +86,6 @@ public class Zeus extends God{
 		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
 				//helmet.execute();
 				break;
-		case 69: 	
-					break;
 		case 70: //Reward boots = new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", BOOTS);
 				//boots.execute();
 				break;

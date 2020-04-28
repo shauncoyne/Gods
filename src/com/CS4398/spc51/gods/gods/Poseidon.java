@@ -82,8 +82,7 @@ public class Poseidon extends God{
 				break;
 		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
 				//helmet.execute();
-				break;
-		case 69: 	
+				break;	
 		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
 				//boots.execute();
 				break;
