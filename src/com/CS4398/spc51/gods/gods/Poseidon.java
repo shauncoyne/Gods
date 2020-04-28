@@ -454,6 +454,32 @@ public class Poseidon extends God{
 	public static void setBelievers(ArrayList<Believer> believers) {
 		Poseidon.believers = believers;
 	}
+
+	@Override
+	public int getRank(float beliefPower) {
+		if(beliefPower >= 11 && beliefPower < 21)
+			return 1;
+		if(beliefPower >= 21 && beliefPower < 31)
+			return 2;
+		if(beliefPower >= 31 && beliefPower < 41)
+			return 3;
+		if(beliefPower >= 41 && beliefPower < 51)
+			return 4;
+		if(beliefPower >= 51 && beliefPower < 61)
+			return 5;
+		if(beliefPower >= 61 && beliefPower < 71)
+			return 6;
+		if(beliefPower >= 71 && beliefPower < 81)
+			return 7;
+		if(beliefPower >= 81 && beliefPower < 91)
+			return 8;
+		if(beliefPower >= 91 && beliefPower < 101)
+			return 9;
+		if(beliefPower >= 101)
+			return 10;
+		else
+			return 0;
+	}
 	
 
 
