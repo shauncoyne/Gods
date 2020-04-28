@@ -1,6 +1,11 @@
 package com.CS4398.spc51.gods.reward;
 
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import com.CS4398.spc51.gods.Gods;
 
@@ -8,6 +13,8 @@ import com.CS4398.spc51.gods.Gods;
  * The Class LightningAttack. 
  */
 public class LightningAttack extends Reward {
+	
+	Event e;
 
 	/**
 	 * Instantiates a lightning attack reward.
@@ -23,13 +30,29 @@ public class LightningAttack extends Reward {
 	/**
 	 * Execute a strike of lightning on an enemy.
 	 * 
+	 * @param p the entity
+	 */
+	@EventHandler
+	public void onAttack(EntityDamageByEntityEvent e) {
+		Entity attacker = e.getDamager();
+		Entity defender = e.getEntity();
+		
+		if(attacker instanceof Player)
+		{
+			World world = defender.getWorld();
+			world.strikeLightning(defender.getLocation());
+		}
+	}
+	
+	/**
+	 * Execute a strike of lightning on an enemy.
+	 * 
 	 * @return true, if successful
 	 */
 	@Override
 	public boolean execute() {
 		try {
-			player.getWorld().strikeLightning(player.getLocation());
-			player.setHealth(0.0D);
+			onAttack((EntityDamageByEntityEvent)e);
 			return true;
 		}
 		catch (Exception e) {

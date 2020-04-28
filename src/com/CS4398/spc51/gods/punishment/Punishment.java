@@ -3,7 +3,6 @@ package com.CS4398.spc51.gods.punishment;
 import org.bukkit.entity.Player;
 
 /**
- * @author Shaun Coyne (spc51)
  * The Class Punishment.
  */
 public abstract class Punishment {
@@ -29,7 +28,6 @@ public abstract class Punishment {
 	 * Execute the punishment.
 	 *
 	 * @return true, if successful
-	 * 
 	 */
 	public boolean execute() {
 		return false;
