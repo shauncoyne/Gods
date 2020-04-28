@@ -49,7 +49,7 @@ import scala.reflect.io.Directory;
 public class Believer implements Listener{
 	
 	/** The alter building timeout length. Controls how long the listener is registered. */
-	public static int alterBuildingTimeout = 30; //number of seconds alter detection will be on for this player
+	public static int alterBuildingTimeout = 10; //number of seconds alter detection will be on for this player
 	
 	/** The believer list. This is a static list of all the believers who have been on the server since startup */
 	public static ArrayList<Believer> believerList = new ArrayList<Believer>();
