@@ -9,7 +9,9 @@ import java.util.Collection;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Fly;
 import com.CS4398.spc51.gods.powerup.Heal;
+import com.CS4398.spc51.gods.powerup.Invisibility;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
 import com.CS4398.spc51.gods.punishment.Death;
@@ -76,7 +78,7 @@ public class Hades extends God{
 		if(currentBP >= 11 && previousBP < 11)
 		{
 			believer.increaseRank();
-			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now fastPray to your God.");
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You may now fastPray to your God.");
 		}
 		else if(previousBP < 15.0 && currentBP >= 15.0 && currentBP < 20.0)
 		{
@@ -91,27 +93,46 @@ public class Hades extends God{
 		if(currentBP >= 21 && previousBP < 21)
 		{
 			believer.increaseRank();
-			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now smallHeal.");
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You may now smallHeal.");
 		}
 		else if(previousBP < 30.0 && currentBP >= 30.0 && currentBP < 40.0)
 		{
 			Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "I promised you some cool things, didn't I? Take this.", null);
 			enchanLeg.execute();
 		}
+		if(currentBP >= 31 && previousBP < 31)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You may now bigHeal.");
+		}
 		else if(previousBP < 40.0 && currentBP >= 40.0 && currentBP < 50.0)
 		{
 			Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "Protect that head of your. It belives in me, so I like it.", null);
 			enchanHat.execute();
+		}
+		if(currentBP >= 41 && previousBP < 41)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. Continue to rank up and you will be rewarded.");
 		}
 		else if(previousBP < 50.0 && currentBP >= 50.0 && currentBP < 60.0)
 		{
 			Reward enchanSword = new EnchantedSword(believer.getPlayer(), "You impress me everyday, kid. Go kill some more things.", null);
 			enchanSword.execute();
 		}
+		if(currentBP >= 51 && previousBP < 51)
+		{
+			believer.increaseRank();
+		}
 		else if(previousBP < 60.0 && currentBP >= 60.0 && currentBP < 69.0)
 		{
 			Reward enchanBoots2 = new EnchantedBoots(believer.getPlayer(), "You probbaly lost those old boots. Here you go.", null);
 			enchanBoots2.execute();
+		}
+		if(currentBP >= 61 && previousBP < 61)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You have be awarded the power to fly.");
 		}
 		else if(previousBP < 69.0 && currentBP >= 69.0 && currentBP < 70.0)
 		{
@@ -123,20 +144,37 @@ public class Hades extends God{
 			Reward luckyHat = new LuckyHelmet(believer.getPlayer(), "Perhaps some luck would do you good. Or not. I just wanna see what will happen.", null);
 			luckyHat.execute();
 		}
+		if(currentBP >= 71 && previousBP < 71)
+		{
+			believer.increaseRank();
+		}
 		else if(previousBP < 80.0 && currentBP >= 80.0 && currentBP < 90.0)
 		{
 			Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Try to sneak up on an enemy.... and then send me their soul.", null);
 			invisi.execute();
+		}
+		if(currentBP >= 81 && previousBP < 81)
+		{
+			believer.increaseRank();
 		}
 		else if(previousBP < 90.0 && currentBP >= 90.0 && currentBP < 100.0)
 		{
 			Reward flyBoots = new FlyingBoots(believer.getPlayer(), "The gift of flight from the God of the underworld. You have earned it, young one.", null);
 			flyBoots.execute();
 		}
+		if(currentBP >= 91 && previousBP < 91)
+		{
+			believer.increaseRank();
+		}
 		else if(previousBP < 100.0 && currentBP >= 100.0 && currentBP < 110.0)
 		{
 			Reward soulSword = new SwordOfSouls(believer.getPlayer(), "This is the best thing I could think of to give you. You're a good kid.", null);
 			soulSword.execute();
+		}
+		if(currentBP >= 101 && previousBP < 101)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You have be awarded the power to become invisible.");
 		}
 		
 		
@@ -372,12 +410,16 @@ public class Hades extends God{
 			thing.add(h);
 			break;
 		case 3:
+			Powerup b = new Heal("bigHeal", 30, 2000000, 10);
+			thing.add(b);
 			break;
 		case 4:
 			break;
 		case 5:
 			break;
 		case 6:
+			Powerup f = new Fly("fly", 120, 4000);
+			thing.add(f);
 			break;
 		case 7:
 			break;
@@ -386,6 +428,8 @@ public class Hades extends God{
 		case 9:
 			break;
 		case 10:
+			Powerup i = new Invisibility("invisible", 300, 500000);
+			thing.add(i);
 			break;
 		
 			default: break;

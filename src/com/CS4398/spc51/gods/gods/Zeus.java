@@ -9,7 +9,9 @@ import java.util.Collection;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Fly;
 import com.CS4398.spc51.gods.powerup.Heal;
+import com.CS4398.spc51.gods.powerup.Invisibility;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
 import com.CS4398.spc51.gods.punishment.Death;
@@ -77,7 +79,7 @@ public class Zeus extends God{
 		if(currentBP >= 11 && previousBP < 11)
 		{
 			believer.increaseRank();
-			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now fastPray to your God.");
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You may now fastPray to your God.");
 		}
 		else if(previousBP < 15.0 && currentBP >= 15.0 && currentBP < 20.0)
 		{
@@ -92,47 +94,82 @@ public class Zeus extends God{
 		if(currentBP >= 21 && previousBP < 21)
 		{
 			believer.increaseRank();
-			believer.getPlayer().sendMessage("Your rank has increase, young believer. You may now smallHeal.");
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You may now smallHeal.");
 		}
 		else if(previousBP < 30.0 && currentBP >= 30.0 && currentBP < 40.0)
 		{
 			Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "I shall help you improve, so long as your dedication to me never falters.", null);
 			enchanLeg.execute();
 		}
+		if(currentBP >= 31 && previousBP < 31)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. You may now bigHeal.");
+		}
 		else if(previousBP < 40.0 && currentBP >= 40.0 && currentBP < 50.0)
 		{
 			Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "My child, may you feel safe under my protection. May you tell all those who oppose me about my power.", null);
 			enchanHat.execute();
+		}
+		if(currentBP >= 41 && previousBP < 41)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increased, young believer. Continue to rank up and you will be rewarded.");
 		}
 		else if(previousBP < 50.0 && currentBP >= 50.0 && currentBP < 60.0)
 		{
 			Reward flameSword = new FlamingSword(believer.getPlayer(), "You are an extension of me now. Feel my power within you.", null);
 			flameSword.execute();
 		}
+		if(currentBP >= 51 && previousBP < 51)
+		{
+			believer.increaseRank();
+		}
 		else if(previousBP < 60.0 && currentBP >= 60.0 && currentBP < 69.0)
 		{
 			Reward flyBoot = new FlyingBoots(believer.getPlayer(), "Take to the skies, my child. Fly to join me.", null);
 			flyBoot.execute();
+		}
+		if(currentBP >= 61 && previousBP < 61)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increase, young believer. You have been awarded the power to fly.");
 		}
 		else if(previousBP < 70.0 && currentBP >= 70.0 && currentBP < 80.0)
 		{
 			Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Your powers grow strong whe I grow strong. Praise me and feel it.", null);
 			invisi.execute();
 		}
+		if(currentBP >= 71 && previousBP < 71)
+		{
+			believer.increaseRank();
+		}
 		else if(previousBP < 80.0 && currentBP >= 80.0 && currentBP < 90.0)
 		{
 			Reward luckHat = new LuckyHelmet(believer.getPlayer(), "You luck has increased just as your chnace of survival increased when you started praising me.", null);
 			luckHat.execute();
+		}
+		if(currentBP >= 81 && previousBP < 81)
+		{
+			believer.increaseRank();
 		}
 		else if(previousBP < 90.0 && currentBP >= 90.0 && currentBP < 100.0)
 		{
 			Reward teleport = new TeleportReward(believer.getPlayer(), "When you follow the strongest God, you are rewarded with gifts that are far beyond your comprehension.", null);
 			teleport.execute();
 		}
+		if(currentBP >= 91 && previousBP < 91)
+		{
+			believer.increaseRank();
+		}
 		else if(previousBP < 100.0 && currentBP >= 100.0 && currentBP < 110.0)
 		{
 			Reward lightining = new LightningAttack(believer.getPlayer(), "Rise, my child, and smite our enemies.");
 			lightining.execute();
+		}if(currentBP >= 101 && previousBP < 101)
+		{
+			believer.increaseRank();
+			believer.getPlayer().sendMessage("Your rank has increase, young believer. You have been awarded the power to become invisible.");
 		}
 	}
 
@@ -373,12 +410,16 @@ public class Zeus extends God{
 			thing.add(h);
 			break;
 		case 3:
+			Powerup b = new Heal("bigHeal", 30, 2000000, 10);
+			thing.add(b);
 			break;
 		case 4:
 			break;
 		case 5:
 			break;
 		case 6:
+			Powerup f = new Fly("fly", 120, 4000);
+			thing.add(f);
 			break;
 		case 7:
 			break;
@@ -387,6 +428,8 @@ public class Zeus extends God{
 		case 9:
 			break;
 		case 10:
+			Powerup i = new Invisibility("invisible", 300, 500000);
+			thing.add(i);
 			break;
 			default: break;
 		}
