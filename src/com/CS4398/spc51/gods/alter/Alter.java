@@ -85,8 +85,7 @@ public class Alter {
 	 * @return the god
 	 */
 	public God getGod() {
-		// TODO Auto-generated method stub
-		return null;
+		return god;
 	}
 
 

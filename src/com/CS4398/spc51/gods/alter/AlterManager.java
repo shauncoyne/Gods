@@ -129,7 +129,7 @@ public class AlterManager implements Listener{
 	private void alterAlmostDamaged(Alter alter, Player player) {
 		for(Believer b : (ArrayList<Believer>) alter.getGod().getBelievers()) {
 			if(Bukkit.getPlayer(b.getPlayerUUID()) != null) {
-				b.getPlayer().sendMessage("Your God's Alter is being attacked by " + player.getCustomName() +"!");
+				b.getPlayer().sendMessage("Your God's Alter is being attacked by " + player.getDisplayName() +"!");
 			}
 		}
 		
@@ -151,7 +151,7 @@ public class AlterManager implements Listener{
 		}
 		for(Believer b : (ArrayList<Believer>) alter.getGod().getBelievers()) {
 			if(Bukkit.getPlayer(b.getPlayerUUID()) != null) {
-				b.getPlayer().sendMessage("Your God's Alter has been destroyed by " + player.getCustomName() +"!");
+				b.getPlayer().sendMessage("Your God's Alter has been destroyed by " + player.getDisplayName() +"!");
 				b.changeGod("atheist");
 			}
 		}
