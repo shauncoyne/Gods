@@ -14,6 +14,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
 import com.CS4398.spc51.gods.punishment.Explode;
@@ -69,31 +70,23 @@ public class Zeus extends God{
 		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
 					give.execute();
 					break;
-		case 15: Reward giveNext = new GiveItem(believer.getPlayer(), "Please take this small gift of appreciation");
-				giveNext.execute();
+		case 15:
 				break;
-		case 20: Reward giveAgain = new GiveItem(believer.getPlayer(), "Please enjoy this");
-				giveAgain.execute();
+		case 20:
 				break;
-		case 30: Reward giveAnother = new GiveItem(believer.getPlayer(), "I appreciate you, young one");
-				giveAnother.execute();
+		case 30:
 				break;
-		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
-				//leggings.execute();
+		case 40: 
 				break;
 		case 50: 
 				break;
-		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
-				//helmet.execute();
+		case 60:
 				break;
-		case 70: //Reward boots = new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", BOOTS);
-				//boots.execute();
+		case 70: 
 				break;
-		case 80: //Reward chestplate - new EnchantedChestplate(believer.getPlayer(), "Be safe, young one.", chestPlate, LOOT_BONUS_MOBS);
-				//chestplate.execute();
+		case 80:
 				break;
-		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
-					//sword.execute();
+		case 90: 
 					break;
 		case 100:
 					break;
@@ -114,17 +107,7 @@ public class Zeus extends God{
 		case SHEEP : 
 			sheepKilled(believer, e);
 		    break;
-		
-		  case COW : 
-			  cowKilled(believer, e); 
-			  break; 
-		  case HORSE :
-			  horseKilled(believer, e); 
-			  break; 
-		  case CREEPER : 
-			  creeperKilled(believer,e);
-		  	  break;
-//		 
+	 
 		default:
 			break;
 		}
@@ -147,61 +130,6 @@ public class Zeus extends God{
 		
 	}
 	
-	/**
-	 * Cow Killed.
-	 *
-	 * @param believer the believer
-	 * @param e the entity
-	 */
-	private void cowKilled(Believer believer, EntityDeathEvent e) 
-	{
-		if (e.getEntity().isDead()) 
-		{
-			believer.increaseBeliefPower(believer.getGod(), 1);
-			ItemStack item = new ItemStack(Material.EGG);
-			Reward reward = new GiveItem(believer.getPlayer(), "Cows are a sutible means of gaining nutrients when they are killed and harvested. I approve....for now", item);
-			reward.execute();
-		}
-		
-		
-	}
-	
-	/**
-	 * Horse Killed.
-	 *
-	 * @param believer the believer
-	 * @param e the entity
-	 */
-	private void horseKilled(Believer believer, EntityDeathEvent e) 
-	{
-		if (e.getEntity().isDead()) 
-		{
-			believer.increaseBeliefPower(believer.getGod(), 2);
-			ItemStack item = new ItemStack(Material.EGG);
-			Reward reward = new GiveItem(believer.getPlayer(), "You have killed one of my brother's dastardly creations...I approve.", item);
-			reward.execute();
-			
-		}
-		
-	}
-	
-	/**
-	 * Creeper Killed.
-	 *
-	 * @param believer the believer
-	 * @param e the entity
-	 */
-	private void creeperKilled(Believer believer, EntityDeathEvent e) 
-	{
-		if (e.getEntity().isDead()) 
-		{
-			believer.increaseBeliefPower(believer.getGod(), 1);
-			ItemStack item = new ItemStack(Material.CAKE);
-			Reward reward = new GiveItem(believer.getPlayer(), "You have taken down another enemy. This has pleased me. I hope you didn't die.", item);
-			reward.execute();
-		}
-		
-	}
 
 	@Override
 	public Collection<? extends Powerup> getPowerUps(int rank) {
@@ -217,6 +145,8 @@ public class Zeus extends God{
 			thing.add(p);
 			break;
 		case 2:
+			Powerup h = new Heal("smallHeal", 30, 10000, 5);
+			thing.add(h);
 			break;
 		case 3:
 			break;

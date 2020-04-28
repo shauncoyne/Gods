@@ -7,16 +7,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
-
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
+import com.CS4398.spc51.gods.punishment.Death;
 import com.CS4398.spc51.gods.punishment.Explode;
 import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
@@ -30,7 +27,6 @@ import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
 import com.CS4398.spc51.gods.reward.FlamingSword;
 import com.CS4398.spc51.gods.reward.FlyingBoots;
-import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.LuckyHelmet;
 import com.CS4398.spc51.gods.reward.Reward;
 import com.CS4398.spc51.gods.reward.SwordOfSouls;
@@ -90,8 +86,8 @@ public class Hades extends God{
 		case 50:Reward enchanSword = new EnchantedSword(believer.getPlayer(), "You impress me everyday, kid. Go kill some more things.", null);
 				enchanSword.execute();
 				break;
-		case 60: Reward flameSword = new FlamingSword(believer.getPlayer(), "Nice.", null);
-				flameSword.execute();
+		case 60: Reward enchanBoots2 = new EnchantedBoots(believer.getPlayer(), "You probbaly lost those old boots. Here you go.", null);
+		enchanBoots2.execute();
 				break;
 		case 69: 	Reward flameSword = new FlamingSword(believer.getPlayer(), "Nice.", null);
 					flameSword.execute();
@@ -126,12 +122,14 @@ public class Hades extends God{
 			zombieKilled(believer, e);
 		    break;
 		case ZOMBIE_HORSE : 
-			zombieKilled(believer, e);
+			zombieHorseKilled(believer, e);
 		    break;
 		case ZOMBIE_VILLAGER : 
 			zombieVillagerKilled(believer, e);
 		    break;
-//		 
+		case PIG_ZOMBIE : 
+			zombiePigKilled(believer, e);
+		    break;		 
 		default:
 			break;
 		}
@@ -147,8 +145,8 @@ public class Hades extends God{
 	{
 		if (e.getEntity().isDead()) 
 		{
-			believer.decreaseBeliefPower(believer.getGod(), 1);
-			Punishment punish = new InfiniteFire(believer.getPlayer(), "Must I warn you? No one is to kill the army of the dead...");
+			believer.decreaseBeliefPower(believer.getGod(), 10);
+			Punishment punish = new TeleportPunishment(believer.getPlayer(), "Must I warn you? No one is to kill the army of the dead...");
 			punish.execute();
 		}
 		
@@ -163,14 +161,14 @@ public class Hades extends God{
 	{
 		if (e.getEntity().isDead()) 
 		{
-			believer.decreaseBeliefPower(believer.getGod(), 1);
-			Punishment punish = new TeleportPunishment(believer.getPlayer(), "Those who are undead belong to me. Do not dispose of them...Or I shall dispose of you.");
+			believer.decreaseBeliefPower(believer.getGod(), 9);
+			Punishment punish = new InfiniteFire(believer.getPlayer(), "Those who are undead belong to me. Do not dispose of them...Or I shall dispose of you.");
 			punish.execute();
 		}
 		
 	}
 	/**
-	 * Zombie Horse damaged.
+	 * Zombie Villager damaged.
 	 *
 	 * @param believer the believer
 	 * @param e the entity
@@ -179,12 +177,29 @@ public class Hades extends God{
 	{
 		if (e.getEntity().isDead()) 
 		{
-			believer.decreaseBeliefPower(believer.getGod(), 1);
+			believer.decreaseBeliefPower(believer.getGod(), 20);
 			Punishment punish = new Explode(believer.getPlayer(), "So now you desire flesh as well...Blood for undead blood is what I say...");
 			punish.execute();
 		}
 		
 	}
+	/**
+	 * Zombie pig damaged.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void zombiePigKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 2);
+			Punishment punish = new Death(believer.getPlayer(), "The undead are mine. Do not harm them. EVER.");
+			punish.execute();
+		}
+		
+	}
+	
 
 	@Override
 	public Collection<? extends Powerup> getPowerUps(int rank) {
@@ -221,10 +236,7 @@ public class Hades extends God{
 			default: break;
 		}
 		return thing;
-		// TODO Auto-generated method stub
-		//return null;
-		// TODO Auto-generated method stub
-		//return null;
+
 	}
 
 

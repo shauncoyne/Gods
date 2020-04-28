@@ -14,15 +14,29 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
+import com.CS4398.spc51.gods.punishment.Death;
+import com.CS4398.spc51.gods.punishment.Explode;
 import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
+import com.CS4398.spc51.gods.punishment.TeleportPunishment;
+import com.CS4398.spc51.gods.reward.EnchantedBoots;
+import com.CS4398.spc51.gods.reward.EnchantedChestplate;
+import com.CS4398.spc51.gods.reward.EnchantedHelmet;
+import com.CS4398.spc51.gods.reward.EnchantedLeggings;
+import com.CS4398.spc51.gods.reward.EnchantedSword;
 import com.CS4398.spc51.gods.reward.Flyer;
+import com.CS4398.spc51.gods.reward.FrostBoots;
 import com.CS4398.spc51.gods.reward.GiveItem;
 import com.CS4398.spc51.gods.reward.Invisibility;
+import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
 import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.Reward;
+import com.CS4398.spc51.gods.reward.ScubaHelmet;
+import com.CS4398.spc51.gods.reward.TorpedoBoots;
+import com.CS4398.spc51.gods.reward.Trident;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -50,7 +64,6 @@ public class Poseidon extends God{
         case "EntityDamageByEntityEvent":  
         		playerKilledEntity(believer, (EntityDeathEvent) e);
                  break;
-        //case "VehicleCreateEvent" :
         default:
         	break;
         	
@@ -63,36 +76,38 @@ public class Poseidon extends God{
 	{
 		switch((int)currentBP)
 		{
-		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "You have been good to me and my purpose");
+		case 10:  	Reward give = new GiveItem(believer.getPlayer(), "Welcome to our cult. Here you are safe. Here you are fed.");
 					give.execute();
 					break;
-		case 15: Reward giveNext = new GiveItem(believer.getPlayer(), "Please take this small gift of appreciation");
-				giveNext.execute();
+		case 15:Reward enchanBoots = new EnchantedBoots(believer.getPlayer(), "These boots shall help you on your journey of peace and rightouesness in praising Me.", null);
+				enchanBoots.execute();
 				break;
-		case 20: Reward giveAgain = new GiveItem(believer.getPlayer(), "Please enjoy this");
-				giveAgain.execute();
+		case 20:Reward enchanChest = new EnchantedChestplate(believer.getPlayer(), "Protect yourself from those who wish you ill.", null);
+				enchanChest.execute();
 				break;
-		case 30: Reward giveAnother = new GiveItem(believer.getPlayer(), "I appreciate you, young one");
-				giveAnother.execute();
+		case 30: Reward enchanLeg = new EnchantedLeggings(believer.getPlayer(), "Armor for a memeber of my army. Praise me, and I shall protect you.", null);
+				enchanLeg.execute();
 				break;
-		case 40: //Reward leggings - new EnchantedLeggings(believer.getPlayer(), "Be safe, young one.", leggings, LOOT_BONUS_MOBS);
-				//leggings.execute();
+		case 40: Reward enchanHat = new EnchantedHelmet(believer.getPlayer(), "Your thoughts are sacred. Protect them.", null);
+				enchanHat.execute();
 				break;
-		case 50: 
+		case 50: Reward enchanSword = new EnchantedSword(believer.getPlayer(), "Kill the nonbelivers. Spread our message to any who resist.", null);
+				enchanSword.execute();
 				break;
-		case 60://Reward helmet - new EnchantedHelmet(believer.getPlayer(), "Be safe, young one.", helmet, LOOT_BONUS_MOBS);
-				//helmet.execute();
+		case 60: Reward frost = new FrostBoots(believer.getPlayer(), "These boots were made with you in mind. use them wisely.", null);
+				frost.execute();
 				break;	
-		case 70: //Reward boots - new EnchantedBoots(believer.getPlayer(), "Be safe, young one.", boots, LOOT_BONUS_MOBS);
-				//boots.execute();
+		case 70: Reward invisi = new InvisibilityHelmet(believer.getPlayer(), "Do not let the enemy see what you are up to. Be safe, be smart.", null);
+				invisi.execute();
 				break;
-		case 80: //Reward chestplate - new EnchantedChestplate(believer.getPlayer(), "Be safe, young one.", chestPlate, LOOT_BONUS_MOBS);
-				//chestplate.execute();
+		case 80: Reward torBoots = new TorpedoBoots(believer.getPlayer(), "Think of this as an upgrade. Thank me later, child.", null);
+				torBoots.execute();
 				break;
-		case 90: 	//Reward sword - new EnchantedSword(believer.getPlayer(), "Be safe, young one.", sword, LOOT_BONUS_MOBS);
-					//sword.execute();
+		case 90: Reward scubaHat = new ScubaHelmet(believer.getPlayer(), "You may now visit the depths without worry. Come, my child.", null);
+				scubaHat.execute();
 					break;
-		case 100:	
+		case 100:	Reward trid = new Trident(believer.getPlayer(), "The ultimate gift for the ultimate follower. Spread our message. Kill our enemies.", null);
+					trid.execute();
 					break;
 			default: break;
 		}
@@ -108,40 +123,21 @@ public class Poseidon extends God{
 	{
 		switch(e.getEntityType())
 		{
-		case SHEEP : 
-			sheepKilled(believer, e);
-		    break;
 		case HORSE :
 			  horseKilled(believer, e); 
 			  break; 
-//		 
+		case SQUID :
+			  squidKilled(believer, e); 
+			  break;
+		case ENDERMAN :
+			  endermanKilled(believer, e); 
+			  break;
+		case TURTLE :
+			  turtleKilled(believer, e); 
+			  break;	 
 		default:
 			break;
 		}
-	}
-
-	/**
-	 * Sheep damaged.
-	 *
-	 * @param believer the believer
-	 * @param e the entity
-	 */
-	private void sheepKilled(Believer believer, EntityDeathEvent e) {
-		//Small methods best. This allows us to change Zeus' reaction to damaging sheep
-		
-		//only take action if damage resulted in death
-		if (e.getEntity().isDead()) {
-			//believer.decreaseBeliefPower(believer.getGod(), 1); // 1 is the smallest int. The bigger the int, the bigger the decrease
-			//believer.getPlayer().sendMessage("You have killed a sheep, I don't like this"); //Actually, we make a punishment object here.
-			
-			////OR////
-			
-			believer.increaseBeliefPower(believer.getGod(), 1);
-			ItemStack item = new ItemStack(Material.BAKED_POTATO);
-			Reward reward = new GiveItem(believer.getPlayer(), "I, Poseidon, accept your sacrafice", item);
-			reward.execute(); //this returns a boolean if it was successful. This is important for rewards that are delayed. (false if player offline for example)
-		}
-		
 	}
 	
 	/**
@@ -154,8 +150,59 @@ public class Poseidon extends God{
 	{
 		if (e.getEntity().isDead()) 
 		{
-			believer.decreaseBeliefPower(believer.getGod(), 1);
-			Punishment punish = new InfiniteFire(believer.getPlayer(), "How dare you! You have committed an atrocity! Now you must pay!!");
+			believer.decreaseBeliefPower(believer.getGod(), 4);
+			Punishment punish = new InfiniteFire(believer.getPlayer(), "I created the Horse. You must respect the Horse. Respect it!");
+			punish.execute();
+			
+		}
+		
+	}
+	/**
+	 * Squid Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void squidKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 3);
+			Punishment punish = new Death(believer.getPlayer(), "All that are of the sea and live in the sea belong to me. Do not kill them. Now you must pay.");
+			punish.execute();
+			
+		}
+		
+	}
+	/**
+	 * Enderman Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void endermanKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 5);
+			Punishment punish = new TeleportPunishment(believer.getPlayer(), "There is no reson to take the life of a gentle and elegant creature.");
+			punish.execute();
+			
+		}
+		
+	}
+	/**
+	 * Turtle Killed.
+	 *
+	 * @param believer the believer
+	 * @param e the entity
+	 */
+	private void turtleKilled(Believer believer, EntityDeathEvent e) 
+	{
+		if (e.getEntity().isDead()) 
+		{
+			believer.decreaseBeliefPower(believer.getGod(), 2);
+			Punishment punish = new Explode(believer.getPlayer(), "Graceful, beautiful, and now dead. Just like you.");
 			punish.execute();
 			
 		}
@@ -175,6 +222,8 @@ public class Poseidon extends God{
 			thing.add(p);
 			break;
 		case 2:
+			Powerup h = new Heal("smallHeal", 30, 10000, 5);
+			thing.add(h);
 			break;
 		case 3:
 			break;
@@ -195,10 +244,6 @@ public class Poseidon extends God{
 			default: break;
 		}
 		return thing;
-		// TODO Auto-generated method stub
-		//return null;
-		// TODO Auto-generated method stub
-		//return null;
 	}
 
 	
