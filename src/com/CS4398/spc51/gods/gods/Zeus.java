@@ -6,26 +6,15 @@ package com.CS4398.spc51.gods.gods;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.inventory.ItemStack;
-
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
-import com.CS4398.spc51.gods.punishment.Explode;
-import com.CS4398.spc51.gods.punishment.InfiniteFire;
 import com.CS4398.spc51.gods.punishment.Punishment;
 import com.CS4398.spc51.gods.punishment.TeleportPunishment;
-import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.GiveItem;
-import com.CS4398.spc51.gods.reward.Invisibility;
-import com.CS4398.spc51.gods.reward.LightningAttack;
-import com.CS4398.spc51.gods.reward.EnchantedBoots;
 import com.CS4398.spc51.gods.reward.Reward;
 
 // TODO: Auto-generated Javadoc

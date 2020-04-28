@@ -6,7 +6,6 @@ package com.CS4398.spc51.gods.gods;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.bukkit.Material;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
 import com.CS4398.spc51.gods.Believer;

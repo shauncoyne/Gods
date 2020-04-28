@@ -6,13 +6,8 @@ package com.CS4398.spc51.gods.gods;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
-
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
@@ -27,12 +22,9 @@ import com.CS4398.spc51.gods.reward.EnchantedChestplate;
 import com.CS4398.spc51.gods.reward.EnchantedHelmet;
 import com.CS4398.spc51.gods.reward.EnchantedLeggings;
 import com.CS4398.spc51.gods.reward.EnchantedSword;
-import com.CS4398.spc51.gods.reward.Flyer;
 import com.CS4398.spc51.gods.reward.FrostBoots;
 import com.CS4398.spc51.gods.reward.GiveItem;
-import com.CS4398.spc51.gods.reward.Invisibility;
 import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
-import com.CS4398.spc51.gods.reward.LightningAttack;
 import com.CS4398.spc51.gods.reward.Reward;
 import com.CS4398.spc51.gods.reward.ScubaHelmet;
 import com.CS4398.spc51.gods.reward.TorpedoBoots;
