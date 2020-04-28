@@ -12,7 +12,7 @@ import com.CS4398.spc51.gods.Gods;
 public class InvisibilityHelmet extends EnchantedHelmet {
 
 	/**
-	 * Instantiates a new helmet that makes the player invisible
+	 * Instantiates a new helmet that makes the player invisible.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -20,7 +20,7 @@ public class InvisibilityHelmet extends EnchantedHelmet {
 	 */
 	public InvisibilityHelmet(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		execute();
+		bye();
 	}
 	
 	/**
@@ -29,8 +29,7 @@ public class InvisibilityHelmet extends EnchantedHelmet {
 	 * @return true, if successful
 	 */
 	@SuppressWarnings("deprecation")
-	@Override
-	public boolean execute() {
+	public boolean bye() {
 		try {
 			for(Player everyone : Bukkit.getOnlinePlayers()) {
 				if(player != everyone)

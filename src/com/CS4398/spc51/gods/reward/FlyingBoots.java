@@ -11,8 +11,7 @@ import com.CS4398.spc51.gods.Gods;
 public class FlyingBoots extends EnchantedBoots {
 	
 	/**
-	 * Instantiates new enchanted diamond boots.
-	 * The enchantment is the ability to fly.
+	 * Instantiates new boots that allows the player to fly.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -20,18 +19,16 @@ public class FlyingBoots extends EnchantedBoots {
 	 */
 	public FlyingBoots(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		execute();
+		fly();
 	}
 	
 	/**
 	 * Execute flying ability.
 	 *
 	 * @return true, if successful
-	 * 
 	 */
-	@Override
-	public boolean execute() {
-
+	public boolean fly() {
+		
 		try {
 		    player.setAllowFlight(!player.getAllowFlight());
 		    return true;

@@ -12,12 +12,12 @@ import com.CS4398.spc51.gods.Gods;
  */
 public class EnchantedChestplate extends GiveItem {
 	
-	/** The enchantment given to the chestplate. */
+	/** The enchantment given to the chest plate. */
 	Enchantment enchantment;
 	
 	/**
-	 * Instantiates new enchanted diamond chestplate.
-	 * The default enchantment is fire protection.
+	 * Instantiates new enchanted diamond chest plate.
+	 * The default enchantment is explosion protection.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -25,39 +25,39 @@ public class EnchantedChestplate extends GiveItem {
 	 */
 	public EnchantedChestplate(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
-		item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
+		this.item = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
+		
+		// default enchantment
+		enchantment = Enchantment.PROTECTION_EXPLOSIONS;
+		this.item.addEnchantment(enchantment, 2);
 	}
 	
-	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
-	
 	/**
-	 * Instantiates a new enchanted diamond chestplate.
+	 * Instantiates a new enchanted diamond chest plate.
 	 *
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
-	 * @param enchantment the enchantment
+	 * @param enchantment the custom enchantment
 	 */
 	public EnchantedChestplate(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
+		this.item = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
 		
+		// custom enchantment
 		this.enchantment = enchantment;
-		item.addEnchantment(this.enchantment, 2);
+		this.item.addEnchantment(this.enchantment, 2);
 	}
 	
 	/**
 	 * Execute.
 	 *
 	 * @return true, if successful
-	 * 
 	 */
 	@Override
 	public boolean execute() {
 
 		try {
-		    //player.getInventory().setChestplate(item);
 			player.getEquipment().setChestplate(item);
 		    return true;
 		} 

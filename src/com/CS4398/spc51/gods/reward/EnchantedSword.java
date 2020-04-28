@@ -17,6 +17,7 @@ public class EnchantedSword extends GiveItem {
 	
 	/**
 	 * Instantiates new enchanted diamond sword.
+	 * The default enchantment is increasing damage to everything.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -24,47 +25,45 @@ public class EnchantedSword extends GiveItem {
 	 */
 	public EnchantedSword(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_SWORD);
-		item.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+		this.item = new ItemStack(Material.DIAMOND_SWORD, 1);
+		
+		// default enchantment
+		enchantment = Enchantment.DAMAGE_ALL;
+		this.item.addEnchantment(enchantment, 2);
 	}
-	
-	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
-	
+
 	/**
 	 * Instantiates a new enchanted diamond sword.
 	 *
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
-	 * @param enchantment the enchantment
+	 * @param enchantment the custom enchantment
 	 */
 	public EnchantedSword(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
-		item = new ItemStack(Material.DIAMOND_SWORD);
+		this.item = new ItemStack(Material.DIAMOND_SWORD, 1);
 		
+		// custom enchantment
 		this.enchantment = enchantment;
-		item.addEnchantment(this.enchantment, 2);
+		this.item.addEnchantment(this.enchantment, 2);
 	}
 	
 	/**
 	 * Execute.
 	 *
 	 * @return true, if successful
-	 * 
 	 */
 	@Override
 	public boolean execute() {
 
 		try {
-		    player.getInventory().addItem(item);
+		    player.getEquipment().setItemInMainHand(item);
 		    return true;
 		} 
 		catch (Exception e) {
 			Gods.gods.getLogger().info(e.getMessage()); 
 			return false;
-		}
-		
-		
+		}	
 	}
-
 }

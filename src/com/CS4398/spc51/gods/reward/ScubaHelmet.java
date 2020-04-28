@@ -19,7 +19,7 @@ public class ScubaHelmet extends EnchantedHelmet {
 	 */
 	public ScubaHelmet(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		execute();
+		breathe();
 	}
 	
 	/**
@@ -27,8 +27,7 @@ public class ScubaHelmet extends EnchantedHelmet {
 	 * 
 	 * @return true, if successful
 	 */
-	@Override
-	public boolean execute() {
+	public boolean breathe() {
 		try {
 			player.setMaximumAir(1200); // 20 ticks/second
 			return true;

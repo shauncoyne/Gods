@@ -17,7 +17,7 @@ public class EnchantedBoots extends GiveItem {
 	
 	/**
 	 * Instantiates new enchanted diamond boots.
-	 * The default enchantment is fire protection.
+	 * The default enchantment is environmental protection.
 	 *
 	 * @param player the player
 	 * @param message the message
@@ -26,10 +26,11 @@ public class EnchantedBoots extends GiveItem {
 	public EnchantedBoots(Player player, String message, ItemStack item) {
 		super(player, message, item);
 		this.item = new ItemStack(Material.DIAMOND_BOOTS, 1);
-		this.item.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
+		
+		// default enchantment
+		enchantment = Enchantment.PROTECTION_ENVIRONMENTAL;
+		this.item.addEnchantment(enchantment, 2);
 	}
-	
-	// LOOK AT THE LINK THAT LO SENT A WHILE BACK FOR ENCHANTMENT LISTENER
 	
 	/**
 	 * Instantiates new enchanted diamond boots.
@@ -37,11 +38,13 @@ public class EnchantedBoots extends GiveItem {
 	 * @param player the player
 	 * @param message the message
 	 * @param item the item
-	 * @param enchantment the enchantment
+	 * @param enchantment the custom enchantment
 	 */
 	public EnchantedBoots(Player player, String message, ItemStack item, Enchantment enchantment) {
 		super(player, message, item);
 		this.item = new ItemStack(Material.DIAMOND_BOOTS, 1);
+		
+		// custom enchantment
 		this.enchantment = enchantment;
 		this.item.addEnchantment(this.enchantment, 2);
 	}
@@ -61,9 +64,6 @@ public class EnchantedBoots extends GiveItem {
 		catch (Exception e) {
 			Gods.gods.getLogger().info(e.getMessage()); 
 			return false;
-		}
-		
-		
+		}	
 	}
-
 }

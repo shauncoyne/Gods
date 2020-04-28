@@ -19,7 +19,9 @@ public class TorpedoBoots extends EnchantedBoots {
 	 */
 	public TorpedoBoots(Player player, String message, ItemStack item) {
 		super(player, message, item);
-		Enchantment enchantment = Enchantment.DEPTH_STRIDER;
+		
+		// replace current enchantment
+		enchantment = Enchantment.DEPTH_STRIDER;
 		this.item.addEnchantment(enchantment, 2);
 	}
 }
