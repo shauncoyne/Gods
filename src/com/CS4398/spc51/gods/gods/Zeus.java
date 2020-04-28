@@ -402,15 +402,15 @@ public class Zeus extends God{
 		switch(rank)
 		{
 		case 1:
-			Powerup p = new Pray("fastPray", 10, 5);
+			Powerup p = new Pray("fastPray", 10, 1500);
 			thing.add(p);
 			break;
 		case 2:
-			Powerup h = new Heal("smallHeal", 30, 10000, 5);
+			Powerup h = new Heal("smallHeal", 30, 120, 5);
 			thing.add(h);
 			break;
 		case 3:
-			Powerup b = new Heal("bigHeal", 30, 2000000, 10);
+			Powerup b = new Heal("bigHeal", 30, 600, 10);
 			thing.add(b);
 			break;
 		case 4:
@@ -418,7 +418,7 @@ public class Zeus extends God{
 		case 5:
 			break;
 		case 6:
-			Powerup f = new Fly("fly", 120, 4000);
+			Powerup f = new Fly("fly", 120, 600);
 			thing.add(f);
 			break;
 		case 7:
@@ -428,7 +428,7 @@ public class Zeus extends God{
 		case 9:
 			break;
 		case 10:
-			Powerup i = new Invisibility("invisible", 300, 500000);
+			Powerup i = new Invisibility("invisible", 300, 800);
 			thing.add(i);
 			break;
 			default: break;
