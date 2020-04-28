@@ -38,7 +38,7 @@ public abstract class God {
 	private String religion;
 	
 	/** The player believers. */
-	private ArrayList believers;
+	private ArrayList<Believer> believers;
 	
 	/** The player enemies. */
 	private ArrayList enemies;
@@ -89,6 +89,14 @@ public abstract class God {
 	}
 
 	public abstract Collection<? extends Powerup> getPowerUps(int rank);
+
+	public ArrayList<Believer> getBelievers() {
+		return believers;
+	}
+
+	public void setBelievers(ArrayList<Believer> believers) {
+		this.believers = believers;
+	}
 	
 
 }

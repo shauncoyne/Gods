@@ -52,13 +52,13 @@ public class Configurator {
 	 */
 	public float getMultiplyer(God god) {
 		if (god.getName().equalsIgnoreCase("Zeus")){
-			return config.getInt("Zeus");
+			return (float) config.getDouble("Zeus");
 		}
 		else if (god.getName().equalsIgnoreCase("Poseidon")){
-			return config.getInt("Poseidon");
+			return (float) config.getDouble("Poseidon");
 		}
 		else if (god.getName().equalsIgnoreCase("Hades")){
-			return config.getInt("Hades");
+			return (float) config.getDouble("Hades");
 		}
 		return 0f;
 	}
