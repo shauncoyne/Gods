@@ -125,6 +125,8 @@ public class Believer implements Listener{
 		beliefPower = 0f;
 		this.playerUUID = player.getUniqueId();
 		god = Gods.godsArray[0].getName();
+		Atheist.addBeliever(this);
+
 	}
 	
 	/**
@@ -137,6 +139,8 @@ public class Believer implements Listener{
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
 		god = Gods.godsArray[0].getName();
+		Atheist.addBeliever(this);
+
 
 	}
 	
@@ -470,8 +474,10 @@ public class Believer implements Listener{
 						timerThread.run();
 
 					}
-					AlterThread alterThread = new AlterThread(this, event.getClickedBlock());
-					alterThread.run();
+					//AlterThread alterThread = new AlterThread(this, event.getClickedBlock());
+					//alterThread.run();
+					this.getPlayer().sendMessage("Looking for sign...");
+					AlterManager.checkForAlterCreation(event.getClickedBlock(), this);
 				}
 				else {
 				event.getPlayer().sendMessage("Block placed!");
@@ -516,6 +522,7 @@ public class Believer implements Listener{
 			 * Run.
 			 */
 			public void run(){
+				this.believer.getPlayer().sendMessage("Looking for sign...");
 				AlterManager.checkForAlterCreation(block, believer);
 		    }
 			
@@ -615,7 +622,7 @@ public class Believer implements Listener{
 		{
 			if (g.getName().equalsIgnoreCase(godName)) {
 				god = g.getName();
-				switch (god) {
+				switch (godName) {
 				case "atheist":
 					Atheist.addBeliever(this);
 				case "Zues":

@@ -55,7 +55,7 @@ public class AlterManager implements Listener{
 	static ArrayList<AlterTemplate> alterTemplateList = new ArrayList<AlterTemplate>();
 	
 	/** The max alter size. */
-	private static int maxAlterSize = 20; //the number of layers we look at to find an alter.
+	private static int maxAlterSize = 5; //the number of layers we look at to find an alter.
 	
 	/** The origin block type. */
 
@@ -339,16 +339,17 @@ public class AlterManager implements Listener{
 		         }
 
 			}
-			try {
+			//try {
 				believer.getPlayer().sendMessage("getting origin");
 
-				origin = getOrigin(block);
-			} catch (NoOriginException e) {
+				//origin = getOrigin(block);
+				origin = block.getLocation();
+/*			} catch (NoOriginException e) {
 				believer.getPlayer().sendMessage("No origin");
 
 				System.out.println("No origin.");
 				return;
-			}
+			}*/
 			createAlter(believer, index, origin);
 			
 			
