@@ -100,7 +100,7 @@ public abstract class God {
 
 	public abstract Object getBelievers();
 
-	protected abstract void getRank(float beliefPower);
+	protected abstract int getRank(float beliefPower);
 
 
 	
