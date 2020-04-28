@@ -9,6 +9,7 @@ import java.util.Collection;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
 import com.CS4398.spc51.gods.Believer;
+import com.CS4398.spc51.gods.powerup.BreatheUnderwater;
 import com.CS4398.spc51.gods.powerup.Heal;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.CS4398.spc51.gods.powerup.Pray;
@@ -367,12 +368,16 @@ public class Poseidon extends God{
 			thing.add(h);
 			break;
 		case 3:
+			Powerup b = new Heal("bigHeal", 30, 2000000, 10);
+			thing.add(b);
 			break;
 		case 4:
 			break;
 		case 5:
 			break;
 		case 6:
+			Powerup u = new BreatheUnderwater("breathe", 120, 4000);
+			thing.add(u);
 			break;
 		case 7:
 			break;
