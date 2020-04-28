@@ -54,7 +54,7 @@ public class Hades extends God{
 		//switch based on the type of event
 		switch (e.getEventName()) 
 		{
-        case "EntityDamageByEntityEvent":  
+        case "EntityDeathEvent":  
         		playerKilledEntity(believer, (EntityDeathEvent) e);
                  break;
 		}

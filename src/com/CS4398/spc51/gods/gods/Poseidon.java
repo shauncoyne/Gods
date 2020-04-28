@@ -53,7 +53,7 @@ public class Poseidon extends God{
 	{
 		switch (e.getEventName()) 
 		{
-        case "EntityDamageByEntityEvent":  
+        case "EntityDeathEvent":  
         		playerKilledEntity(believer, (EntityDeathEvent) e);
                  break;
         default:
