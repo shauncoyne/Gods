@@ -10,9 +10,7 @@ package com.CS4398.spc51.gods.alter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 

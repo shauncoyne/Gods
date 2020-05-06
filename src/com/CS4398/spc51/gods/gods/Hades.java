@@ -10,6 +10,7 @@ import java.util.Collection;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
+
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Fly;
 import com.CS4398.spc51.gods.powerup.Heal;
@@ -26,10 +27,10 @@ import com.CS4398.spc51.gods.reward.EnchantedChestplate;
 import com.CS4398.spc51.gods.reward.EnchantedHelmet;
 import com.CS4398.spc51.gods.reward.EnchantedLeggings;
 import com.CS4398.spc51.gods.reward.EnchantedSword;
-import com.CS4398.spc51.gods.reward.GiveItem;
-import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
 import com.CS4398.spc51.gods.reward.FlamingSword;
 import com.CS4398.spc51.gods.reward.FlyingBoots;
+import com.CS4398.spc51.gods.reward.GiveItem;
+import com.CS4398.spc51.gods.reward.InvisibilityHelmet;
 import com.CS4398.spc51.gods.reward.LuckyHelmet;
 import com.CS4398.spc51.gods.reward.Reward;
 import com.CS4398.spc51.gods.reward.SwordOfSouls;
@@ -56,6 +57,7 @@ public class Hades extends God{
 	 * @param believer the believer
 	 * @param e the event
 	 */
+	@Override
 	public void observe(Believer believer, Event e) 
 	{
 		//switch based on the type of event
@@ -69,6 +71,7 @@ public class Hades extends God{
 	}
 	
 
+	@Override
 	public void reward(float previousBP, float currentBP, Believer believer)
 
 	{
@@ -446,6 +449,7 @@ public class Hades extends God{
 	 *
 	 * @return the believers
 	 */
+	@Override
 	public ArrayList<Believer> getBelievers() {
 		return Hades.believers;
 	}

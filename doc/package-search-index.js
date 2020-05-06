@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.CS4398.spc51.gods"},{"l":"com.CS4398.spc51.gods.alter"},{"l":"com.CS4398.spc51.gods.gods"},{"l":"com.CS4398.spc51.gods.punishment"},{"l":"com.CS4398.spc51.gods.reward"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.CS4398.asb104.gods"},{"l":"com.CS4398.spc51.gods"},{"l":"com.CS4398.spc51.gods.alter"},{"l":"com.CS4398.spc51.gods.gods"},{"l":"com.CS4398.spc51.gods.powerup"},{"l":"com.CS4398.spc51.gods.punishment"},{"l":"com.CS4398.spc51.gods.reward"}]

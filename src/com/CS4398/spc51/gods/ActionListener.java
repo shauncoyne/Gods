@@ -3,6 +3,8 @@
  */
 package com.CS4398.spc51.gods;
 
+import java.awt.event.ActionEvent;
+
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +17,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import com.CS4398.spc51.gods.alter.Alter;
 import com.CS4398.spc51.gods.alter.AlterManager;
 import com.CS4398.spc51.gods.gods.Atheist;
-import com.CS4398.spc51.gods.gods.God;
 
 
 // TODO: Auto-generated Javadoc

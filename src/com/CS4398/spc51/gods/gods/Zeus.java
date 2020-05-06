@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
+
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Fly;
 import com.CS4398.spc51.gods.powerup.Heal;
@@ -53,6 +54,7 @@ public class Zeus extends God{
 	 * @param believer the believer
 	 * @param e the event
 	 */
+	@Override
 	public void observe(Believer believer, Event e) 
 	{
 		switch(e.getEventName()) {
@@ -68,6 +70,7 @@ public class Zeus extends God{
 	}
 	
 
+	@Override
 	public void reward(float previousBP, float currentBP, Believer believer)
 
 	{
@@ -442,6 +445,7 @@ public class Zeus extends God{
 	 *
 	 * @return the believers
 	 */
+	@Override
 	public ArrayList<Believer> getBelievers() {
 		return Zeus.believers;
 	}

@@ -4,7 +4,6 @@
 package com.CS4398.spc51.gods.alter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 
 import org.bukkit.Location;

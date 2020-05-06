@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.bukkit.event.Event;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import com.CS4398.spc51.gods.Believer;
 import com.CS4398.spc51.gods.powerup.Powerup;

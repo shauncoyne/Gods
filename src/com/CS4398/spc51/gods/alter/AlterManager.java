@@ -25,8 +25,6 @@ import org.bukkit.event.block.BlockFadeEvent;
 import org.bukkit.event.block.BlockFertilizeEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
-import org.bukkit.event.block.BlockPistonEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.block.NotePlayEvent;
 import org.bukkit.event.block.SignChangeEvent;

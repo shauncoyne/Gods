@@ -6,7 +6,6 @@ package com.CS4398.spc51.gods;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import com.CS4398.spc51.gods.alter.Alter;

@@ -76,6 +76,7 @@ public class Atheist extends God{
 	 *
 	 * @return the believers
 	 */
+	@Override
 	public ArrayList<Believer> getBelievers() {
 		return Atheist.believers;
 	}

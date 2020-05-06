@@ -3,13 +3,10 @@
  */
 package com.CS4398.spc51.gods;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -32,10 +29,7 @@ import com.CS4398.spc51.gods.gods.Poseidon;
 import com.CS4398.spc51.gods.gods.Zeus;
 import com.CS4398.spc51.gods.powerup.Powerup;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
-
-import scala.reflect.io.Directory;
 
 
 // TODO: Auto-generated Javadoc
@@ -69,6 +63,8 @@ public class Believer implements Listener{
 	
 	/** The timer expired. This is how we keep track of the need to start a timer. Timer is started when the believer starts building after the "/gods build" or "/gods template" command is run*/
 	private boolean timerExpired = true;
+	
+
 	
 
 	
@@ -524,6 +520,7 @@ public class Believer implements Listener{
 			/**
 			 * Run.
 			 */
+			@Override
 			public void run(){
 				this.believer.getPlayer().sendMessage("Looking for sign...");
 				AlterManager.checkForAlterCreation(block, believer);
@@ -557,6 +554,7 @@ public class Believer implements Listener{
 		/**
 		 * Run.
 		 */
+		@Override
 		public void run(){
 			AlterGenerator.generateAlter(block);
 	    }
@@ -586,6 +584,7 @@ public class Believer implements Listener{
 		/**
 		 * Run.
 		 */
+		@Override
 		public void run(){
 			try {
 				Thread.sleep(alterBuildingTimeout * 1000);

@@ -39,7 +39,8 @@ public class InterfaceAdapter implements JsonSerializer, JsonDeserializer{
      * @return the object
      * @throws JsonParseException the json parse exception
      */
-    public Object deserialize(JsonElement jsonElement, Type type,
+    @Override
+	public Object deserialize(JsonElement jsonElement, Type type,
         JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
 
         JsonObject jsonObject = jsonElement.getAsJsonObject();
@@ -57,7 +58,8 @@ public class InterfaceAdapter implements JsonSerializer, JsonDeserializer{
          * @param jsonSerializationContext the json serialization context
          * @return the json element
          */
-        public JsonElement serialize(Object jsonElement, Type type, JsonSerializationContext jsonSerializationContext) {
+        @Override
+		public JsonElement serialize(Object jsonElement, Type type, JsonSerializationContext jsonSerializationContext) {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty(CLASSNAME, jsonElement.getClass().getName());
             jsonObject.add(DATA, jsonSerializationContext.serialize(jsonElement));
