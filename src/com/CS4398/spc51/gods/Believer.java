@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javassist.bytecode.ClassFile;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -42,10 +43,9 @@ import com.google.gson.JsonIOException;
  */
 public class Believer implements Listener{
 	
-	/** The alter building timeout length. Controls how long the listener is registered. */
-	public static int alterBuildingTimeout = 10; //number of seconds alter detection will be on for this player
+
 	
-	/** The believer list. This is a static list of all the believers who have been on the server since startup */
+	/** The believer list. This is a static list of all the believers who are currently on the server */
 	public static ArrayList<Believer> believerList = new ArrayList<Believer>();
 	
 	/** The powerup list. This is the list of all the powerups the believer has. */
@@ -57,35 +57,8 @@ public class Believer implements Listener{
 	
 	/**  This is the rank of the player. */
 	private int rank;
-	
-	/** The building alter. This is how we know if the player is building an alter or is saving a template. By default, the player is building an alter */
-	private boolean buildingAlter = true;
-	
-	/** The timer expired. This is how we keep track of the need to start a timer. Timer is started when the believer starts building after the "/gods build" or "/gods template" command is run*/
-	private boolean timerExpired = true;
-	
 
-	
-
-	
-	/**
-	 *  this is true when the player requests to be in alter building mode.
-	 *
-	 * @return true, if is building alter
-	 */
-	
-	public boolean isBuildingAlter() {
-		return buildingAlter;
-	}
-
-	/**
-	 * Sets the building alter.
-	 *
-	 * @param buildingAlter the new building alter
-	 */
-	public void setBuildingAlter(boolean buildingAlter) {
-		this.buildingAlter = buildingAlter;
-	}
+	private God god;
 
 	/** The player UUID. */
 	private UUID playerUUID;
@@ -108,9 +81,6 @@ public class Believer implements Listener{
 		this.playerUUID = playerUUID;
 	}
 
-	/**  The god the player worships. */
-	private String god;
-
 	
 	/**
 	 * Instantiates a new believer.
@@ -118,9 +88,9 @@ public class Believer implements Listener{
 	 * @param player the player
 	 */
 	public Believer(Player player) {
-		beliefPower = 0f;
+		this.beliefPower = 0f;
 		this.playerUUID = player.getUniqueId();
-		god = Gods.godsArray[0].getName();
+		this.god = new Atheist();
 		Atheist.addBeliever(this);
 
 	}
@@ -134,7 +104,7 @@ public class Believer implements Listener{
 	public Believer(Player player, float beliefPower) {
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
-		god = Gods.godsArray[0].getName();
+		this.god = new Atheist();
 		Atheist.addBeliever(this);
 
 
@@ -151,10 +121,24 @@ public class Believer implements Listener{
 		this.beliefPower = beliefPower;
 		this.playerUUID = player.getUniqueId();
 		this.setRank(rank);
-		god = Gods.godsArray[0].getName();
+		this.god = new Atheist();
 		Atheist.addBeliever(this);
 
 
+	}
+	/**
+	 * Instantiates a new believer.
+	 *
+	 * @param player the player
+	 * @param beliefPower the belief power
+	 * @param rank the rank
+	 */
+	public Believer(Player player, float beliefPower, int rank, God god) {
+		this.beliefPower = beliefPower;
+		this.playerUUID = player.getUniqueId();
+		this.setRank(rank);
+		this.god = new Atheist();
+		god.addBeliever(this);
 	}
 	
 	/**
@@ -163,9 +147,9 @@ public class Believer implements Listener{
 	 * @param uniqueId the unique id
 	 */
 	public Believer(UUID uniqueId) {
-		beliefPower = 0f;
+		this.beliefPower = 0f;
 		this.playerUUID = uniqueId;
-		god = Gods.godsArray[0].getName();
+		this.god = new Atheist();
 		Atheist.addBeliever(this);
 
 	}
@@ -194,23 +178,8 @@ public class Believer implements Listener{
 			System.out.println("Could not load user, are they new?");
 			Believer newBeliever = new Believer(uuid);
 			believerList.add(newBeliever);
-			switch (newBeliever.god) {
-			case "atheist":
-				Atheist.addBeliever(newBeliever);
-			case "Zues":
-				Zeus.addBeliever(newBeliever);
-				break;
-			case "Poseidon":
-				Poseidon.addBeliever(newBeliever);
-				break;
-			case "Hades":
-				Hades.addBeliever(newBeliever);
-				break;
-
-			default:
-				break;
-			}
 			//TODO LOG: A player has joined that is not a believer. They must be new! Adding them now.
+
 		}
 	}
 	
@@ -230,22 +199,7 @@ public class Believer implements Listener{
 				System.out.println("ERROR: LOADED NULL FROM JSON");
 			}
 			believerList.add(believer);
-			switch (believer.god) {
-			case "atheist":
-				Atheist.addBeliever(believer);
-			case "Zues":
-				Zeus.addBeliever(believer);
-				break;
-			case "Poseidon":
-				Poseidon.addBeliever(believer);
-				break;
-			case "Hades":
-				Hades.addBeliever(believer);
-				break;
-
-			default:
-				break;
-			}
+			believer.god.addBeliever(believer);
 			return true;
 		}
 		catch(Exception e) {
@@ -364,14 +318,8 @@ public class Believer implements Listener{
 	 */
 	public God getGod() {
 		//Returns the God this player worships
+		return this.god;
 
-		for (God g: Gods.godsArray) {
-			if (g.getName().equalsIgnoreCase(god)) {
-				return g;
-			}
-		
-		}
-		return null;
 	}
 
 	/**
@@ -384,220 +332,7 @@ public class Believer implements Listener{
 		
 	}
 	
-	/**
-	 * Start listening for alter.
-	 */
-	public void startListeningForAlter() {
-		
 
-		Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
-		
-		
-	}
-	
-	/**
-	 * Start listening for alter template.
-	 */
-	public void startListeningForAlterTemplate() {
-		
-		buildingAlter = false;
-		Gods.gods.getServer().getPluginManager().registerEvents(this, Gods.gods);
-		
-		
-	}
-	
-	/**
-	 * Stop listening for alter.
-	 *
-	 * @param believer the believer
-	 */
-	public static void stopListeningForAlter(Believer believer) {
-		believer.setBuildingAlter(true); //return to default state. 
-		believer.setTimerExpired(true);
-	    HandlerList.unregisterAll(believer);
-
-	}
-	/**
-	 * On block placed. This is the general catch-all for detecting the creation of
-	 * altars
-	 *
-	 * @param event the event
-	 */
-	@EventHandler
-    public void onBlockPlaced(BlockPlaceEvent event){
-		
-		if (true) {
-			return; // this is done because currently we use right click for signs. In the future this will be re-enabled
-		}
-		
-		if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
-
-			if (buildingAlter) {
-				if (timerExpired) {
-					timerExpired = false;
-					TimerThread timerThread = new TimerThread(this);
-					timerThread.run();
-
-				}
-				AlterThread alterThread = new AlterThread(this, event.getBlock());
-				alterThread.run();
-			}
-			else {
-			event.getPlayer().sendMessage("Block placed!");
-			if (timerExpired) {
-				timerExpired = false;
-				TimerThread timerThread = new TimerThread(this);
-				timerThread.run();
-
-			}
-			AlterTemplateThread alterTemplateThread = new AlterTemplateThread(this, event.getBlock());
-			alterTemplateThread.run();
-			}
-		}
-    }
-	
-	/**
-	 * On player interact.
-	 *
-	 * @param event the event
-	 */
-	@EventHandler
-	public void OnPlayerInteract(PlayerInteractEvent event)
-	{	
-		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))
-		{
-			if (event.getPlayer() == this.getPlayer()){ //make sure the player we are listening to is the one who placed the block
-
-				if (buildingAlter) {
-					if (timerExpired) {
-						timerExpired = false;
-						TimerThread timerThread = new TimerThread(this);
-						timerThread.run();
-
-					}
-					AlterThread alterThread = new AlterThread(this, event.getClickedBlock());
-					alterThread.run();
-				}
-				else {
-				event.getPlayer().sendMessage("Block placed!");
-				if (timerExpired) {
-					timerExpired = false;
-					TimerThread timerThread = new TimerThread(this);
-					timerThread.run();
-
-				}
-				AlterTemplateThread alterTemplateThread = new AlterTemplateThread(this, event.getClickedBlock());
-				alterTemplateThread.run();
-				}
-			}
-		}
-	}
-
-
- 	/**
-	  * The Class AlterThread.
-	  */
-	 private class AlterThread implements Runnable{
-		 	
-	 		/** The believer. */
-	 		Believer believer;
-	 		
-	 		/** The block. */
-		 	Block block;
-
-
-		    /**
-    		 * Instantiates a new block listener.
-    		 *
-    		 * @param believer the believer
-    		 * @param block the block
-    		 */
-    		public AlterThread(Believer believer, Block block) {
-		    	this.believer = believer;
-		    	this.block = block;
-		}
-			
-			/**
-			 * Run.
-			 */
-			@Override
-			public void run(){
-				this.believer.getPlayer().sendMessage("Looking for sign...");
-				AlterManager.checkForAlterCreation(block, believer);
-		    }
-			
-		  }
- 	
-	 /**
-	  * The Class AlterTemplateThread.
-	  */
-	 private class AlterTemplateThread implements Runnable{
-	 	
- 		/** The believer. */
- 		Believer believer;
- 		
- 		/** The block. */
-		 Block block;
-
-
-	    /**
-    	 * Instantiates a new block listener.
-    	 *
-    	 * @param believer the believer
-    	 * @param block the block
-    	 */
-		public AlterTemplateThread(Believer believer, Block block) {
-	    	this.believer = believer;
-	    	this.block = block;
-	}
-		
-		/**
-		 * Run.
-		 */
-		@Override
-		public void run(){
-			AlterGenerator.generateAlter(block);
-	    }
-		
-	  }
- 	
-	 /**
-	  * The Class TimerThread.
-	  */
-	 private class TimerThread implements Runnable{
-	 	
- 		/** The believer. */
- 		Believer believer;
- 		
-
-
-	    /**
-		 * Instantiates a new block listener.
-		 *
-		 * @param believer the believer
-		 */
-		public TimerThread(Believer believer) {
-	    	this.believer = believer;
-
-	}
-		
-		/**
-		 * Run.
-		 */
-		@Override
-		public void run(){
-			try {
-				Thread.sleep(alterBuildingTimeout * 1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Believer.stopListeningForAlter(believer);
-			believer.getPlayer().sendMessage("Timer Expired");
-
-	    }
-		
-	  }
 
 	/**
 	 * Save all.
@@ -610,38 +345,12 @@ public class Believer implements Listener{
 		}
 	}
 
-	/**
-	 * Change god.
-	 *
-	 * @param godName the god name
-	 */
-	public void changeGod(String godName) {
+
+	public void changeGod(God god) {
 		beliefPower = 0;
 		setRank(0);
 		powerupList.clear();
-
-		for (God g : Gods.godsArray)
-		{
-			if (g.getName().equalsIgnoreCase(godName)) {
-				god = g.getName();
-				switch (godName) {
-				case "atheist":
-					Atheist.addBeliever(this);
-				case "Zues":
-					Zeus.addBeliever(this);
-					break;
-				case "Poseidon":
-					Poseidon.addBeliever(this);
-					break;
-				case "Hades":
-					Hades.addBeliever(this);
-					break;
-
-				default:
-					break;
-				}
-			}
-		}
+		this.god = god;
 		
 		
 	}
@@ -717,23 +426,6 @@ public class Believer implements Listener{
 		return null;
 	}
 
-	/**
-	 * Checks if is timer expired.
-	 *
-	 * @return true, if is timer expired
-	 */
-	public boolean isTimerExpired() {
-		return timerExpired;
-	}
-
-	/**
-	 * Sets the timer expired.
-	 *
-	 * @param timerExpired the new timer expired
-	 */
-	public void setTimerExpired(boolean timerExpired) {
-		this.timerExpired = timerExpired;
-	}
 
 	/**
 	 * Use powerup.

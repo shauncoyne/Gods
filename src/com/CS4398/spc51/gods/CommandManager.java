@@ -49,7 +49,7 @@ public class CommandManager implements CommandExecutor{
 			}
 			if (args.length == 2) {
 				if (args[0].equalsIgnoreCase("worship")){
-					believer.changeGod(args[1]);
+					believer.changeGod(Gods.getGodFromName(args[1]));
 					return true;
 				}
 				if (args[0].equalsIgnoreCase("powerup")){
@@ -67,12 +67,7 @@ public class CommandManager implements CommandExecutor{
 					sender.sendMessage("Your current belief power is: " + belief_power);
 					sender.sendMessage("Your current rank is: " + rank);
 				}
-				else if(args[0].equalsIgnoreCase("template")) {
-					believer.startListeningForAlterTemplate();
-				}
-				else if(args[0].equalsIgnoreCase("build")) {
-					believer.startListeningForAlter();
-				}
+
 				else if(args[0].equalsIgnoreCase("pray")) {
 					if (believer.hasPower("pray")){
 						believer.getPower("pray").execute(believer);

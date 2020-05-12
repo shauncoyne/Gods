@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.CS4398.spc51.gods.gods.Atheist;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -150,7 +151,7 @@ public class AlterManager implements Listener{
 		for(Believer b : (ArrayList<Believer>) alter.getGod().getBelievers()) {
 			if(Bukkit.getPlayer(b.getPlayerUUID()) != null) {
 				b.getPlayer().sendMessage("Your God's Alter has been destroyed by " + player.getDisplayName() +"!");
-				b.changeGod("atheist");
+				b.changeGod(new Atheist());
 			}
 		}
 		
@@ -277,25 +278,24 @@ public class AlterManager implements Listener{
 	 * Creates the alter.
 	 *
 	 * @param believer the believer
-	 * @param index the index
 	 * @param origin the origin
 	 */
-	public static void createAlter(Believer believer, int index, Location origin) {
+	public static void createAlter(Believer believer, God god, Location origin) {
 		believer.getPlayer().sendMessage("found origin");
 		ArrayList<AlterBlock> list = new ArrayList<AlterBlock>();
 		AlterBlock block = new AlterBlock(origin, Material.EMERALD_BLOCK);
 		list.add(block);
 		ArrayList<ArrayList<AlterBlock>> super_list = new ArrayList<ArrayList<AlterBlock>>();
 		super_list.add(list);
-		Alter alter = new Alter(believer.getPlayerUUID(), Gods.godsArray[index], super_list);
+		Alter alter = new Alter(believer.getPlayerUUID(), god, super_list);
 		believer.getPlayer().sendMessage("Created Alter");
 
 		alterList.add(alter);
 		believer.getPlayer().sendMessage("Added alter to list");
 
-		believer.getPlayer().sendMessage("You have created an Alter for the god: " + Gods.godsArray[index].getName());
-		believer.changeGod(Gods.godsArray[index].getName());
-		believer.getPlayer().sendMessage("You now worship me, " + Gods.godsArray[index].getName() + ", the most gracious God. Protect my alter at all costs.");
+		believer.getPlayer().sendMessage("You have created an Alter for the god: " + god.getName());
+		believer.changeGod(god);
+		believer.getPlayer().sendMessage("You now worship me, " + god.getName() + ", the most gracious God. Protect my alter at all costs.");
 
 	}
 	
@@ -317,7 +317,7 @@ public class AlterManager implements Listener{
 		if (simpleAlter) {
 			Location origin = null;
 			String name = "null";
-			int index = 0;
+			God theGod = null;
 			if(block.getType().equals(Material.WALL_SIGN) || block.getType().equals(Material.LEGACY_SIGN_POST) || block.getType().equals(Material.SIGN)){
 				believer.getPlayer().sendMessage("Found the sign, looking for alter!");
 
@@ -329,10 +329,10 @@ public class AlterManager implements Listener{
 		        	 System.out.println("Sign did not contain the gods name.");
 		        	 return;
 		         }
-		         for (int i = 0; i < Gods.godsArray.length; i++) {
-		        	 if (Gods.godsArray[i].getName().equalsIgnoreCase(name))
+		         for (int i = 0; i < Gods.all_gods.length; i++) {
+		        	 if (Gods.all_gods[i].getName().equalsIgnoreCase(name))
 		        	 {
-		        		 index = i;
+						 theGod = Gods.all_gods[i];
 		        	 }
 		         }
 
@@ -348,7 +348,7 @@ public class AlterManager implements Listener{
 				System.out.println("No origin.");
 				return;
 			}
-			createAlter(believer, index, origin);
+			createAlter(believer, theGod, origin);
 			
 			
 		}
@@ -444,7 +444,7 @@ public class AlterManager implements Listener{
 	private static String checkForGod(String[] ln) {
 		for (String s : ln) {
 			System.out.println(s);
-			for (God g: Gods.godsArray) {
+			for (God g: Gods.all_gods) {
 				if (s.contains(g.getName()) || s.equalsIgnoreCase(g.getName())) {
 					return g.getName();
 				}

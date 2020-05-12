@@ -30,7 +30,8 @@ import com.CS4398.spc51.gods.powerup.Powerup;
  * The Class God.
  */
 public abstract class God {
-	
+
+
 	/** The name. */
 	private String name;
 	//hello test
@@ -53,7 +54,10 @@ public abstract class God {
 		this.setName(name);
 		this.religion = religion;
 	}
-	
+
+	public static void addBeliever(Believer believer) {
+	}
+
 	/**
 	 * Observe.
 	 *
