@@ -5,9 +5,7 @@ import java.sql.Timestamp;
 
 import com.CS4398.spc51.gods.Believer;
 
-public class Pray extends Powerup implements Serializable{
-
-	private static final long serialVersionUID = -7065570110587446184L;
+public class Pray extends Powerup {
 
 	public Pray(String name, int max_duration, int cooldown) {
 		super(name, max_duration, cooldown);

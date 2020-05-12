@@ -5,9 +5,8 @@ import java.sql.Timestamp;
 
 import com.CS4398.spc51.gods.Believer;
 
-public class Fly extends Powerup implements Serializable {
+public class Fly extends Powerup  {
 	
-	private static final long serialVersionUID = -2356573470196700816L;
 
 	public Fly(String name, int max_duration, int cooldown) {
 		super(name, max_duration, cooldown);

@@ -5,9 +5,8 @@ import java.sql.Timestamp;
 
 import com.CS4398.spc51.gods.Believer;
 
-public class Heal extends Powerup implements Serializable{
+public class Heal extends Powerup {
 
-	private static final long serialVersionUID = 2480230018181837378L;
 	private double increaseAmount;
 
 	public Heal(String name, int max_duration, int cooldown, double increaseAmount) {

@@ -5,12 +5,11 @@ import java.sql.Timestamp;
 
 import com.CS4398.spc51.gods.Believer;
 
-public abstract class Powerup implements Serializable{
+public abstract class Powerup {
 
-	private static final long serialVersionUID = 737088112482514416L;
 	private String name;
 	private int max_duration;
-	//private int current_duration;
+	private int current_duration;
 	private int cooldown;
 	private Timestamp lastUsed;
 	

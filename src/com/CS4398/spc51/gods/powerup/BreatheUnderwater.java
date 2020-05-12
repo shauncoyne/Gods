@@ -7,9 +7,8 @@ import java.sql.Timestamp;
 
 import com.CS4398.spc51.gods.Believer;
 
-public class BreatheUnderwater extends Powerup implements Serializable {
+public class BreatheUnderwater extends Powerup {
 
-	private static final long serialVersionUID = 8461057765932361088L;
 	//private EntityDamageEvent event;
 
 	public BreatheUnderwater(String name, int max_duration, int cooldown) {

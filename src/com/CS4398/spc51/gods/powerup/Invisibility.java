@@ -8,9 +8,7 @@ import org.bukkit.entity.Player;
 
 import com.CS4398.spc51.gods.Believer;
 
-public class Invisibility extends Powerup implements Serializable {
-
-	private static final long serialVersionUID = 2834620570100307562L;
+public class Invisibility extends Powerup {
 
 	public Invisibility(String name, int max_duration, int cooldown) {
 		super(name, max_duration, cooldown);
