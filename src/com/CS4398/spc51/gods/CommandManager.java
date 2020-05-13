@@ -3,6 +3,8 @@
  */
 package com.CS4398.spc51.gods;
 
+import com.CS4398.spc51.gods.alter.AlterGenerator;
+import com.CS4398.spc51.gods.alter.AlterManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -51,6 +53,8 @@ public class CommandManager implements CommandExecutor{
 				case "info":
 					//do info stuff here
 					break;
+				case "generate":
+					AlterGenerator.generateAlter(((Player) sender).getLocation().getBlock(), Believer.getBeliever(((Player) sender).getUniqueId()));
 				default:
 					break;
 			}

@@ -13,3 +13,6 @@ commands:
     powerups:
         description: This gives information about powerups
         usage: "Usage: /powerups <none/list/info> <powerup>"
+    generate:
+        description:  Used by Admins to create new Alter Templates
+        usage: "Usage: /generate"
