@@ -2,9 +2,22 @@ Gods.java should have a function that loops through all files to get information
 When this function is called, it first writes all the believers to disk then reads the files then returns all the believer
 objects in an arraylist. This is a temporary list.
 
+For Alters, there should be 2 main alter commands. Build, which takes the alter name, which will scan for a signs,
+once the sign is found that is the origin. Then uses that origin point to look for the pattern. There will also be
+show <build/built>, which will teleport the player to a special world in a box that shows the alter being built block by
+block or the built alter. They will have no permissions in this world so they can't steal anything. They are teleported out
+after 120 seconds or when they run another command to leave. Finally, they cannot use this command when they are combat tagged
+or when they low on health.
+
+God ideas:
+
+Greek gods, just 3 for now, built out really well.
+Roman gods, just 3 for now, built out really well.
+
 Christian god with christian religion created by a Jesus sign. Very very war heavy, very expensive, but otherwise sucks
 
 Satan god of christian religion that can cancel all Christian wars, super pacifist, no real powerful powers. Chill.
 
 Scientology god created by tom cruze sign. Super wack, super weird. Made as a joke by the greek gods that fuels this nonexistant god.
 
+Other gods to come later.
