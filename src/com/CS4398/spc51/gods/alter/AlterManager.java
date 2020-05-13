@@ -7,9 +7,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import com.CS4398.spc51.gods.gods.Atheist;
+import com.google.gson.reflect.TypeToken;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -81,8 +83,10 @@ public class AlterManager implements Listener{
 	private void load() {
 		try {
 
+			Type alterListType = new TypeToken<ArrayList<Alter>>(){}.getType();
+
 			Gson gson = new Gson();
-			ArrayList<Alter> alters = gson.fromJson(new FileReader(Gods.gods.getDataFolder() + File.separator + "alters" + File.separator + "alters" +".data"), ArrayList.class);
+			ArrayList<Alter> alters = gson.fromJson(new FileReader(Gods.gods.getDataFolder() + File.separator + "alters" + File.separator + "alters" +".data"), alterListType);
 			if ( alters == null) {
 				System.out.println("ERROR: LOADED NULL FROM JSON");
 				return;
