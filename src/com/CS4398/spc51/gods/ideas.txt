@@ -1,0 +1,10 @@
+Gods.java should have a function that loops through all files to get information for all the believers on the server
+When this function is called, it first writes all the believers to disk then reads the files then returns all the believer
+objects in an arraylist. This is a temporary list.
+
+Christian god with christian religion created by a Jesus sign. Very very war heavy, very expensive, but otherwise sucks
+
+Satan god of christian religion that can cancel all Christian wars, super pacifist, no real powerful powers. Chill.
+
+Scientology god created by tom cruze sign. Super wack, super weird. Made as a joke by the greek gods that fuels this nonexistant god.
+
