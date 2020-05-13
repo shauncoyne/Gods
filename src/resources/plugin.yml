@@ -1,9 +1,15 @@
 name: Gods
-version: 0.0.1
+version: 0.0.2
 main: com.CS4398.spc51.gods.Gods
 api-version: 1.15
 load: POSTWORLD
 commands:
     gods:
-        description: This is the root command for functions
-        usage: "Usage: /gods <subcommands>"
+        description: This gives information about the plugin
+        usage: "Usage: /gods <page#>"
+    info:
+        description: This gives information about our server!
+        usage: "Usage: /info <page#>"
+    powerups:
+        description: This gives information about powerups
+        usage: "Usage: /powerups <none/list/info> <powerup>"
