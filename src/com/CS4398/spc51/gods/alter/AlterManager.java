@@ -61,7 +61,7 @@ public class AlterManager implements Listener{
 	/** The origin block type. */
 
 	
-	private static Material originBlockMaterial= Material.EMERALD_BLOCK;
+	private static Material originBlockMaterial= Material.SIGN;
 
 	
 	/** The simple alter. */
@@ -344,7 +344,7 @@ public class AlterManager implements Listener{
 			try {
 				believer.getPlayer().sendMessage("getting origin");
 
-				origin = getOrigin(block);
+				origin = getOrigin(block, believer);
 				//origin = block.getLocation();
 			} catch (NoOriginException e) {
 				believer.getPlayer().sendMessage("No origin");
@@ -359,7 +359,7 @@ public class AlterManager implements Listener{
 		else {
 		
 			try {
-				Location origin = getOrigin(block);
+				Location origin = getOrigin(block, believer);
 			} catch (NoOriginException e) {
 				return;
 			}
@@ -482,55 +482,118 @@ public class AlterManager implements Listener{
 	 * @return the origin
 	 * @throws NoOriginException the no origin exception
 	 */
-	public static Location getOrigin(Block block) throws NoOriginException{
+	public static Location getOrigin(Block block, Believer believer) throws NoOriginException{
 		//first check if 0 is emerald!
 		if (block.getType() == originBlockMaterial) {
-			return block.getLocation();
+			God god = getGodFromSign(block, believer);
+			if (god != null) {
+				return block.getLocation();
+			}
 		}
 		for (int i = -1 * maxAlterSize; i <= maxAlterSize; i++) { 
 			if (block.getLocation().add(0, 0, i).getBlock().getType() == originBlockMaterial) {
-				return block.getLocation().add(0, 0, i);
+				God god = getGodFromSign(block, believer);
+				if (god != null) {
+					return block.getLocation().add(0, 0, i);
+				}
 			}
 			if (block.getLocation().add(0, i, 0).getBlock().getType() == originBlockMaterial) {
-				return block.getLocation().add(0, i, 0);
+				God god = getGodFromSign(block, believer);
+				if (god != null) {
+					return block.getLocation().add(0, i, 0);
+				}
 			}
 			if (block.getLocation().add(i, 0, 0).getBlock().getType() == originBlockMaterial) {
-				return block.getLocation().add(i, 0, 0);
+				God god = getGodFromSign(block, believer);
+				if (god != null) {
+					return block.getLocation().add(i, 0, 0);
+				}
 			}
 			for (int j = 0; j <= i; j++) {
 
 				if (block.getLocation().add(0, j, i).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(0, j, i);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(0, j, i);
+					}
 				}
 				if (block.getLocation().add(j, 0, i).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(j, 0, i);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(j, 0, i);
+					}
 				}
 				if (block.getLocation().add(j, j, i).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(j, j, i);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(j, j, i);
+					}
 				}
 				if (block.getLocation().add(0, i, j).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(0, i, j);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(0, i, j);
+					}
 				}
 				if (block.getLocation().add(j, i, 0).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(j, i, 0);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(j, i, 0);
+					}
 				}
 				if (block.getLocation().add(j, i, j).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(j, i, j);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(j, i, j);
+					}
 				}
 				if (block.getLocation().add(i, j, 0).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(i, j, 0);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(i, j, 0);
+					}
 				}
 				if (block.getLocation().add(i, 0, j).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(i, 0, j);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(i, 0, j);
+					}
 				}
 				if (block.getLocation().add(i, j, j).getBlock().getType() == originBlockMaterial) {
-					return block.getLocation().add(i, j, j);
+					God god = getGodFromSign(block, believer);
+					if (god != null) {
+						return block.getLocation().add(i, j, j);
+					}
 				}
 			}
 			
 				
 		}
 		throw new NoOriginException("Couldn't find origin, max searching distance reached!");
+	}
+
+	public static God getGodFromSign(Block block, Believer believer){
+		if(block.getType().equals(Material.WALL_SIGN) || block.getType().equals(Material.LEGACY_SIGN_POST) || block.getType().equals(Material.SIGN)){
+			believer.getPlayer().sendMessage("Found the sign, looking for alter!");
+			String name = "null";
+			God theGod = null;
+			Sign sign = (Sign) block.getState();
+			String[] ln = sign.getLines();
+			name = checkForGod(ln);
+			if (name.equalsIgnoreCase("null")) {
+				believer.getPlayer().sendMessage("No god name.");
+				System.out.println("Sign did not contain the gods name.");
+				return null;
+			}
+			for (int i = 0; i < Gods.all_gods.length; i++) {
+				if (Gods.all_gods[i].getName().equalsIgnoreCase(name))
+				{
+					return Gods.all_gods[i];
+				}
+			}
+
+		}
+		return null;
 	}
 	
 

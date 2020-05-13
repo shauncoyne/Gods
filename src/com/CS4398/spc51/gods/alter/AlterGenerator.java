@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.CS4398.spc51.gods.Believer;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
@@ -27,14 +29,14 @@ public class AlterGenerator {
  *
  * @param block the block
  */
-public static void generateAlter(Block block) {
-		
-		//try {
-			//Location origin = AlterManager.getOrigin(block);
-			
-		//} catch (NoOriginException e) {
-		//	return;
-		//}
+public static void generateAlter(Block block, Believer believer) {
+	Location origin = null;
+		try {
+			origin = AlterManager.getOrigin(block, believer);
+
+		} catch (NoOriginException e) {
+			return;
+		}
 	if(!Gods.gods.getDataFolder().exists()) {
 		Gods.gods.getDataFolder().mkdir();
 	}
@@ -62,9 +64,9 @@ public static void generateAlter(Block block) {
 		int currentZ = (layerNumber - 1)/2;
 		for (int i = 0; i < 1000; i++) {
 			try {
-			csvWriter.append(block.getLocation().add(currentX, currentY, currentZ).getBlock().getLocation().toString());
+			csvWriter.append(origin.add(currentX, currentY, currentZ).getBlock().getLocation().toString());
 			csvWriter.append("split");
-			csvWriter.append(block.getLocation().add(currentX, currentY, currentZ).getBlock().getType().name());
+			csvWriter.append(origin.add(currentX, currentY, currentZ).getBlock().getType().name());
 			csvWriter.append(",");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
