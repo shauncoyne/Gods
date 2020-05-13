@@ -41,38 +41,18 @@ public class CommandManager implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (sender instanceof Player) {
-			Believer believer = Believer.getBeliever(((Player) sender).getUniqueId());
-			if (believer == null) {
-				System.out.println("Believer was not loaded! Trying again...");
-				Believer.loadBeliever(((Player) sender).getUniqueId());
-				believer = Believer.getBeliever(((Player) sender).getUniqueId());
-			}
-			if (args.length == 2) {
-				if (args[0].equalsIgnoreCase("worship")){
-					believer.changeGod(Gods.getGodFromName(args[1]));
-					return true;
-				}
-				if (args[0].equalsIgnoreCase("powerup")){
-					believer.usePowerup(args[1]);
-					return true;
-				}
-			}
-			if (args.length == 1) {
-				if (args[0].equalsIgnoreCase("info")) {
-
-					String god_name = believer.getGod().getName();
-					float belief_power = believer.getBeliefPower();
-					int rank = believer.getRank();
-					sender.sendMessage("You currently worship: " + god_name);
-					sender.sendMessage("Your current belief power is: " + belief_power);
-					sender.sendMessage("Your current rank is: " + rank);
-				}
-
-				else if(args[0].equalsIgnoreCase("pray")) {
-					if (believer.hasPower("pray")){
-						believer.getPower("pray").execute(believer);
-					}
-				}
+			switch (command.getName()) {
+				case "gods":
+					//do info stuff here
+					break;
+				case "powerups":
+					//do info stuff here
+					break;
+				case "info":
+					//do info stuff here
+					break;
+				default:
+					break;
 			}
 		}
 		return false;
